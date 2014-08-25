@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Home" %}{% endblock %}
+
+{% block top_content %}
+    {{block.super}}
+{% endblock %}
+
+{% block content %}
+   {% if flatpage %}
+       <h1>{{ flatpage.title }}</h1>
+       <div> {{ flatpage.ontent|safe }}</div>
+   {else}
+       <h1>Bibliothèque BCIS</h1>
+       <h2>Bienvenue</h2>
+   {% endif %}
+{% endblock %}
+

@@ -1,0 +1,14 @@
+{% block content %}
+    <div id="content"> 
+    {% if livre_list %} 
+		<p><b>Livres list</b></p>
+        <ul>
+        {% for livre in livre_list %}
+            <li><a href="{{livre.id}}/">{{livre.titre_livre}} {{livre.isbn-no}}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Livre list no available.</p>
+    {% endif %}
+{% endblock %}
+

@@ -1,0 +1,48 @@
+{% load i18n %}
+{% load url from future %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600' >
+    <!-- link rel="stylesheet" href="../css/style.css" /> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Biblio: {% block title %}{{ title }}{% endblock %}</title>
+	{% if form %}
+	    {{ form.media}}
+        {{ form.js_init}}
+    {% endif %}
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body class="{% block bodyclass %}{% endblock %}">
+<div class="header">
+    <div id="logo"><img src="{{ STATIC_URL }}images/logo_biblio.png" width="80" alt=""/></div>
+    <div class="main_title">Menu principal - Index<br>Bibliothèque BCIS</br></div>
+    <div class="clear"></div>
+</div>
+
+<div class="menus">
+    <tr id="nav">
+        <td><a class="{% block nav-livres %}{% endblock %}" href={% url 'livres_list'>Livres</a></li>
+        <td><a class="{% block nav-pret %}{% endblock %}" href="/">Prêt</a></li>
+	    <td><a class="{% block nav-rappels %}{% endblock %}" href="/">Rappels</a></li>
+	    <td><a class="{% block nav-personnes %}{% endblock %}" href="/">Personnes</a></li>
+    </tr>
+</div>
+
+<div class="content">
+    <div id="col_nav">
+        {% block top_content %}{% endblock %}
+    </div>
+</div>
+
+{% block content %}
+{% endblock %}
+
+<div class="footer">
+    copyright © bibliotheque bcis - 2014
+</div>
+
+</body>
+</html>

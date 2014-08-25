@@ -1,0 +1,32 @@
+<h1>{{ livre.titre_livre}}</h1>
+<ul>
+{% for type_livre in livre.type_livre_set.all %}
+    <li>{{type_livre.text}}</li>
+{% endfor %}
+</ul>
+
+{% block content %}
+    <div id="content"> 
+    {% if livre_list %} 
+		<p><b>Livres list</b></p>
+        <ul>
+        {% for livre in livre_list %}
+            <li><a href="{{livre.id}}/">{{livre.titre_livre}}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Livre list no available.</p>
+    {% endif %}
+
+    {% if auteur_list %}
+		<p><b>Auteur list</b></p>
+        <ul>
+        {% for auteur in auteur_list %}
+            <li>{{auteur.nom_auteur}} {{auteur.prenom_auteur}}</li>
+        {% endfor %}
+	    </ul>
+    {% else %}
+        <p>Auteur list no available.</p>
+    {% endif %}
+    </div> <!-- end content -->
+ 
