@@ -4,7 +4,7 @@
 		<p><b>Livres list</b></p>
         <ul>
         {% for livre in livre_list %}
-            <li><a href="{{livre.id}}/">{{livre.titre_livre}} {{livre.isbn-no}}</a></li>
+            <li>{{livre.titre_livre}} {{livre.isbn-no}}</li>
         {% endfor %}
         </ul>
     {% else %}

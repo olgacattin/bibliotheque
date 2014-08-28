@@ -17,17 +17,17 @@
 
 <body class="{% block bodyclass %}{% endblock %}">
 <div class="header">
-    <div id="logo"><img src="{{ STATIC_URL }}images/logo_biblio.png" width="80" alt=""/></div>
+    <!-- <div id="logo"><img src="../images/logo_biblio.png" width="80" alt=""/></div> -->
     <div class="main_title">Menu principal - Index<br>Bibliothèque BCIS</br></div>
     <div class="clear"></div>
 </div>
 
 <div class="menus">
     <tr id="nav">
-        <td><a class="{% block nav-livres %}{% endblock %}" href={% url 'livres_list'>Livres</a></li>
-        <td><a class="{% block nav-pret %}{% endblock %}" href="/">Prêt</a></li>
-	    <td><a class="{% block nav-rappels %}{% endblock %}" href="/">Rappels</a></li>
-	    <td><a class="{% block nav-personnes %}{% endblock %}" href="/">Personnes</a></li>
+        <td><a class="{% block nav-livres %}{% endblock %}" href="{% url 'livres_list' %}">Livres</a></td>
+        <td><a class="{% block nav-pret %}{% endblock %}" href="/">Prêt</a></td>
+	    <td><a class="{% block nav-rappels %}{% endblock %}" href="/">Rappels</a></td>
+	    <td><a class="{% block nav-personnes %}{% endblock %}" href="/">Personnes</a></td>
     </tr>
 </div>
 
