@@ -1,10 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load url from future %}
+
 {% block content %}
     <div id="content"> 
     {% if livre_list %} 
 		<p><b>Livres list</b></p>
         <ul>
         {% for livre in livre_list %}
-            <li>{{livre.titre_livre}} {{livre.isbn-no}}</li>
+            <li>{{livre.titre_livre}} {{livre.isbn_livre}}</li>
         {% endfor %}
         </ul>
     {% else %}

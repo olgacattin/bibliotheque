@@ -4,9 +4,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600' >
-    <!-- link rel="stylesheet" href="../css/style.css" /> -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600' >
+    <link rel="stylesheet" href="{{ STATIC_URL }}/css/style.css" />
+
     <title>Biblio: {% block title %}{{ title }}{% endblock %}</title>
 	{% if form %}
 	    {{ form.media}}
@@ -17,23 +18,26 @@
 
 <body class="{% block bodyclass %}{% endblock %}">
 <div class="header">
-    <!-- <div id="logo"><img src="../images/logo_biblio.png" width="80" alt=""/></div> -->
+    <div id="logo"><img src="{{ STATIC_URL }}/images/logo_biblio.png" width="80" alt=""/></div>
     <div class="main_title">Menu principal - Index<br>Bibliothèque BCIS</br></div>
+    {% ifnotequal request.path "/" %}</a>{% endifnotequal %}
     <div class="clear"></div>
-</div>
-
-<div class="menus">
-    <tr id="nav">
-        <td><a class="{% block nav-livres %}{% endblock %}" href="{% url 'livres_list' %}">Livres</a></td>
-        <td><a class="{% block nav-pret %}{% endblock %}" href="/">Prêt</a></td>
-	    <td><a class="{% block nav-rappels %}{% endblock %}" href="/">Rappels</a></td>
-	    <td><a class="{% block nav-personnes %}{% endblock %}" href="/">Personnes</a></td>
-    </tr>
 </div>
 
 <div class="content">
     <div id="col_nav">
-        {% block top_content %}{% endblock %}
+        {% block top_content %}
+        <div class="block">
+            <div class="block_content">
+                <tr id="nav">
+                    <td><a class="{% block nav-livres %}{% endblock %}" href="{% url 'livres_list' %}">Livres</a></td>
+                    <td><a class="{% block nav-pret %}{% endblock %}" href="/">Prêt</a></td>
+	                <td><a class="{% block nav-rappels %}{% endblock %}" href="/">Rappels</a></td>
+	                <td><a class="{% block nav-personnes %}{% endblock %}" href="/">Personnes</a></td>
+                </tr>
+            </div>
+        </div>
+        {% endblock %}
     </div>
 </div>
 
