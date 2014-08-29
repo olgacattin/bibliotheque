@@ -151,13 +151,9 @@ li
 	color: #125b30;
 }
 
-p
+td
 {
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
-    font-style: normal;
-	font-size: 18px;
-	line-height: 27px;
-	color: #125b30;
+    border: 1px solid #125b30;
 }
+
 /* End style page */

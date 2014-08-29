@@ -3,14 +3,30 @@
 {% load url from future %}
 
 {% block content %}
-    <div id="content"> 
+    <div id="content">
     {% if livre_list %} 
 		<p><b>Livres list</b></p>
-        <ul>
-        {% for livre in livre_list %}
-            <li>{{livre.titre_livre}} {{livre.isbn_livre}}</li>
-        {% endfor %}
-        </ul>
+        <thead>
+            {% for h in headers %}
+                <tr> <!-- {% if has_stats %}<th></th>{% endif %} -->
+                    <th>{{ h }}</th>
+                </tr>
+            {% endfor %}
+        </thead>
+        <tbody>
+            {% for livre in livre_list %}
+            <tr>
+                <!-- {% if has_stats %}<td></td>{% endif %} -->
+                <td>{{ livre.titre_livre }}</td>
+                <td>{{ livre.cate_livre }}</td>
+                <td>{{ livre.code_livre }}</td>
+                <td>{{ livre.nom_livre }}</td>
+                <td>{{ livre.lang_livre }}</td>
+                <td>{{ livre.annee_livre }}</td>
+                <td>{{ livre.isbn_livre }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     {% else %}
         <p>Livre list no available.</p>
     {% endif %}
