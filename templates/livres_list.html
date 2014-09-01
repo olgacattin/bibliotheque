@@ -13,7 +13,11 @@
                     <th>Type</th>
                     <th>ISBN</th>
                     <th>Edition</th>
-                    <th>Date prêt</th>
+                    <th>Disponible</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th><img src="{{ STATIC_URL }}images/newpage.png" width="32" alt="nouveau"/></th>
                 </tr>
             </thead>
             <tbody>
@@ -24,7 +28,16 @@
                     <td>{{ livre.type_livre }}</td>
                     <td>{{ livre.isbn_livre }}</td>
                     <td>{{ livre.edit_livre }}</td>
-                    <td>{{ livre.pret.date_pret }}</td>
+                    <td> {{ livre.pret_set.date_back_pret }}</td>
+
+                    {% if livre.pret_set.date_back_pret %}
+                        <td><img src="{{ STATIC_URL }}images/checkmark.png" width="20" alt="disponible"/></td>
+                    {% else %}
+                        <td><img src="{{ STATIC_URL }}images/error.png" width="20" alt="non disponible"/></td>
+                    {% endif %}
+
+                    <td><img src="{{ STATIC_URL }}images/pencil.png" width="20" alt="modifier"/></td>
+                    <td><img src="{{ STATIC_URL }}images/recyclebin.png" width="20" alt="effacer"/></td>
                 </tr>
                 {% endfor %}
             </tbody>

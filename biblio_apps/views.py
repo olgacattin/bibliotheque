@@ -3,6 +3,7 @@ from django.shortcuts import render
 
 from biblio_apps.models import Livre
 from biblio_apps.models import Auteur
+from biblio_apps.models import Pret
 
 def index(request):
     auteur_list = Auteur.objects.order_by('-nom_auteur')[:7]

@@ -1,14 +1,5 @@
 /* Begin style page */
 
-header
-{
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: 300;
-    font-style: normal;
-	font-size: 40px;
-	color: #7ba686; 
-}
-
 h1
 {
 	font-family: 'Open Sans', Arial, sans-serif;
@@ -174,7 +165,7 @@ nav:hover
 
 li
 {
-	font-family: 'Open Sans', Arial, sans-serif;
+   	font-family: 'Open Sans', Arial, sans-serif;
 	font-weight: normal;
     font-style: normal;
 	font-size: 18px;
@@ -189,16 +180,40 @@ table
     color: #125b30;
 }
 
+thead
+{
+    font-family: 'Open Sans', Arial, sans-serif;
+	font-weight: normal;
+    font-style: bold italic;
+	font-size: 18px;
+    text-align: center;
+    height: 40px;
+    color: #125b30;
+}
+
 th
 {
-    height: 40px;
     border-bottom: 1px solid;
+    height: 40px;
     color: #125b30;
 }
 
 td
 {
+    font-family: 'Open Sans', Arial, sans-serif;
+	font-weight: normal;
+    font-style: normal;
+	font-size: 18px;
     text-align: left;       
+}
+
+.header
+{
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-weight: 300;
+    font-style: normal;
+	font-size: 40px;
+	color: #7ba686; 
 }
 
 .main_title
@@ -221,6 +236,12 @@ td
     text-align: right;
    	line-height: 40px;
 	color: #7ba686; 
+}
+
+#logo
+{
+    height: 100px;
+    position: absolute;
 }
 
 #col_nav
