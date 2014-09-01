@@ -51,7 +51,6 @@ h4
 	font-size: 20px;
 	text-transform: uppercase;
 	text-align: left;
-	/* height: 37px; */
 	line-height: 27px;
 	color: #173831; 
 }
@@ -72,28 +71,58 @@ hr
 	color: #aeccb6;
 }
 
-a.link
+a:link
 {
 	font-family: 'Open Sans', Arial, sans-serif;
 	font-weight: normal;
     font-style: normal;
-	font-size: 18px;
+	font-size: 28px;
+	text-align: left;
+	height: 37px;
+	line-height: 27px;
+	color: #125b30;
+}
+
+a:hover
+{
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-weight: normal;
+    font-style: bold italic;
+	font-size: 28px;
 	text-align: left;
 	height: 37px;
 	line-height: 27px;
 	color: #72ac31;
 }
 
-a.hover
+a:active
+{
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-weight: normal;
+    font-style: bold italic;
+	font-size: 40px;
+	text-align: left;
+	color: #173831;
+}
+
+a:focus
+{
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-weight: normal;
+    font-style: bold italic;
+	font-size: 30px;
+	text-align: left;
+	color: #173831;
+}
+
+a:visited
 {
 	font-family: 'Open Sans', Arial, sans-serif;
 	font-weight: normal;
     font-style: normal;
-	font-size: 18px;
+	font-size: 28px;
 	text-align: left;
-	height: 37px;
-	line-height: 27px;
-	color: #125b30;
+	color: #7ba686;
 }
 
 hr
@@ -118,20 +147,22 @@ nav
 	font-family: 'Open Sans', Arial, sans-serif;
 	font-weight: normal;
     font-style: normal;
-	font-size: 17px;
+	font-size: 27px;
 	text-transform: uppercase;
+	color: #125b30;
 }
-nav.link
+
+nav:link
 {
 	font-family: 'Open Sans', Arial, sans-serif;
 	font-weight: normal;
     font-style: normal;
-	font-size: 17px;
+	font-size: 27px;
 	text-transform: uppercase;
 	color: #7ba686;
 }
 
-nav.hover
+nav:hover
 {
 	font-family: 'Open Sans', Arial, sans-serif;
 	font-weight: normal;
@@ -151,9 +182,55 @@ li
 	color: #125b30;
 }
 
+table 
+{
+    border: 1px solid;;
+    width: 100%;
+    color:  #125b30;
+}
+
+th
+{
+    height: 50px;
+}
+
 td
 {
-    border: 1px solid #125b30;
+    text-align: right;       
+}
+
+.main_title
+{
+    font-family: 'Open Sans', Arial, sans-serif;
+	font-weight: 300;
+    font-style: normal;
+	font-size: 40px;
+    text-align: center;
+    height: 100px;
+	color: #7ba686; 
+}
+
+.footer
+{
+    font-family: 'Open Sans', Arial, sans-serif;
+	font-weight: 50;
+    font-style: italic;
+	font-size: 13px;
+    text-align: right;
+    height: 70px;
+	color: #7ba686; 
+}
+
+#col_nav
+{
+    font-family: 'Open Sans', Arial, sans-serif;
+	font-weight: normal;
+    font-style: normal;
+	font-size: 28px;
+    text-align: left;
+    height: 120px;
+    padding-right: 80px; 
+	color: #125b30;
 }
 
 /* End style page */

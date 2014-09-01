@@ -4,29 +4,34 @@
 
 {% block content %}
     <div id="content">
-    {% if livre_list %} 
-		<p><b>Livres list</b></p>
-        <thead>
-            {% for h in headers %}
-                <tr> <!-- {% if has_stats %}<th></th>{% endif %} -->
-                    <th>{{ h }}</th>
+    {% if livre_list %}
+        <table class="tabular"> 
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Code</th>
+                    <th>Type</th>
+                    <th>ISBN</th>
+                    <th>Edition</th>
+                    <th>Disponible</th>
                 </tr>
-            {% endfor %}
-        </thead>
-        <tbody>
-            {% for livre in livre_list %}
-            <tr>
-                <!-- {% if has_stats %}<td></td>{% endif %} -->
-                <td>{{ livre.titre_livre }}</td>
-                <td>{{ livre.cate_livre }}</td>
-                <td>{{ livre.code_livre }}</td>
-                <td>{{ livre.nom_livre }}</td>
-                <td>{{ livre.lang_livre }}</td>
-                <td>{{ livre.annee_livre }}</td>
-                <td>{{ livre.isbn_livre }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
+            </thead>
+            <tbody>
+                {% for livre in livre_list %}
+                <tr>
+                    <td>{{ livre.titre_livre }}</td>
+                    <td>{{ livre.code_livre }}</td>
+                    <td>{{ livre.type_livre }}</td>
+                    <td>{{ livre.isbn_livre }}</td>
+                    <td>{{ livre.edit_livre }}</td>
+                    <!-- <td>{{ pret.date_pret }}</td> -->
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table">
+
     {% else %}
         <p>Livre list no available.</p>
     {% endif %}
