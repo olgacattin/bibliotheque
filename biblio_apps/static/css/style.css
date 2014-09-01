@@ -186,17 +186,19 @@ table
 {
     border: 1px solid;;
     width: 100%;
-    color:  #125b30;
+    color: #125b30;
 }
 
 th
 {
-    height: 50px;
+    height: 40px;
+    border-bottom: 1px solid;
+    color: #125b30;
 }
 
 td
 {
-    text-align: right;       
+    text-align: left;       
 }
 
 .main_title
@@ -217,7 +219,7 @@ td
     font-style: italic;
 	font-size: 13px;
     text-align: right;
-    height: 70px;
+   	line-height: 40px;
 	color: #7ba686; 
 }
 
@@ -229,7 +231,6 @@ td
 	font-size: 28px;
     text-align: left;
     height: 120px;
-    padding-right: 80px; 
 	color: #125b30;
 }
 

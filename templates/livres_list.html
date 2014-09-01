@@ -13,7 +13,7 @@
                     <th>Type</th>
                     <th>ISBN</th>
                     <th>Edition</th>
-                    <th>Disponible</th>
+                    <th>Date prêt</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,13 +24,13 @@
                     <td>{{ livre.type_livre }}</td>
                     <td>{{ livre.isbn_livre }}</td>
                     <td>{{ livre.edit_livre }}</td>
-                    <!-- <td>{{ pret.date_pret }}</td> -->
+                    <td>{{ livre.pret.date_pret }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
             <tfoot>
             </tfoot>
-        </table">
+        </table>
 
     {% else %}
         <p>Livre list no available.</p>
