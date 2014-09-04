@@ -10,8 +10,8 @@
 
     <title>Biblio: {% block title %}{{ title }}{% endblock %}</title>
 	{% if form %}
-	    {{ form.media}}
-        {{ form.js_init}}
+	    {{ form.media }}
+        {{ form.js_init }}
     {% endif %}
     {% block extra_head %}{% endblock %}
 </head>
@@ -30,9 +30,9 @@
             <div class="block_content">
                 <tr id="nav">
                     <td><a class="{% block nav-livres %}{% endblock %}" href="{% url 'livres_list' %}">Livres</a></td>
-                    <td><a class="{% block nav-pret %}{% endblock %}" href="/">Prêt</a></td>
+                    <td><a class="{% block nav-pret %}{% endblock %}" href="{% url 'prets_list' %}">Prêt</a></td>
 	                <td><a class="{% block nav-rappels %}{% endblock %}" href="/">Rappels</a></td>
-	                <td><a class="{% block nav-personnes %}{% endblock %}" href="/">Personnes</a></td>
+	                <td><a class="{% block nav-personnes %}{% endblock %}" href="{% url 'personnes_list' %}">Personnes</a></td>
                 </tr>
             </div>
         </div>

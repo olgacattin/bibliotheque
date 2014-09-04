@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load url from future %}
+
+{% block content %}
+    <div id="content">
+    {% if pret_list %}
+        <table class="tabular"> 
+            <thead>
+                <tr>
+                    <th>Livre</th>
+                    <th>Personne</th>
+                    <th>Date prêt</th>
+                    <th>Date prevue retour</th>
+                    <th>Date retour</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th><img src="{{ STATIC_URL }}images/newpage.png" width="32" alt="nouveau"/></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pret in pret_list %}
+                <tr>
+                    <td>{{ pret.id_livre.titre_livre }}</td>
+                    <td>{{ pret.id_personne.lastname }}</td>
+                    <td>{{ pret.date_pret }}</td>
+                    <td>{{ pret.date_back_prev }}</td>
+                    <td>{{ pret.date_back_pret }}</td>
+
+                    <td><a href="{{ pret.id }}/"><img src="{{ STATIC_URL }}images/pencil.png" width="20" alt="modifier"/></a></td>
+                    <td><img src="{{ STATIC_URL }}images/recyclebin.png" width="20" alt="effacer"/></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+    </div>
+
+    {% else %}
+        <p>Prêt list no available.</p>
+    {% endif %}
+{% endblock %}
+

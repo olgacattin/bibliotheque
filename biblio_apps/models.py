@@ -41,6 +41,7 @@ class Livre(models.Model):
     isbn_livre = models.CharField(max_length = 50, blank = True)
     prix_livre = models.DecimalField(max_digits = 6, decimal_places = 2)
     prop_livre = models.CharField(max_length = 100, blank = True)
+    auteurs = models.ManyToManyField(Auteur)
 
     def __unicode__(self):
         return self.nom_livre + " " + self.isbn_livre + " " + self.annee_livre
@@ -75,9 +76,9 @@ class Pret(models.Model):
 
 
 # Model(table): Livre/Auteur
-class LivreAuteur(models.Model):
-    id_livre = models.ForeignKey(Livre)
-    id_auteur = models.ForeignKey(Auteur)
+#class LivreAuteur(models.Model):
+#    id_livre = models.ForeignKey(Livre)
+#    id_auteur = models.ForeignKey(Auteur)
    
     #def __unicode__(self):
     #   return self.id_livre

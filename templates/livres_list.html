@@ -28,15 +28,15 @@
                     <td>{{ livre.type_livre }}</td>
                     <td>{{ livre.isbn_livre }}</td>
                     <td>{{ livre.edit_livre }}</td>
-                    <td> {{ livre.pret_set.date_back_pret }}</td>
+                    <td> {{ livre.pret.date_back_pret }}</td>
 
-                    {% if livre.pret_set.date_back_pret %}
+                    {% if livre.pret.date_back_pret %}
                         <td><img src="{{ STATIC_URL }}images/checkmark.png" width="20" alt="disponible"/></td>
                     {% else %}
                         <td><img src="{{ STATIC_URL }}images/error.png" width="20" alt="non disponible"/></td>
                     {% endif %}
 
-                    <td><img src="{{ STATIC_URL }}images/pencil.png" width="20" alt="modifier"/></td>
+                    <td><a href="{{ livre.id }}/"><img src="{{ STATIC_URL }}images/pencil.png" width="20" alt="modifier"/></a></td>
                     <td><img src="{{ STATIC_URL }}images/recyclebin.png" width="20" alt="effacer"/></td>
                 </tr>
                 {% endfor %}
@@ -44,6 +44,7 @@
             <tfoot>
             </tfoot>
         </table>
+    </div>
 
     {% else %}
         <p>Livre list no available.</p>
