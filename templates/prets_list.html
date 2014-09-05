@@ -22,8 +22,8 @@
             <tbody>
                 {% for pret in pret_list %}
                 <tr>
-                    <td>{{ pret.id_livre.titre_livre }}</td>
-                    <td>{{ pret.id_personne.lastname }}</td>
+                    <td>{{ pret.livre.titre_livre }}</td>
+                    <td>{{ pret.perso.last_name }}</td>
                     <td>{{ pret.date_pret }}</td>
                     <td>{{ pret.date_back_prev }}</td>
                     <td>{{ pret.date_back_pret }}</td>

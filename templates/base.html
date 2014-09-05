@@ -31,7 +31,7 @@
                 <tr id="nav">
                     <td><a class="{% block nav-livres %}{% endblock %}" href="{% url 'livres_list' %}">Livres</a></td>
                     <td><a class="{% block nav-pret %}{% endblock %}" href="{% url 'prets_list' %}">Prêt</a></td>
-	                <td><a class="{% block nav-rappels %}{% endblock %}" href="/">Rappels</a></td>
+	                <td><a class="{% block nav-rappels %}{% endblock %}" href="{% url 'rappels_list' %}">Rappels</a></td>
 	                <td><a class="{% block nav-personnes %}{% endblock %}" href="{% url 'personnes_list' %}">Personnes</a></td>
                 </tr>
             </div>

@@ -68,11 +68,11 @@ class Personne(User):
 
 # Model(table): Pret
 class Pret(models.Model):
-    id_livre = models.ForeignKey(Livre)
-    id_perso = models.ForeignKey(Personne)
-    date_pret = models.DateField('date')
-    date_back_prev = models.DateField('date')
-    date_back_pret = models.DateField('date')
+    livre = models.ForeignKey(Livre)
+    perso = models.ForeignKey(Personne)
+    date_pret = models.DateField()
+    date_back_prev = models.DateField()
+    date_back_pret = models.DateField()
 
 
 # Model(table): Livre/Auteur
