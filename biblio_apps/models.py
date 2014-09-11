@@ -2,6 +2,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Model(table) : Auteur
 class Auteur(models.Model):
     nom_auteur = models.CharField(max_length = 100, blank = False)
@@ -41,6 +42,7 @@ class Livre(models.Model):
     isbn_livre = models.CharField(max_length = 50, blank = True)
     prix_livre = models.DecimalField(max_digits = 6, decimal_places = 2)
     prop_livre = models.CharField(max_length = 100, blank = True)
+    disp_livre = models.BooleanField(default = True)
     auteurs = models.ManyToManyField(Auteur)
 
     def __unicode__(self):

@@ -28,7 +28,7 @@
                     <td>{{ livre.type_livre }}</td>
                     <td>{{ livre.isbn_livre }}</td>
                     <td>{{ livre.edit_livre }}</td>
-
+<!--
                     {% if livre.pret.date_back_pret__isnull %}
                         <td><img src="{{ STATIC_URL }}images/checkmark.png" width="20" alt="disponible"/></td>
                     {% else %}
@@ -37,6 +37,7 @@
 
                     <td><a href="{{ livre.id }}/"><img src="{{ STATIC_URL }}images/pencil.png" width="20" alt="modifier"/></a></td>
                     <td><img src="{{ STATIC_URL }}images/recyclebin.png" width="20" alt="effacer"/></td>
+-->
                 </tr>
                 {% endfor %}
             </tbody>

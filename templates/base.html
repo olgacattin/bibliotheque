@@ -1,21 +1,18 @@
 {% load i18n %}
 {% load url from future %}
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600' >
-    <link rel="stylesheet" type='text/css' href="{{ STATIC_URL }}css/style.css" />
-
-    <title>Biblio: {% block title %}{{ title }}{% endblock %}</title>
-	{% if form %}
-	    {{ form.media }}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600' >
+<link rel="stylesheet" type='text/css' href="{{ STATIC_URL }}css/style.css" />
+<title>Biblio: {% block title %}{{ title }}{% endblock %}</title>
+    {% if form %}   
+        {{ form.media }}
         {{ form.js_init }}
     {% endif %}
     {% block extra_head %}{% endblock %}
 </head>
-
 <body class="{% block bodyclass %}{% endblock %}">
 <div class="header">
     <div id="logo"><img src="{{ STATIC_URL }}images/logo_biblio.png" width="80" alt="logo"/></div>

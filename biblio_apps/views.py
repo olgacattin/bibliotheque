@@ -18,7 +18,7 @@ def index(request):
 def livres_list(request):
     livre_list = Livre.objects.order_by('titre_livre')
     #livre_list = Livre.objects.all().pret_set.all()
-    livre_list = livre_list.pret_set.all() 
+    #livre_list = livre_list.pret_set.all() 
 
     context = {'livre_list': livre_list}
  
@@ -55,6 +55,12 @@ def rappels_list(request):
     
     return render(request, 'prets_list.html', context)
 
+
+def livres_pret_en_cours(request):
+    livres_prets = Pret.objects.filter(date_back_pret=isnull)
+
+    return render(request, '', null)
+    
 
 def detail(request, livre_id):
     try:
