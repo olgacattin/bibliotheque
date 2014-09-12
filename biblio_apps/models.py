@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-# Model(table) : Auteur
+# Model(table): Auteur
 class Auteur(models.Model):
     nom_auteur = models.CharField(max_length = 100, blank = False)
     prenom_auteur = models.CharField(max_length = 100, blank = True)
@@ -76,15 +76,5 @@ class Pret(models.Model):
     date_back_prev = models.DateField()
     date_back_pret = models.DateField()
 
-
-# Model(table): Livre/Auteur
-#class LivreAuteur(models.Model):
-#    id_livre = models.ForeignKey(Livre)
-#    id_auteur = models.ForeignKey(Auteur)
-   
-    #def __unicode__(self):
-    #   return self.id_livre
-
- 
 # End models declaration 
 

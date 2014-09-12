@@ -17,6 +17,27 @@ def index(request):
 
 def livres_list(request):
     livre_list = Livre.objects.order_by('titre_livre')
+    livre_prets = Pret.objects.filter(date_back_pret=None)
+
+    #for pret in livre_prets:
+     #   print pret.date_back_pret
+
+
+    livre_list2 = Livre.objects.filter(livre_id__in=[livre_prets]
+    
+    #for livre in livre_list2:
+     #   print livre.disp_livre
+
+#import pdb; pdb.set_trace()
+    #for livre in livre_list:
+     #   livre.disp_livre = False
+    
+    #livres_prets = Livre.objects.filter(pk__in=['livre', pret.get('livre')) for pret in livres_prets]).update(disp_livre=false)
+
+    #for pret in livres_prets:
+    #    dispo_list.add(pret.id_livre)
+    #    livre_list.disp_livre = false
+        	
     #livre_list = Livre.objects.all().pret_set.all()
     #livre_list = livre_list.pret_set.all() 
 
@@ -47,7 +68,7 @@ def personnes_list(request):
 
     return render(request, 'personnes_list.html', context)
 
-#import pdb; pdb.set_trace()
+
 
 def rappels_list(request):
     rappel_list = Pret.objects.filter(date_back_prev__ge=datetime.now())
