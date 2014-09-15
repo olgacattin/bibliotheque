@@ -1,5 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render
+from django.db import models
+from django.db.model import Q
 
 from biblio_apps.models import Livre
 from biblio_apps.models import Auteur
@@ -16,33 +18,14 @@ def index(request):
 
 
 def livres_list(request):
-    livre_list = Livre.objects.order_by('titre_livre')
-    #livre_prets = Pret.objects.filter(date_back_pret=None)
+   #import pdb; pdb.set_trace() 
 
-    livre_prets = Pret.objects.get(pk=livre_prets_id).select_related('livre')
-
-  
-    #for pret in livre_prets:
-     #   print pret.date_back_pret
-
-
-    #livre_list2 = Livre.objects.filter(livre_id__in=[livre_prets]
+    pret_livre = Pret.objects.get(Q(date_back_pret__gte=datetime.now()) | Q(date_back_pret__isnull=True))
+    livre_pret = Livre.objects.filter(pk__in=[pret_livre.livre_id]).update(disp_livre=False)
+    livre_list = Livre.objects.all().select_related('Pret')
     
-    #for livre in livre_list2:
-     #   print livre.disp_livre
-
-#import pdb; pdb.set_trace()
-    #for livre in livre_list:
-     #   livre.disp_livre = False
-    
-    #livres_prets = Livre.objects.filter(pk__in=['livre', pret.get('livre')) for pret in livres_prets]).update(disp_livre=false)
-
-    #for pret in livres_prets:
-    #    dispo_list.add(pret.id_livre)
-    #    livre_list.disp_livre = false
-        	
-    #livre_list = Livre.objects.all().pret_set.all()
-    #livre_list = livre_list.pret_set.all() 
+    #livres_prets = Livre.objects.filter(pk__in=['livre', pret.get('livre')) for pret in pret_livre]).update(disp_livre=false)
+    #livres_prets = Livre_list.filter(pk__in=['livre', pret.get('livre')) for pret in pret_livre]).update(disp_livre=false)
 
     context = {'livre_list': livre_list}
  
