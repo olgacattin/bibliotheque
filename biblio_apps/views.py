@@ -17,13 +17,16 @@ def index(request):
 
 def livres_list(request):
     livre_list = Livre.objects.order_by('titre_livre')
-    livre_prets = Pret.objects.filter(date_back_pret=None)
+    #livre_prets = Pret.objects.filter(date_back_pret=None)
 
+    livre_prets = Pret.objects.get(pk=livre_prets_id).select_related('livre')
+
+  
     #for pret in livre_prets:
      #   print pret.date_back_pret
 
 
-    livre_list2 = Livre.objects.filter(livre_id__in=[livre_prets]
+    #livre_list2 = Livre.objects.filter(livre_id__in=[livre_prets]
     
     #for livre in livre_list2:
      #   print livre.disp_livre

@@ -75,6 +75,10 @@ class Pret(models.Model):
     date_pret = models.DateField()
     date_back_prev = models.DateField()
     date_back_pret = models.DateField()
+    
+    def __unicode__(self):
+        return u" ".join(self.livre, self.perso, self.date_pret, self.date_back_prev, self.date_back_pret)
+    
 
 # End models declaration 
 
