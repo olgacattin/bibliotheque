@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render
 from django.db import models
-from django.db.model import Q
+from django.db.models import Q
 
 from biblio_apps.models import Livre
 from biblio_apps.models import Auteur
@@ -19,13 +19,15 @@ def index(request):
 
 def livres_list(request):
    #import pdb; pdb.set_trace() 
+   
+    livre_list = Livre.objects.all()
 
-    pret_livre = Pret.objects.get(Q(date_back_pret__gte=datetime.now()) | Q(date_back_pret__isnull=True))
-    livre_pret = Livre.objects.filter(pk__in=[pret_livre.livre_id]).update(disp_livre=False)
-    livre_list = Livre.objects.all().select_related('Pret')
-    
-    #livres_prets = Livre.objects.filter(pk__in=['livre', pret.get('livre')) for pret in pret_livre]).update(disp_livre=false)
-    #livres_prets = Livre_list.filter(pk__in=['livre', pret.get('livre')) for pret in pret_livre]).update(disp_livre=false)
+    #Get la liste de tous les prets en cours
+    prets_en_cours = Pret.objects.filter(Q(date_back_pret__gte=datetime.now()) | Q(date_back_pret__isnull=True)).values
+
+    # Pour chaque livre, attribuer une variable volatile indiquant la disponibilite
+    for livre in livre_list:
+        livre.dispo = livre.pk in prets_en_cours
 
     context = {'livre_list': livre_list}
  
