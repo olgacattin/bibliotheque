@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.http import Http404
 from django.shortcuts import render
 from django.db import models
@@ -7,6 +8,7 @@ from biblio_apps.models import Livre
 from biblio_apps.models import Auteur
 from biblio_apps.models import Pret
 from biblio_apps.models import Personne
+from biblio_apps.models import Fournisseur
 
 from datetime import datetime
 
@@ -20,14 +22,19 @@ def index(request):
 def livres_list(request):
    #import pdb; pdb.set_trace() 
    
-    livre_list = Livre.objects.all()
+    livre_list = Livre.objects.all()			#Liste de tous les livres
 
-    #Get la liste de tous les prets en cours
-    prets_en_cours = Pret.objects.filter(Q(date_back_pret__gte=datetime.now()) | Q(date_back_pret__isnull=True)).values
+    #Liste de tous les prêts en cours
+    prets_en_cours = Pret.objects.filter(Q(date_back_prev__gte=datetime.now()) | Q(date_back_pret__isnull=True))
 
-    # Pour chaque livre, attribuer une variable volatile indiquant la disponibilite
-    for livre in livre_list:
-        livre.dispo = livre.pk in prets_en_cours
+    if prets_en_cours:        # Liste avec données
+
+        prets_actifs =[]
+        for pret in prets_en_cours:
+            prets_actifs.append(pret.livre_id)
+   
+        for livre in livre_list:
+            livre.disp_livre = not livre.pk in prets_actifs
 
     context = {'livre_list': livre_list}
  
@@ -59,7 +66,7 @@ def personnes_list(request):
 
 
 def rappels_list(request):
-    rappel_list = Pret.objects.filter(date_back_prev__ge=datetime.now())
+    rappel_list = Pret.objects.filter(Q(date_back_pret__gte=datetime.now()))
     context = {'rappel_list' : rappel_list}
     
     return render(request, 'prets_list.html', context)

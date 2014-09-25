@@ -1,7 +1,12 @@
 # tests/test_models.py
+# -*- coding: utf-8 -*-
 from django.test import TestCase
 from biblio_apps.models import Livre
 from biblio_apps.models import Auteur
+from biblio_apps.models import Pret
+from biblio_apps.models import Fournisseur
+
+from datetime import datetime
 
 class LivreTest(TestCase):
 
@@ -17,8 +22,15 @@ class AuteurTest(TestCase):
         self.assertEqual(auteur.__unicode__(), "Gates Bill") 
 
 
-#class PretTest(TestCase):
-#    def test_unicode(self):
-#        pret = Pret.objects.create(livre =  , perso = "Olga Cattin", date_pret = , date_back_prev = , date_back_pret = )
+class PretTest(TestCase):
     
+    def test_unicode(self):
+        pret = Pret.objects.create(livre_id = 3 , perso_id = 1, date_pret = datetime.now() , date_back_prev = datetime.now() , date_back_pret = None)
+        self.assertEqual(pret.__unicode__(), (datetime.now() datetime.now() None ))
+
+class FournisseurTest(TestCase):
+ 
+    def test_unicode(self):
+        fourn = Fournisseur.objects.create(nom_fourn = "ABC Library", addr_fourn = "Neuchâtel", phone_fourn = "032 123 43 45")
+        self.assertEqual(fourn.__unicode__(), "ABC Library Neuchâtel 032 123 43 45")
 

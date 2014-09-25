@@ -13,7 +13,7 @@
                     <th>Type</th>
                     <th>ISBN</th>
                     <th>Edition</th>
-                    <th>Disponible</th>
+                    <th>Disp.	</th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -28,7 +28,7 @@
                     <td>{{ livre.type_livre }}</td>
                     <td>{{ livre.isbn_livre }}</td>
                     <td>{{ livre.edit_livre }}</td>
-                    <td>{{ livre.pret.date_back_pret }}</td>
+                    <!--<td>{{ livre.pret.date_back_prev }}</td> -->
 
                     {% if livre.disp_livre %}
                         <td><img src="{{ STATIC_URL }}images/checkmark.png" width="20" alt="disponible"/></td>

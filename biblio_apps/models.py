@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from datetime import datetime 
 from django.contrib.auth.models import User
 
 
@@ -10,6 +11,15 @@ class Auteur(models.Model):
 	
     def __unicode__(self):
         return self.nom_auteur + " " + self.prenom_auteur
+
+# Model(table): Fournisseur
+class Fournisseur(models.Model):
+    nom_fourn = models.CharField(max_length = 150, blank = False)
+    addr_fourn = models.CharField(max_length = 150, blank = True)
+    phone_fourn = models.CharField(max_length = 50, blank = True)
+
+    def __unicode__(self):
+        return self.nom_fourn + " " + self.addr_fourn + " " + self.phone_fourn
 
 # Model(table): Livre
 class Livre(models.Model):
@@ -34,7 +44,7 @@ class Livre(models.Model):
     cate_livre = models.CharField(max_length = 5, blank = False)
     code_livre = models.CharField(max_length = 3, blank = False)
     nom_livre = models.CharField(max_length = 100, blank = False)
-    type_livre = models.CharField( max_length = 4, choices = LIVRE_TYPE)
+    type_livre = models.CharField(max_length = 4, choices = LIVRE_TYPE)
     edit_livre = models.CharField(max_length = 50, blank = True)
     class_livre = models.CharField(max_length = 10, blank = True)
     lang_livre = models.CharField(max_length = 3, choices = LANGUE_TYPE)
@@ -43,6 +53,8 @@ class Livre(models.Model):
     prix_livre = models.DecimalField(max_digits = 6, decimal_places = 2)
     prop_livre = models.CharField(max_length = 100, blank = True)
     disp_livre = models.BooleanField(default = True)
+    date_acqui = models.DateField(default = datetime.now(), null = True, blank = True)
+    fournisseur = models.ForeignKey(Fournisseur, default = 1)
     auteurs = models.ManyToManyField(Auteur)
 
     def __unicode__(self):
@@ -72,12 +84,13 @@ class Personne(User):
 class Pret(models.Model):
     livre = models.ForeignKey(Livre)
     perso = models.ForeignKey(Personne)
-    date_pret = models.DateField()
+    date_pret = models.DateField(default = datetime.now())
     date_back_prev = models.DateField()
-    date_back_pret = models.DateField()
+    date_back_pret = models.DateField(null = True, blank = True)
     
     def __unicode__(self):
-        return u" ".join(self.livre, self.perso, self.date_pret, self.date_back_prev, self.date_back_pret)
+        #return u" ".join(self.livre, self.perso, self.date_pret, self.date_back_prev, self.date_back_pret)
+		return self.livre.titre_livre + " " + self.perso.last_name  #self.date_pret + " " + self.date_back_prev + " " + self.date_back_pret
     
 
 # End models declaration 
