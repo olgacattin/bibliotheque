@@ -193,6 +193,9 @@ thead
 
 th
 {
+    font-family: 'Open Sans', Arial, sans-serif;
+	font-weight: bold;
+    font-style: italic;
     border-bottom: 1px solid;
     height: 40px;
     color: #125b30;

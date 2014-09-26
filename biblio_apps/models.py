@@ -3,7 +3,6 @@ from django.db import models
 from datetime import datetime 
 from django.contrib.auth.models import User
 
-
 # Model(table): Auteur
 class Auteur(models.Model):
     nom_auteur = models.CharField(max_length = 100, blank = False)

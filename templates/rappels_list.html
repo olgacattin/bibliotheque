@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load url from future %}
+
+{% block content %}
+    <div id="content">
+    {% if rappel_list %}
+        <table class="tabular"> 
+            <thead>
+                <tr>
+                    <th>Livre</th>
+                    <th>Personne</th>
+                    <th>Date prêt</th>
+                    <th>Date prevue retour</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pret in rappel_list %}
+                <tr>
+                    <td>{{ pret.livre.titre_livre }}</td>
+                    <td>{{ pret.perso.last_name }}</td>
+                    <td>{{ pret.date_pret }}</td>
+                    <td>{{ pret.date_back_prev }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+    </div>
+
+    {% else %}
+        <p>Rappel list no available.</p>
+    {% endif %}
+{% endblock %}
+
