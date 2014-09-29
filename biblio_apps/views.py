@@ -40,7 +40,6 @@ def livres_list(request):
 
 def livres_detail(request, livre_id):
 
-    #import pdb; pdb.set_trace()
     try:
         livre = Livre.objects.select_related('auteurs', 'fournisseur').get(pk=livre_id)
         auteurs_livre = livre.auteurs.all()
@@ -65,6 +64,25 @@ def personnes_list(request):
 
     context = {'personne_list': personne_list}
     return render(request, 'personnes_list.html', context)
+
+
+def personne_detail(request, personne_id):
+
+    try:
+        #import pdb; pdb.set_trace()
+        personne = Personne.objects.get(pk=personne_id)
+        context = {'personnne': personne}
+
+    except Personne.DoesNotExist:
+       raise Http404
+
+    return render(request, 'personne_detail.html', context)
+
+
+def personne_edition(request):
+
+    personne.save()
+    return render(request, 'personne_edition.html', None)
 
 
 def rappels_list(request):

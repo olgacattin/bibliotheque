@@ -6,58 +6,57 @@
 {% block content %}
     <div id="content">
         {% if livre %}
-        <table class="tabular"> 
-            <thead>Formulaire d'édition</thead>
-            <tbody>
-                <tr>
-                    <td>Titre</td><td>{{ livre.titre_livre }}</td>
-                </tr>
-                <tr>
-                    <td>Type</td><td>{{ livre.type_livre }}</td>
-                    <td>Code</td><td>{{ livre.code_livre }}</td>
-                </tr>
-                <tr>
-                    <td>Catégorie</td><td>{{ livre.cate_livre }}</td>
-                    <td>ISBN-N°</td><td>{{ livre.isbn_livre }}</td>
-                </tr>
-                <tr>                
-                    <td>Année</td><td>{{ livre.annee_livre }}</td>
-                    <td>Disponible</td>
-                    {% if livre.disp_livre %}
-                        <td><img src="{{ STATIC_URL }}images/checkmark.png" width="20" alt="disponible"/></td>
-                    {% else %}
-                        <td><img src="{{ STATIC_URL }}images/error.png" width="20" alt="non disponible"/></td>
-                    {% endif %}
-                </tr>
-                <tr>     
-                    <td>Auteurs:</td>
-                </tr>                
-                {% for auteur in auteurs_livre %}
+            <table class="tabular"> 
+                <thead>Formulaire d'édition</thead>
+                <tbody>
                     <tr>
-                        <td>{{ auteur.nom_auteur }}</td><td>{{ auteur.prenom_auteur }}</td>  
+                        <td>Titre</td><td>{{ livre.titre_livre }}</td>
                     </tr>
-                {% endfor %}
-                </tr> 
-                <tr>
-                    <td>Edition</td><td>{{ livre.edit_livre }}</td>
-                    <td>Classe</td><td>{{ livre.classe_livre }}</td>
-                </tr>
-                <tr>
-                    <td>Propriètaire</td><td>{{ livre.prop_livre }}</td>
-                    <td>Fournisseur</td><td>{{livre.fournisseur.nom_fourn}}</td>
-                 </tr>
-                 <tr>
-                    <td>Date d'acquisition</td><td>{{ livre.date_acqui }}</td>
-                    <td>Prix</td><td>{{ livre.prix_livre }}</td>
-                </tr>
-            </tbody>
-            <tfoot>
-            </tfoot>
-        </table>
-    </div>
+                    <tr>
+                        <td>Type</td><td>{{ livre.type_livre }}</td>
+                        <td>Code</td><td>{{ livre.code_livre }}</td>
+                    </tr>
+                    <tr>
+                        <td>Catégorie</td><td>{{ livre.cate_livre }}</td>
+                        <td>ISBN-N°</td><td>{{ livre.isbn_livre }}</td>
+                    </tr>
+                    <tr>                
+                        <td>Année</td><td>{{ livre.annee_livre }}</td>
+                        <td>Disponible</td>
+                        {% if livre.disp_livre %}
+                            <td><img src="{{ STATIC_URL }}images/checkmark.png" width="20" alt="disponible"/></td>
+                        {% else %}
+                            <td><img src="{{ STATIC_URL }}images/error.png" width="20" alt="non disponible"/></td>
+                        {% endif %}
+                    </tr>
+                    <tr>     
+                        <td>Auteurs:</td>
+                        {% for auteur in auteurs_livre %}
+                            <ol>
+                                <li>{{ auteur.nom_auteur }}</li><li>{{ auteur.prenom_auteur }}</li>  
+                            </ol>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <td>Edition</td><td>{{ livre.edit_livre }}</td>
+                        <td>Classe</td><td>{{ livre.classe_livre }}</td>
+                    </tr>
+                    <tr>
+                        <td>Propriètaire</td><td>{{ livre.prop_livre }}</td>
+                        <td>Fournisseur</td><td>{{livre.fournisseur.nom_fourn}}</td>
+                    </tr>
+                    <tr>
+                        <td>Date d'acquisition</td><td>{{ livre.date_acqui }}</td>
+                        <td>Prix</td><td>{{ livre.prix_livre }}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                </tfoot>
+            </table>
 
-    {% else %}
-        <p>Livre list no available.</p>
-    {% endif %}
+        {% else %}
+            <p>Livre no available.</p>
+        {% endif %}
+    </div>
 
 {% endblock %}

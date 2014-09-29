@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load url from future %}
+{% block title %}{% trans "Personne détail" %}{% endblock %}
+
+{% block content %}
+    <div id="content">
+        {% if personne %}
+            <table class="tabular"> 
+                <thead>Formulaire d'édition</thead>
+                <tbody>
+                    <tr>
+                        <td>Nom</td><td>{{ personne.first_name }}</td>
+                        <td>Prénom</td><td>{{ personne.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td><td>{{ personne.email  }}</td>
+                        <td>Adresse</td><td>{{ personne.address }}</td>
+                    </tr>
+                    <tr>
+                        <td>NPA</td><td>{{ personne.postcode }}</td>
+                        <td>Localité</td><td>{{ personne.city }}</td>
+                    </tr>
+                    <tr>                
+                        <td>Téléphone mobile</td><td>{{ personne.phone_mobil }}</td>
+                        <td>Téléphone privé</td><td>{{ personne.phone_prive }}</td>
+                    </tr>
+                    <tr>
+					    <td>Téléphone professionnel</td><td>{{ personne.phone_prof }}</td>
+					    <td>Fax</td><td>{{ personne.phone_fax }}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                </tfoot>
+            </table>
+
+        {% else %}
+            <p>Personne no available.</p>
+        {% endif %}
+    </div>
+{% endblock %}
