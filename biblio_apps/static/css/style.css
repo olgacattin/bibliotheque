@@ -46,6 +46,18 @@ h4
 	color: #173831; 
 }
 
+h5
+{
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-weight: bold;
+    font-style: italic;
+	font-size: 18px;
+	text-transform: uppercase;
+	text-align: center;
+	line-height: 20px;
+	color: #125b30; 
+}
+
 body
 {
 	background-color: #F6F9F7;
@@ -67,7 +79,7 @@ a:link
 	font-family: 'Open Sans', Arial, sans-serif;
 	font-weight: normal;
     font-style: normal;
-	font-size: 28px;
+	font-size: 20px;
 	text-align: left;
 	height: 37px;
 	line-height: 27px;
@@ -77,9 +89,9 @@ a:link
 a:hover
 {
 	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
-    font-style: bold italic;
-	font-size: 28px;
+	font-weight: bold;
+    font-style: italic;
+	font-size: 20px;
 	text-align: left;
 	height: 37px;
 	line-height: 27px;
@@ -89,9 +101,9 @@ a:hover
 a:active
 {
 	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
+	font-weight: bold;
     font-style: bold italic;
-	font-size: 40px;
+	font-size: 23px;
 	text-align: left;
 	color: #173831;
 }
@@ -99,9 +111,9 @@ a:active
 a:focus
 {
 	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
-    font-style: bold italic;
-	font-size: 30px;
+	font-weight: bold;
+    font-style: italic;
+	font-size: 20px;
 	text-align: left;
 	color: #173831;
 }
@@ -111,7 +123,7 @@ a:visited
 	font-family: 'Open Sans', Arial, sans-serif;
 	font-weight: normal;
     font-style: normal;
-	font-size: 28px;
+	font-size: 20px;
 	text-align: left;
 	color: #7ba686;
 }
@@ -126,7 +138,7 @@ p
 	font-family: 'Open Sans', Arial, sans-serif;
 	font-weight: normal;
     font-style: normal;
-	font-size: 18px;
+	font-size: 15px;
 	height: 37px;
 	line-height: 27px;
 	margin-bottom: 50px;
@@ -138,7 +150,7 @@ nav
 	font-family: 'Open Sans', Arial, sans-serif;
 	font-weight: normal;
     font-style: normal;
-	font-size: 27px;
+	font-size: 20px;
 	text-transform: uppercase;
 	color: #125b30;
 }
@@ -148,7 +160,7 @@ nav:link
 	font-family: 'Open Sans', Arial, sans-serif;
 	font-weight: normal;
     font-style: normal;
-	font-size: 27px;
+	font-size: 20px;
 	text-transform: uppercase;
 	color: #7ba686;
 }
@@ -163,6 +175,21 @@ nav:hover
 	color: #125b30;
 }
 
+
+.nav ul {
+    display : inline-block;
+}
+
+.nav ul li {
+    float: left;
+}
+
+.nav ul li a {
+    padding : 5px 10px 5px 10px;
+    display: inline-block;
+    color : #125b30;
+}
+
 li
 {
    	font-family: 'Open Sans', Arial, sans-serif;
@@ -175,7 +202,7 @@ li
 
 table 
 {
-    border: 1px solid;;
+    border: 1px solid;
     width: 100%;
     color: #125b30;
 }
@@ -185,9 +212,8 @@ thead
     font-family: 'Open Sans', Arial, sans-serif;
 	font-weight: normal;
     font-style: bold italic;
-	font-size: 20px;
     text-align: center;
-    height: 40px;
+    height: 25px;
     color: #125b30;
 }
 
@@ -196,8 +222,8 @@ th
     font-family: 'Open Sans', Arial, sans-serif;
 	font-weight: bold;
     font-style: italic;
-    border-bottom: 1px solid;
-    height: 40px;
+    font-size: 16px;
+    height: 20px;
     color: #125b30;
 }
 
@@ -206,8 +232,10 @@ td
     font-family: 'Open Sans', Arial, sans-serif;
 	font-weight: normal;
     font-style: normal;
-	font-size: 18px;
-    text-align: left;       
+	font-size: 15px;
+    text-align: left;
+    line-height: 16px;
+	color: #125b30;
 }
 
 .header
@@ -215,7 +243,7 @@ td
 	font-family: 'Open Sans', Arial, sans-serif;
 	font-weight: 300;
     font-style: normal;
-	font-size: 40px;
+	font-size: 30px;
 	color: #7ba686; 
 }
 
@@ -224,7 +252,7 @@ td
     font-family: 'Open Sans', Arial, sans-serif;
 	font-weight: 300;
     font-style: normal;
-	font-size: 40px;
+	font-size: 30px;
     text-align: center;
     height: 100px;
 	color: #7ba686; 
@@ -249,12 +277,115 @@ td
 
 #col_nav
 {
+    height: 130px;
+	color: #125b30;
+}
+
+#menus
+{
+	height: 30px;
+    color: #125b30;
+}
+
+#menus ul
+{
+	margin: 0px;
+	padding: 0px;
+    color: #125b30;
+}
+
+#menus ul li
+{
+	list-style: none;
+	display: inline-block;
+	float: left;
+	position: relative;
+	line-height: 30px;
+	height: 30px;
+	width: 120px;
+	text-align: center;
+    color: #125b30;
+}
+
+#menus ul li ul
+{
+	display: none;
+	color: #125b30;
+}
+
+#menus ul li a
+{
+    font-size: 20px;
+	text-decoration: none;
+	padding: 0px 5px;
+	line-height: 30px;
+    color: #125b30;
+}
+
+#menus a:hover
+{
+    font-family: 'Open Sans', Arial, sans-serif;
+	font-weight: bold;
+    font-style: italic;
+	font-size: 20px;
+    color: #125b30;
+}
+
+#menus ul li:hover ul
+{
+	position: absolute;
+	left: 0px;
+	top: 30px;
+	display: block;
+    color: #125b30;
+}
+
+#menus ul li ul li
+{
+	width: 130px;
+	text-align: left;
+	padding-left: 10px;
+	height: 30px;
+	overflow: hidden;
+    color: #125b30;
+}
+
+#table_liste table
+{
+    border: 1px solid;
+    width: 100%;
+    color: #125b30;
+}
+
+#table_liste thead
+{
+    font-family: 'Open Sans', Arial, sans-serif;
+	font-weight: normal;
+    font-style: bold italic;
+    text-align: center;
+    height: 25px;
+    color: #125b30;
+}
+
+#table_liste th
+{
+    font-family: 'Open Sans', Arial, sans-serif;
+	font-weight: bold;
+    font-style: italic;
+    font-size: 16px;
+    border-bottom: 1px solid;
+    height: 20px;
+    color: #125b30;
+}
+
+#table_liste td
+{
     font-family: 'Open Sans', Arial, sans-serif;
 	font-weight: normal;
     font-style: normal;
-	font-size: 28px;
+	font-size: 15px;
     text-align: left;
-    height: 120px;
+    line-height: 16px;
 	color: #125b30;
 }
 

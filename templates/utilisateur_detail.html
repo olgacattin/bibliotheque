@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load url from future %}
+{% block title %}{% trans "Utilisateur détail" %}{% endblock %}
+
+{% block content %}
+    <div id="content">
+        {% if utilisateur %}
+            <table class="tabular"> 
+                <thead>Formulaire d'édition</thead>
+                <tbody>
+                    <tr>
+                        <td>Nom</td><td>{{ utilisateur.first_name }}</td>
+                        <td>Prénom</td><td>{{ utilisateur.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td><td>{{ utilisateur.email  }}</td>
+                        <td>Adresse</td><td>{{ utilisateur.address }}</td>
+                    </tr>
+                    <tr>
+                        <td>NPA</td><td>{{ utilisateur.postcode }}</td>
+                        <td>Localité</td><td>{{ utilisateur.city }}</td>
+                    </tr>
+                    <tr>                
+                        <td>Téléphone mobile</td><td>{{ utilisateur.phone_mobil }}</td>
+                        <td>Téléphone privé</td><td>{{ utilisateur.phone_prive }}</td>
+                    </tr>
+                    <tr>
+					    <td>Téléphone professionnel</td><td>{{ utilisateur.phone_prof }}</td>
+					    <td>Fax</td><td>{{ utilisateur.phone_fax }}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                </tfoot>
+            </table>
+
+        {% else %}
+            <p>Utilisateur no available.</p>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load url from future %}
+
+{% block content %}
+    <div id="content">
+    {% if utilisateur_list %}
+        <table id="table_liste"> 
+            <thead>
+                 <h5>Liste des utilisateurs</h5>
+                <tr>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Adresse</th>
+                    <th>NPA</th>
+                    <th>Localité</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th><a href="{% url 'utilisateur_edition' %}"><img src="{{ STATIC_URL }}images/newpage.png" width="32" alt="nouveau"/></a></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for utilisateur in utilisateur_list %}
+                    <tr>
+                        <td>{{ utilisateur.first_name }}</td>
+                        <td>{{ utilisateur.last_name }}</td>
+                        <td>{{ utilisateur.address }}</td>
+                        <td>{{ utilisateur.postcode }}</td>
+                        <td>{{ utilisateur.city }}</td>
+                        <td><a href="{% url 'utilisateur_detail' utilisateur.id %}"><img src="{{ STATIC_URL }}images/pencil.png" width="20" alt="modifier"/></a></td>
+                        <td><img src="{{ STATIC_URL }}images/recyclebin.png" width="20" alt="effacer"/></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+
+    {% else %}
+        <p>Utilisateur list no available.</p>
+    {% endif %}
+    </div>
+{% endblock %}
+

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load url from future %}
+
+<form action="/table_edition/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+   
+    {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+    {% endfor %}
+</form>

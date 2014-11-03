@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load url from future %}
+
+{% block content %}
+    <div id="content">
+        <table id="table_liste"> 
+            <thead>
+                <h5>Liste d'auteurs</h5>
+                <tr>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th></th>
+                    <th></th>
+                    <th><a href="{% url 'auteur_add' %}"><img src="{{ STATIC_URL }}images/newpage.png" width="32" alt="add"/></a></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for auteur in object_list %}
+                    <tr>
+                        <td>{{ auteur.nom_auteur }}</td>
+                        <td>{{ auteur.prenom_auteur }}</td>
+                        <td><a href="{% url 'auteur_update' auteur.id %}"><img src="{{ STATIC_URL }}images/pencil.png" width="20" alt="update"/></a></td>
+                        <td><a href="{% url 'auteur_delete' auteur.id %}"><img src="{{ STATIC_URL }}images/recyclebin.png" width="20" alt="effacer"/></a></td>
+                    </tr>
+
+                {% empty %}
+                    <p>Auteurs list no available.</p>
+       
+                {% endfor %}
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+    </div>
+{% endblock %}
+

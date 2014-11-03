@@ -1,48 +1,68 @@
 {% load i18n %}
 {% load url from future %}
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600' >
-<link rel="stylesheet" type='text/css' href="{{ STATIC_URL }}css/style.css" />
-<title>Biblio: {% block title %}{{ title }}{% endblock %}</title>
-    {% if form %}   
-        {{ form.media }}
-        {{ form.js_init }}
-    {% endif %}
-    {% block extra_head %}{% endblock %}
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600' >
+	<link rel="stylesheet" type='text/css' href="{{ STATIC_URL }}css/style.css" />
+
+	<title>Biblio: {% block title %}{{ title }}{% endblock %}</title>
+		{% if form %}   
+		    {{ form.media }}
+		    {{ form.js_init }}
+		{% endif %}
+		{% block extra_head %}{% endblock %}
 </head>
+
 <body class="{% block bodyclass %}{% endblock %}">
-<div class="header">
-    <div id="logo"><img src="{{ STATIC_URL }}images/logo_biblio.png" width="80" alt="logo"/></div>
-    <div class="main_title">Bibliothèque BCIS</div>
-    <div class="clear"></div>
-</div>
+	<div class="header">
+		<div id="logo"><img src="{{ STATIC_URL }}images/logo_biblio.png" width="80" alt="logo"/></div>
+		<div class="main_title">Bibliothèque BCIS</div>
+		<div class="clear"></div>
+	</div>
 
-<div class="content">
-    <div id="col_nav">
-        {% block top_content %}
-        <div class="block">
-            <div class="block_content">
-                <tr id="nav">
-                    <td><a class="{% block nav-livres %}{% endblock %}" href="{% url 'livres_list' %}">Livres</a></td>
-                    <td><a class="{% block nav-pret %}{% endblock %}" href="{% url 'prets_list' %}">Prêt</a></td>
-	                <td><a class="{% block nav-rappels %}{% endblock %}" href="{% url 'rappels_list' %}">Rappels</a></td>
-	                <td><a class="{% block nav-personnes %}{% endblock %}" href="{% url 'personnes_list' %}">Personnes</a></td>
-                </tr>
-            </div>
-        </div>
-        {% endblock %}
-    </div>
-</div>
+    <div class="content">
+		<div id="col_nav"
+		    {% block top_content %}
 
-{% block content %}
-{% endblock %}
+             <div class="block">
+		         <div class="block_content">
+ 
+				 <div id="menus">
+				     <ul>
+					     <li><a class="{% block nav-livres %}{% endblock %}" href="{% url 'livres_list' %}">Livres</a></li>
+						 <li><a class="{% block nav-pret %}{% endblock %}" href="{% url 'prets_list' %}">Prêt</a></li>
+						 <li><a class="{% block nav-rappels %}{% endblock %}" href="{% url 'rappels_list' %}">Rappels</a></li>
+						 <li><a class="{% block nav-personnes %}{% endblock %}" href="{% url 'utilisateurs_list' %}">Utilisateurs</a></li>
+						 <li><a class="{% block nav-auteurs %}{% endblock %}" href="{% url 'auteur_list' %}">Auteurs</a></li>
+						 <li><a class="{% block nav-fournisseurs %}{% endblock %}" href="{% url 'fournisseurs_list' %}">Fournisseurs</a></li>
+		
+						 <li>
+						     <a href="">Types</a>  
+							 <ul>
+							     <li><a href="">Catégories</a></li>
+								 <li><a href="">Types</a> </li>
+								 <li><a href="">Subtypes</a></li>
+								 <li><a href="">Types Propriètaires</a></li>
+							     <li><a href="">Propriètaires</a></li>
+							 </ul>
+						</li>
+					</ul>
+				</div>
+  
+		    {% endblock %}
+		</div>
+	</div>
 
-<div class="footer">
-    copyright © 2014 bibliotheque bcis.
-</div>
+	{% block content %}
+	{% endblock %}
+
+	<div class="footer">
+		copyright © 2014 bibliotheque bcis.
+	</div>
 
 </body>
 </html>

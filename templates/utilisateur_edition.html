@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load url from future %}
-{% block title %}{% trans "Personne détail" %}{% endblock %}
+{% block title %}{% trans "Utilisateur détail" %}{% endblock %}
 
 {% block content %}
     <div id="content">
@@ -10,24 +10,24 @@
                 <tbody>
                     <form action="url" method="get">
                         <tr>
-                            <td>Nom</td><td><input type="text" name="personne.last_name"></td>
-                            <td>Prénom</td><td><input type="text" name="personne.first_name"></td>
+                            <td>Nom</td><td><input type="text" name="utilisateur.last_name"></td>
+                            <td>Prénom</td><td><input type="text" name="utilisateur.first_name"></td>
                         </tr>
                         <tr>
-                            <td>Email</td><td><input type="text" name="personne.email"></td>
-                            <td>Adresse</td><td><input type="text" name="personne.address"></td>
+                            <td>Email</td><td><input type="text" name="utilisateur.email"></td>
+                            <td>Adresse</td><td><input type="text" name="utilisateur.address"></td>
                         </tr>
                         <tr>
-                            <td>NPA</td><td><input type="text" name="personne.postcode"></td>
-                            <td>Localité</td><td><input type="text" name="personne.city"></td>
+                            <td>NPA</td><td><input type="text" name="utilisateur.postcode"></td>
+                            <td>Localité</td><td><input type="text" name="utilisateur.city"></td>
                         </tr>
                         <tr>                
-                            <td>Téléphone mobile</td><td><input type="text" name="personne.phone_mobil"></td>
-                            <td>Téléphone privé</td><td><input type="text" name="personne.phone_prive"></td>
+                            <td>Téléphone mobile</td><td><input type="text" name="utilisateur.phone_mobil"></td>
+                            <td>Téléphone privé</td><td><input type="text" name="utilisateur.phone_prive"></td>
                         </tr>
                         <tr>
-					        <td>Téléphone professionnel</td><td><input type="text" name="personne.phone_prof"></td>
-					        <td>Fax</td><td><input type="text" name="personne.phone_fax"></td>
+					        <td>Téléphone professionnel</td><td><input type="text" name="utilisateur.phone_prof"></td>
+					        <td>Fax</td><td><input type="text" name="utilisateur.phone_fax"></td>
                         </tr>
                         <tr></tr>
                         <tr>
