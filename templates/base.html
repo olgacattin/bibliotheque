@@ -34,7 +34,7 @@
 				 <div id="menus">
 				     <ul>
 					     <li><a class="{% block nav-livres %}{% endblock %}" href="{% url 'livres_list' %}">Livres</a></li>
-						 <li><a class="{% block nav-pret %}{% endblock %}" href="{% url 'prets_list' %}">Prêt</a></li>
+						 <li><a class="{% block nav-prets %}{% endblock %}" href="{% url 'prets_list' %}">Prêt</a></li>
 						 <li><a class="{% block nav-rappels %}{% endblock %}" href="{% url 'rappels_list' %}">Rappels</a></li>
 						 <li><a class="{% block nav-personnes %}{% endblock %}" href="{% url 'utilisateurs_list' %}">Utilisateurs</a></li>
 						 <li><a class="{% block nav-auteurs %}{% endblock %}" href="{% url 'auteur_list' %}">Auteurs</a></li>
@@ -43,11 +43,12 @@
 						 <li>
 						     <a href="">Types</a>  
 							 <ul>
-							     <li><a href="">Catégories</a></li>
-								 <li><a href="">Types</a> </li>
-								 <li><a href="">Subtypes</a></li>
-								 <li><a href="">Types Propriètaires</a></li>
-							     <li><a href="">Propriètaires</a></li>
+                                 <li><a class="{% block nav-categories %}{% endblock %}" href="{% url 'categorie_list' %}">Catégories</a></li>
+							     <li><a href="">Sous-catégories</a></li>
+                                 <li><a href="">Format</a></li>
+								 <li><a href="">Propriètaires</a></li>
+							     <li><a href="">Langue</a></li>
+                                 <li><a href="">Monnaie</a></li>
 							 </ul>
 						</li>
 					</ul>

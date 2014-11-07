@@ -16,12 +16,18 @@
                 </tr>
             </thead>
             <tbody>
-                {% for auteur in object_list %}
+                {% for auteur in object_list %} 
                     <tr>
+                        
                         <td>{{ auteur.nom_auteur }}</td>
                         <td>{{ auteur.prenom_auteur }}</td>
                         <td><a href="{% url 'auteur_update' auteur.id %}"><img src="{{ STATIC_URL }}images/pencil.png" width="20" alt="update"/></a></td>
-                        <td><a href="{% url 'auteur_delete' auteur.id %}"><img src="{{ STATIC_URL }}images/recyclebin.png" width="20" alt="effacer"/></a></td>
+                        <td><form method="post" action="{% url 'auteur_delete' auteur.id %}" 
+									onsubmit="return confirm('{{ _("Voulez-vous effacer cet auteur?")|escapejs }}');" 
+									style="display: inline">
+                             {% csrf_token %}
+                             <input type="image" src="{{ STATIC_URL}}images/recyclebin.png" alt="supprimer" title="{% trans "Delete" %}" width="20" /></form>	
+						</td>
                     </tr>
 
                 {% empty %}

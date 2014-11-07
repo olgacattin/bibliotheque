@@ -2,7 +2,9 @@ from django.conf.urls import patterns, url
 
 from biblio_apps import views
 
-from biblio_apps.views import AuteurList, AuteurCreate, AuteurUpdate, AuteurDelete
+from biblio_apps.views import AuteurList, AuteurCreate, AuteurUpdate   
+#, AuteurDelete
+from biblio_apps.views import CategorieList
 
 urlpatterns = patterns('', 
     url(r'^$', views.index, name='index'),
@@ -15,12 +17,17 @@ urlpatterns = patterns('',
     url(r'^utilisateur_detail/(?P<utilisateur_id>\d+)/$', views.utilisateur_detail, name='utilisateur_detail'),    
     
     url(r'^rappels_list/$', views.rappels_list, name='rappels_list'),
-    
+
+    #Table auteurs
     url(r'^auteur_list/$', AuteurList.as_view(), name='auteur_list'),
     url(r'^auteur_add/$', AuteurCreate.as_view(), name='auteur_add'),
     url(r'^auteur_update/(?P<pk>\d+)/$', AuteurUpdate.as_view(), name='auteur_update'),
-    url(r'^auteur_delete/(?P<pk>\d+)/$', AuteurDelete.as_view(), name='auteur_delete'),
+    url(r'^auteur_delete/(?P<auteur_id>\d+)/$', views.auteur_delete, name='auteur_delete'),
+    #url(r'^auteur_delete/(?P<pk>\d+)/$', AuteurDelete.as_view(), name='auteur_delete'),
 
     url(r'^fournisseurs_list/$', views.fournisseurs_list, name='fournisseurs_list'),
-
+  
+    #Table types - categorie
+    url(r'^categorie_list/$', CategorieList.as_view(), name='categorie_list'),
 )
+

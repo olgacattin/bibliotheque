@@ -10,7 +10,7 @@ class Types(models.Model):
     code_table = models.CharField(max_length = 5, null = False, blank = False)
     nom_table = models.CharField(max_length = 30, null = True, blank = True)
     code_type = models.CharField(max_length = 5, null = False, blank = False)
-    nom_type = models.CharField(max_length = 30, null = True, blank = True)
+    nom_type = models.CharField(max_length = 150, null = True, blank = True)
     code_pere = models.CharField(max_length = 5, null = True, blank = True)
 
     def __unicode__(self):
@@ -22,7 +22,7 @@ class Auteur(models.Model):
     nom_auteur = models.CharField(max_length = 100, blank = False)
     prenom_auteur = models.CharField(max_length = 100, blank = True)
 	
-    def __str__(self):
+    def __unicode__(self):
         return self.nom_auteur + " " + self.prenom_auteur
     
     def get_absolute_url(self):
@@ -62,16 +62,17 @@ class Proprietaire(models.Model):
 class Livre(models.Model):
 
     titre_livre = models.CharField(max_length = 60, blank = False)
-    cate_livre = models.ForeignKey(Types, related_name = 'categorie')
+    form_livre = models.ForeignKey(Types, related_name = 'format')
     code_livre = models.CharField(max_length = 3, blank = False)
     nom_livre = models.CharField(max_length = 100, blank = False)
-    type_livre = models.ForeignKey(Types, related_name = 'type_livre')
-    subtype_livre = models.ForeignKey(Types, null=True, blank=True, related_name = 'sub_type_livre')
+    cate_livre = models.ForeignKey(Types, related_name = 'categorie')
+    subcate_livre = models.ForeignKey(Types, null=True, blank=True, related_name = 'sub_categorie')
     edit_livre = models.CharField(max_length = 50, blank = True)
     class_livre = models.CharField(max_length = 10, blank = True)
     lang_livre = models.ForeignKey(Types, related_name = 'langue')
     annee_livre	= models.CharField(max_length = 10, blank = True)
     isbn_livre = models.CharField(max_length = 50, blank = True)
+    ean13_livre = models.CharField(max_length = 50, blank = True)
     prix_livre = models.DecimalField(max_digits = 6, decimal_places = 2)
     monn_livre = models.ForeignKey(Types, null=True, blank=True, related_name = 'type_monnaie')
     disp_livre = models.BooleanField(default = True)

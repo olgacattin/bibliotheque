@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from django.http import Http404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
+from django.views.decorators.http import require_POST
 
 from django.db import models
 from django.db.models import Q
 
+from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy
 
 from django.shortcuts import render, get_object_or_404
@@ -21,7 +23,8 @@ from biblio_apps.models import Proprietaire
 from biblio_apps.models import Types
 from biblio_apps.models import Utilisateur
 
-from forms import AuteurForm 
+from forms import AuteurForm
+from forms import CategorieForm
 
 from datetime import datetime
 #import pdb; pdb.set_trace()
@@ -108,44 +111,6 @@ def livres_pret_en_cours(request):
 
     return render(request, '', null)
 
-    
-def auteurs_list(request):
-    auteurs_list = Auteur.objects.all()
-
-    context = {'auteurs_list': auteurs_list}
-    return render(request, 'auteurs_list.html', context)
-
-
-def auteur_modify(request, auteur_id):
-    return render(request, 'auteur_modify.html', context)
-
-def auteur_delete(request, auteur_id):
-    return render(request, 'auteur_delete_html', context)
-
-
-def auteur_edition(request, auteur_id):
-    #import pdb; pdb.set_trace()
-    
-    #if request.method == 'POST':
-    auteur = Auteur.objects.get(pk = auteur_id)
-    form = AuteurForm(request.POST or None, instance = auteur)
-
-    if form.is_valid():
-        nom = form.cleaned_data['nom_auteur']
-        prenom.form.cleaned_data['prenom_auteur']
-
-        auteur = form.save()
-        auteur.save()
-        #return HttpResponseRedirect('biblio_apps/auteurs_list/')
-        return redirect(auteurs_list)
-
-    #else:
-    #    form = AuteurForm()
-
-    context = {'auteur_edition_form' : form}
-    return render(request, 'auteur_edition.html', context)
-
-
 def fournisseurs_list(request):
     fournisseurs_list = Fournisseur.objects.all()
 
@@ -153,8 +118,7 @@ def fournisseurs_list(request):
     return render(request, 'fournisseurs_list.html', context)
 
 
-
-# Gestion Auteur table.
+#Gestion Auteur table.
 class AuteurList(ListView):
     model = Auteur
     template_name = "auteur_list.html"
@@ -187,17 +151,33 @@ class AuteurUpdate(UpdateView):
     def form_valid(self, form):
         self.object = form.save()
         return HttpResponseRedirect(self.get_success_url())
-
-
-class AuteurDelete(DeleteView):
-    model = Auteur
-    template_name = "auteur_delete.html"
-    form_class = AuteurForm
+    
+@require_POST
+def auteur_delete(request, auteur_id):
+    auteur = get_object_or_404(Auteur, pk=auteur_id)
     success_url = reverse_lazy('auteur_list')
+    
+    lien_livre = Livre.objects.filter(auteurs__id = auteur_id)
 
-    def get_object(self, queryset=None):
-        pk = self.kwargs.get('pk', None)
-        return get_object_or_404(Auteur, pk=pk)
+    if (lien_livre):
+        return HttpResponse("Auteur lié avec livre !")
+    else:
+        auteur.delete()
+
+    return HttpResponseRedirect(reverse_lazy('auteur_list'))
+
+
+#Gestion Catégorie table.
+class CategorieList(ListView):
+    #model = Types.objects.filter(code_table='0001')
+    model = Types
+    template_name = "categorie_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(CategorieList, self).get_context_data(**kwargs)
+        return context
+
+
 
 
 

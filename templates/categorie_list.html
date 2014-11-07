@@ -6,32 +6,26 @@
     <div id="content">
         <table id="table_liste"> 
             <thead>
-                <h5>Liste des fournisseurs</h5>
+                <h5>Liste des catégories</h5>
                 <tr>
-                    <th>Nom</th>
-                    <th>Addresse</th>
-                    <th>NPA</th>
-                    <th>Localité</th>
-                    <th>Téléphone</th>
+                    <th>Code type</th>
+                    <th>Nom type</th>
                     <th></th>
                     <th></th>
                     <th><a href=""><img src="{{ STATIC_URL }}images/newpage.png" width="32" alt="add"/></a></th>
                 </tr>
             </thead>
             <tbody>
-                {% for fournisseur in object_list %}
+                {% for categorie in object_list %}
                     <tr>
-                        <td>{{ fournisseur.nom_fourn }}</td>
-                        <td>{{ fournisseur.addr_fourn }}</td>
-                        <td>{{ fournisseur.npa_fourn }}</td>
-                        <td>{{ fournisseur.city_fourn }}</td>
-                        <td>{{ fournisseur.phone_fourn }}</td>
+                        <td>{{ categorie.code_type }}</td>
+                        <td>{{ categorie.nom_type }}</td>
                         <td><a href=""><img src="{{ STATIC_URL }}images/pencil.png" width="20" alt="update"/></a></td>
                         <td><a href=""><img src="{{ STATIC_URL }}images/recyclebin.png" width="20" alt="effacer"/></a></td>
                     </tr>
 
                 {% empty %}
-                    <p>Fournisseur list no available.</p>
+                    <p>Catégories list no available.</p>
        
                 {% endfor %}
             </tbody>
