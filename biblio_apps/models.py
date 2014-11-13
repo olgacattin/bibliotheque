@@ -5,16 +5,78 @@ from datetime import datetime
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 
-# Model(table): Types
-class Types(models.Model):
-    code_table = models.CharField(max_length = 5, null = False, blank = False)
-    nom_table = models.CharField(max_length = 30, null = True, blank = True)
-    code_type = models.CharField(max_length = 5, null = False, blank = False)
-    nom_type = models.CharField(max_length = 150, null = True, blank = True)
-    code_pere = models.CharField(max_length = 5, null = True, blank = True)
+
+# Model(table): TypeCatégorie
+class TypeCategorie(models.Model):
+    code_cate = models.CharField(max_length = 5, null = False, blank = False)
+    nom_cate = models.CharField(max_length = 150, null = True, blank = True)
 
     def __unicode__(self):
-        return self.code_table + " " + self.nom_table + " " + self.code_type + " " + self.nom_type + " " + self.code_pere
+        return self.code_cate + " " + self.nom_cate
+
+    class Meta:
+        ordering = ('code_cate', 'nom_cate')
+
+
+# Model(table): TypeSousCatégorie
+class TypeSousCategorie(models.Model):
+    code_sous_cate = models.CharField(max_length = 5, null = False, blank = False)
+    nom_sous_cate = models.CharField(max_length = 150, null = True, blank = True)
+    code_cate = models.ForeignKey(TypeCategorie)
+
+    def __unicode__(self):
+        return self.code_sous_cate + " " + self.nom_sous_cate
+
+    class Meta:
+        ordering = ('code_cate', 'code_sous_cate', 'nom_sous_cate')
+
+
+# Model(table): TypeFormat
+class TypeFormat(models.Model):
+    code_form = models.CharField(max_length = 5, null = False, blank = False)
+    nom_form = models.CharField(max_length = 150, null = True, blank = True)
+
+    def __unicode__(self):
+        return self.code_format + " " + self.nom_format
+
+    class Meta:
+        ordering = ('code_form', 'nom_form')
+
+
+# Model(table): TypePropriétaire
+class TypeProprietaire(models.Model):
+    code_prop = models.CharField(max_length = 5, null = False, blank = False)
+    nom_prop = models.CharField(max_length = 150, null = True, blank = True)
+
+    def __unicode__(self):
+        return self.code_prop + " " + self.nom_prop
+
+    class Meta:
+        ordering = ('code_prop', 'nom_prop')
+
+
+# Model(table): TypeLangue
+class TypeLangue(models.Model):
+    code_lang = models.CharField(max_length = 5, null = False, blank = False)
+    nom_lang = models.CharField(max_length = 150, null = True, blank = True)
+
+    def __unicode__(self):
+        return self.code_lang + " " + self.nom_lang
+
+    class Meta:
+        ordering = ('code_lang', 'nom_lang')
+
+
+# Model(table): TypeMonnaie
+class TypeMonnaie(models.Model):
+    code_mone = models.CharField(max_length = 5, null = False, blank = False)
+    nom_mone = models.CharField(max_length = 150, null = True, blank = True)
+
+    def __unicode__(self):
+        return self.code_mone + " " + self.nom_mone
+
+    class Meta:
+        ordering = ('code_mone', 'nom_mone')
 
 
 # Model(table): Auteur
@@ -52,7 +114,7 @@ class Proprietaire(models.Model):
     npa_prop = models.CharField(max_length = 4)
     city_prop = models.CharField(max_length = 50)
     phone_prop = models.CharField(max_length = 50, blank = True)
-    type_prop = models.ForeignKey(Types, related_name = 'proprietaire')
+    type_prop = models.ForeignKey(TypeProprietaire)
 
     def __unicode__(self):
        return self.nom_prop + " " + self.prenom_prop + " " + self.phone_prop
@@ -62,19 +124,19 @@ class Proprietaire(models.Model):
 class Livre(models.Model):
 
     titre_livre = models.CharField(max_length = 60, blank = False)
-    form_livre = models.ForeignKey(Types, related_name = 'format')
+    form_livre = models.ForeignKey(TypeFormat)
     code_livre = models.CharField(max_length = 3, blank = False)
     nom_livre = models.CharField(max_length = 100, blank = False)
-    cate_livre = models.ForeignKey(Types, related_name = 'categorie')
-    subcate_livre = models.ForeignKey(Types, null=True, blank=True, related_name = 'sub_categorie')
+    cate_livre = models.ForeignKey(TypeCategorie)
+    subcate_livre = models.ForeignKey(TypeSousCategorie)
     edit_livre = models.CharField(max_length = 50, blank = True)
     class_livre = models.CharField(max_length = 10, blank = True)
-    lang_livre = models.ForeignKey(Types, related_name = 'langue')
+    lang_livre = models.ForeignKey(TypeLangue)
     annee_livre	= models.CharField(max_length = 10, blank = True)
     isbn_livre = models.CharField(max_length = 50, blank = True)
     ean13_livre = models.CharField(max_length = 50, blank = True)
     prix_livre = models.DecimalField(max_digits = 6, decimal_places = 2)
-    monn_livre = models.ForeignKey(Types, null=True, blank=True, related_name = 'type_monnaie')
+    monn_livre = models.ForeignKey(TypeMonnaie, null=True, blank=True)
     disp_livre = models.BooleanField(default = True)
     date_acqui = models.DateField(default = datetime.now(), null = True, blank = True)
     fournisseur = models.ForeignKey(Fournisseur)
@@ -83,7 +145,7 @@ class Livre(models.Model):
 
     def __unicode__(self):
         return self.nom_livre + " " + self.isbn_livre + " " + self.annee_livre
-
+  
 
 # Model(table): Utilisateur
 class Utilisateur(User):

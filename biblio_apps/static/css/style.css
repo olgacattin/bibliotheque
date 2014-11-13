@@ -350,6 +350,25 @@ td
     color: #125b30;
 }
 
+#sous_menus
+{
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-style: italic;
+	font-size: 15px;
+	height: 20px;
+    color: #125b30;
+
+}
+
+#sous_menus ul li a
+{
+    font-size: 15px;
+	text-decoration: none;
+	padding: 0px 5px;
+	line-height: 20px;
+    color: #125b30;
+}
+
 #table_liste table
 {
     border: 1px solid;
@@ -388,5 +407,16 @@ td
     line-height: 16px;
 	color: #125b30;
 }
+
+
+#message_line
+{
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-style: italic;
+	font-size: 12px;
+    text-align: left;
+	color: #7ba686;
+}
+
 
 /* End style page */

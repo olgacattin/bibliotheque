@@ -14,30 +14,34 @@
 
         <table id="table_liste"> 
             <thead>
-                <h5>Liste des fournisseur</h5>
+                <h5>Liste des utilisateur</h5>
                 <tr>
-                     <th>Nom</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
                     <th>Addresse</th>
                     <th>NPA</th>
                     <th>Localité</th>
                     <th>Téléphone</th>
+                    <th>Email</th>
                     <th></th>
                     <th></th>
-                    <th><a href="{% url 'fournisseur_add' %}"><img src="{{ STATIC_URL }}images/newpage.png" width="32" alt="add"/></a></th>
+                    <th><a href="{% url 'utilisateur_add' %}"><img src="{{ STATIC_URL }}images/newpage.png" width="32" alt="add"/></a></th>
                 </tr>
             </thead>
             <tbody>
-                {% for fournisseur in object_list %} 
+                {% for utilisateur in object_list %} 
                     <tr>
-                        <td>{{ fournisseur.nom_fourn }}</td>
-                        <td>{{ fournisseur.addr_fourn }}</td>
-                        <td>{{ fournisseur.npa_fourn }}</td>
-                        <td>{{ fournisseur.city_fourn }}</td>
-                        <td>{{ fournisseur.phone_fourn }}</td>
+                        <td>{{ utilisateur.first_name }}</td>
+                        <td>{{ utilisateur.last_name }}</td>
+                        <td>{{ utilisateur.address }}</td>
+                        <td>{{ utilisateur.postcode }}</td>
+                        <td>{{ utilisateur.city }}</td>
+                        <td>{{ utilisateur.phone_prive }}</td>
+                        <td>{{ utilisateur.email }}</td>
 
-                        <td><a href="{% url 'fournisseur_update' fournisseur.id %}"><img src="{{ STATIC_URL }}images/pencil.png" width="20" alt="update"/></a></td>
-                        <td><form method="post" action="{% url 'fournisseur_delete' fournisseur.id %}" 
-									onsubmit="return confirm('{{ _("Voulez-vous effacer ce fournisseur?")|escapejs }}');" 
+                        <td><a href="{% url 'utilisateur_update' utilisateur.id %}"><img src="{{ STATIC_URL }}images/pencil.png" width="20" alt="update"/></a></td>
+                        <td><form method="post" action="{% url 'utilisateur_delete' utilisateur.id %}" 
+									onsubmit="return confirm('{{ _("Voulez-vous effacer cet utilisateur?")|escapejs }}');" 
 									style="display: inline">
                              	{% csrf_token %}
                              	<input type="image" src="{{ STATIC_URL}}images/recyclebin.png" alt="supprimer" title="{% trans "Delete" %}" width="20" />
@@ -46,7 +50,7 @@
 					</tr>
 
                 {% empty %}
-                    <p>Fournisseur list no available.</p>
+                    <p>Utilisateur list no available.</p>
        
                 {% endfor %}
 				

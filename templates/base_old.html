@@ -43,6 +43,27 @@
 							    	<li><a class="{% block nav-rappels %}{% endblock %}" href="{% url 'rappels_list' %}">Rappels</a></li>
 								</ul>
 						 </li>
+						 
+   						 <li>
+						     <a href="">Personnes</a>  
+							 <ul id="sous_menus">
+		   						 <li><a class="{% block nav-auteurs %}{% endblock %}" href="{% url 'auteur_list' %}">Auteurs</a></li>
+								 <li><a class="{% block nav-proprietaires %}{% endblock %}" href="{% url 'proprietaire_list' %}">Propriétaires</a></li>
+								 <li><a class="{% block nav-fournisseurs %}{% endblock %}" href="{% url 'fournisseur_list' %}">Fournisseurs</a></li>
+							 </ul>
+						 </li>
+
+						 <li>
+						     <a href="">Listes</a>  
+							 <ul id="sous_menus">
+                                 <li><a class="{% block nav-categories %}{% endblock %}" href="{% url 'type_categorie_list' %}">Catégories</a></li>
+							     <li><a class="{% block nav-sous_categories %}{% endblock %}" href="{% url 'type_sous_categorie_list' %}">Sous-catégories</a></li>
+                                 <li><a class="{% block nav-format %}{% endblock %}" href="{% url 'type_format_list' %}">Format</a></li>
+								 <li><a class="{% block nav-type-proprietaires %}{% endblock %}" href="{% url 'type_proprietaire_list' %}">Propriétaires</a></li>
+							     <li><a class="{% block nav-langue %}{% endblock %}" href="{% url 'type_langue_list' %}">Langue</a></li>
+                                 <li><a class="{% block nav-monnaie %}{% endblock %}" href="{% url 'type_monnaie_list' %}">Monnaie</a></li>
+							 </ul>
+						</li>
 					</ul>
 				</div>
   
