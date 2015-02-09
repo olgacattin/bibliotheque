@@ -10,6 +10,7 @@
             <thead>
                  <h5>Liste des prêts</h5>
                 <tr>
+                    <th></th>
                     <th>Livre</th>
                     <th>Personne</th>
                     <th>Date prêt</th>
@@ -24,13 +25,14 @@
             <tbody>
                 {% for pret in pret_list %}
                 <tr>
+                    <td><a href=""><img src="{{ STATIC_URL }}images/look.png" width="20" alt="consult"/></a></td>
                     <td>{{ pret.livre.titre_livre }}</td>
                     <td>{{ pret.perso.last_name }}</td>
                     <td>{{ pret.date_pret }}</td>
                     <td>{{ pret.date_back_prev }}</td>
                     <td>{{ pret.date_back_pret }}</td>
 
-                    <td><a href="{{ pret.id }}/"><img src="{{ STATIC_URL }}images/pencil.png" width="20" alt="modifier"/></a></td>
+                    <td><a href="{{ pret.id }}/"><img src="{{ STATIC_URL }}images/edit.png" width="20" alt="modifier"/></a></td>
                     <td><img src="{{ STATIC_URL }}images/recyclebin.png" width="20" alt="effacer"/></td>
                 </tr>
                 {% endfor %}

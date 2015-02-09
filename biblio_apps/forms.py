@@ -5,6 +5,7 @@ from models import Utilisateur
 from models import Auteur
 from models import Proprietaire
 from models import Fournisseur
+from models import Livre
 
 from models import TypeCategorie
 from models import TypeSousCategorie
@@ -24,7 +25,7 @@ class UtilisateurForm(ModelForm):
             'last_name' : ('Nom'),
             'first_name': ('Prénom'),
             'address' : ('Addresse'), 
-            'postcode' : ('Case postale'), 
+            'postcode' : ('Code postal'), 
             'city' : ('Localité'), 
             'phone_prive' : ('Téléphone'), 
             'email' : ('Email')
@@ -62,7 +63,7 @@ class ProprietaireForm(ModelForm):
             'nom_prop' : ('Nom'),
             'prenom_prop': ('Prénom'),
             'addr_prop' : ('Addresse'), 
-            'npa_prop' : ('Case postale'), 
+            'npa_prop' : ('Code postal'), 
             'city_prop' : ('Localité'), 
             'phone_prop' : ('Téléphone'), 
             'type_prop' : ('Type prop')
@@ -78,7 +79,7 @@ class FournisseurForm(ModelForm):
         labels = {
             'nom_fourn' : ('Nom'),
             'addr_fourn' : ('Addresse'), 
-            'npa_fourn' : ('Case postale'), 
+            'npa_fourn' : ('Code postal'), 
             'city_fourn' : ('Localité'), 
             'phone_fourn' : ('Téléphone'), 
         }
@@ -131,7 +132,7 @@ class TypeProprietaireForm(ModelForm):
 
         labels = {
             'code_prop' : ('Code'),
-            'nom_prop' : ('Proprietaire')
+            'nom_prop' : ('Propriétaire')
         }
 
 class TypeLangueForm(ModelForm):
@@ -157,6 +158,37 @@ class TypeMonnaieForm(ModelForm):
         }
 
 
+class LivreForm(ModelForm):
+    class Meta:
+
+        model = Livre
+        fields = ['titre_livre', 'nom_livre', 'form_livre', 'cate_livre', 'subcate_livre', 
+                  'code_livre', 'edit_livre', 'annee_livre', 'class_livre', 'lang_livre', 
+                  'isbn_livre', 'ean13_livre', 'monn_livre', 'prix_livre', 'date_acqui',
+                  'disp_livre', 'fournisseur', 'proprietaire', 'auteurs']
+
+        labels = {
+            'titre_livre' : ( 'Titre'), 
+            'nom_livre' : ('Nom livre'),
+            'form_livre' : ('Format'),
+            'cate_livre' : ('Catégorie'), 
+            'subcate_livre' : ('Sous-catégorie'),
+            'code_livre' : ('Code'), 
+            'edit_livre' : ('Edition'), 
+            'annee_livre' : ('Année'), 
+            'class_livre' : ('Classe'), 
+            'lang_livre' : ('Langue'), 
+            'isbn_livre' : ('ISBN'),
+            'ean13_livre' : ('EAN13'),
+            'monn_livre' : ('Monnaie'), 
+            'prix_livre' : ('Prix'), 
+            'date_acqui' : ('Date acquision'),
+            'disp_livre' : ('Disponible'),
+            'fournisseur': ('Fournisseur'), 
+            'proprietaire': ('Propriétaire'), 
+            'auteurs' : ('Auteurs')
+           
+        }
 
        
 

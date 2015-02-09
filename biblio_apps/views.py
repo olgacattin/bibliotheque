@@ -15,56 +15,73 @@ from django.views.generic import View
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-from biblio_apps.models import Utilisateur
-
 from biblio_apps.models import Auteur
 from biblio_apps.models import Fournisseur
 from biblio_apps.models import Livre
 from biblio_apps.models import Pret
 from biblio_apps.models import Proprietaire
-from biblio_apps.models import TypeCategorie, TypeSousCategorie, TypeFormat, TypeProprietaire, TypeLangue, TypeMonnaie
+from biblio_apps.models import TypeCategorie, TypeSousCategorie, TypeFormat
+from biblio_apps.models import TypeProprietaire, TypeLangue, TypeMonnaie
 from biblio_apps.models import Utilisateur
 
-from forms import UtilisateurForm, AuteurForm, ProprietaireForm, FournisseurForm
-from forms import TypeCategorieForm, TypeSousCategorieForm, TypeFormatForm, TypeProprietaireForm, TypeLangueForm, TypeMonnaieForm
-
+from forms import UtilisateurForm, AuteurForm, ProprietaireForm
+from forms import FournisseurForm, LivreForm
+from forms import TypeCategorieForm, TypeSousCategorieForm, TypeFormatForm
+from forms import TypeProprietaireForm, TypeLangueForm, TypeMonnaieForm
 from datetime import datetime
 #import pdb; pdb.set_trace()
 
 def index(request):
     return render(request, 'index.html', None)
 
-def livres_list(request):
-    livre_list = Livre.objects.all()			#Liste de tous les livres
 
-    #Liste de tous les prêts en cours
-    prets_en_cours = Pret.objects.filter(Q(date_back_prev__lte=datetime.now()) | Q(date_back_pret__isnull=True))
+#Gestion des listes pour l'édition des livres 
+def livres_sous_categorie_liste(request):
+    return render_to_response(
+        "livre_form.html",
+        {'sous_categories_list' : TypeSousCategorie.objects.all()},
+        RequestContext(request, {}),
+    )
 
-    if prets_en_cours:        # Liste avec données
-        prets_actifs =[]
-
-        for pret in prets_en_cours:
-            prets_actifs.append(pret.livre_id)
-   
-        for livre in livre_list:
-            livre.disp_livre = not livre.pk in prets_actifs
-
-    context = {'livre_list': livre_list}
-    return render(request, 'livres_list.html', context)
+#Gestion Livre table.
+class LivreList(ListView):
+    model = Livre
+    template_name = "livre_list.html"
+  
+    def get_context_data(self, **kwargs):
+        context = super(LivreList, self).get_context_data(**kwargs)
+        return context
 
 
-def livres_detail(request, livre_id):
+class LivreCreate(CreateView):
+    model = Livre
+    template_name = "livre_form.html"
+    form_class = LivreForm
+    success_url = reverse_lazy('livre_list')
+    print("LivreCreate")
+    #import pdb; pdb.set_trace()
 
-    try:
-        livre = Livre.objects.select_related('auteurs', 'fournisseur').get(pk=livre_id)
-        auteurs_livre = livre.auteurs.all()
-        print(auteurs_livre)
-        context =  {'livre': livre}
+    def form_valid(self, form):
+        print("LivreCreate - form_valid")
+        self.object = form.save()
+        return HttpResponseRedirect(self.get_success_url())
+    
 
-    except Livre.DoesNotExist:
-        raise Http404
+class LivreUpdate(UpdateView):
+    model = Livre
+    template_name = "livre_form.html"
+    form_class = LivreForm
+    success_url = reverse_lazy('livre_list')
+    print("LivreUpdate")
 
-    return render(request, 'livres_detail.html', context)
+    def get_object(self, queryset=None):
+        pk = self.kwargs.get('pk', None)
+        return get_object_or_404(Livre, pk=pk)
+
+    def form_valid(self, form):
+        print("LivreUpdate - form_valid")
+        self.object = form.save()    
+        return HttpResponseRedirect(self.get_success_url())
 
 
 def prets_list(request):
@@ -174,7 +191,6 @@ class AuteurUpdate(UpdateView):
 
     def form_valid(self, form):
         self.object = form.save()    
-
         return HttpResponseRedirect(self.get_success_url())
     
 @require_POST
@@ -620,7 +636,17 @@ def type_monnaie_delete(request, type_monn_id):
     return HttpResponseRedirect(reverse_lazy('type_monnaie_list'))
 
 
+def obtener_subcategory(request):
+    data = None
 
+    if request.method == 'POST':
+        category_id = request.POST.get('category_id')
+        category = get_object_or_404(Category, pk = category_id)
+        subcategory = SubCategory.objects.all().filter(parent=category_id)
+        
+        data = serializers.serialize("json", subcategory, fields=('id','nom_sous_cate'))   
+
+    return HttpResponse(data, mimetype="application/javascript")
 
 
 

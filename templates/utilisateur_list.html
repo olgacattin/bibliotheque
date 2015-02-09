@@ -14,8 +14,9 @@
 
         <table id="table_liste"> 
             <thead>
-                <h5>Liste des utilisateur</h5>
+                <h5>Liste des utilisateurs</h5>
                 <tr>
+                    <th></th>
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Addresse</th>
@@ -31,6 +32,7 @@
             <tbody>
                 {% for utilisateur in object_list %} 
                     <tr>
+                        <td><a href=""><img src="{{ STATIC_URL }}images/look.png" width="20" alt="consult"/></a></td>
                         <td>{{ utilisateur.first_name }}</td>
                         <td>{{ utilisateur.last_name }}</td>
                         <td>{{ utilisateur.address }}</td>
@@ -39,7 +41,7 @@
                         <td>{{ utilisateur.phone_prive }}</td>
                         <td>{{ utilisateur.email }}</td>
 
-                        <td><a href="{% url 'utilisateur_update' utilisateur.id %}"><img src="{{ STATIC_URL }}images/pencil.png" width="20" alt="update"/></a></td>
+                        <td><a href="{% url 'utilisateur_update' utilisateur.id %}"><img src="{{ STATIC_URL }}images/edit.png" width="20" alt="update"/></a></td>
                         <td><form method="post" action="{% url 'utilisateur_delete' utilisateur.id %}" 
 									onsubmit="return confirm('{{ _("Voulez-vous effacer cet utilisateur?")|escapejs }}');" 
 									style="display: inline">

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load url from future %}
+
+{% block content %}
+    <div id="content">
+        <table id="table_liste"> 
+             <thead>
+                 <h5>Liste des livres</h5>
+                 <tr>
+                     <th></th>
+                     <th>Titre</th>
+                     <th>Code</th>
+                     <th>Catégorie</th>
+                     <th>Edition</th>
+                     <th>Disp.</th>
+                     <th></th>
+                     <th></th>
+                     <th></th>
+                     <th><a href="{% url 'livre_add' %}"><img src="{{ STATIC_URL }}images/newpage.png" width="25" alt="add"/></a></th>
+                 </tr>
+             </thead>
+             <tbody>
+                 {% for livre in object_list %}
+                    <tr>
+                        <td><a href=""><img src="{{ STATIC_URL }}images/look.png" width="20" alt="consult"/></a></td>
+                        <td>{{ livre.titre_livre }}</td>
+                        <td>{{ livre.code_livre }}</td>
+                        <td>{{ livre.cate_livre.nom_cate }}</td>
+                        <td>{{ livre.edit_livre }}</td>
+
+                        {% if livre.disp_livre %}
+                            <td><img src="{{ STATIC_URL }}images/checkmark.png" width="20" alt="disponible"/></td>
+                        {% else %}
+                            <td><img src="{{ STATIC_URL }}images/error.png" width="20" alt="non disponible"/></td>
+                        {% endif %}
+                            <td><a href="{% url 'livre_update' livre.id %}"><img src="{{ STATIC_URL }}images/edit.png" width="20" alt="update"/></a></td>
+                            <td><img src="{{ STATIC_URL }}images/recyclebin.png" width="20" alt="effacer"/></td>
+                    </tr>
+                 {% empty %}
+                    <p>Livre list no available.</p>
+                 {% endfor %}
+             </tbody>
+             <tfoot>
+             </tfoot>
+        </table>
+    </div>
+{% endblock %}
+

@@ -33,7 +33,7 @@
                         <td>{{ proprietaire.city_prop }}</td>
                         <td>{{ proprietaire.phone_prop }}</td>
 
-                        <td><a href="{% url 'proprietaire_update' proprietaire.id %}"><img src="{{ STATIC_URL }}images/pencil.png" width="20" alt="update"/></a></td>
+                        <td><a href="{% url 'proprietaire_update' proprietaire.id %}"><img src="{{ STATIC_URL }}images/edit.png" width="20" alt="update"/></a></td>
                         <td><form method="post" action="{% url 'proprietaire_delete' proprietaire.id %}" 
 									onsubmit="return confirm('{{ _("Voulez-vous effacer ce proprietaire?")|escapejs }}');" 
 									style="display: inline">

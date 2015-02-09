@@ -12,7 +12,7 @@ class TypeCategorie(models.Model):
     nom_cate = models.CharField(max_length = 150, null = True, blank = True)
 
     def __unicode__(self):
-        return self.code_cate + " " + self.nom_cate
+        return self.nom_cate
 
     class Meta:
         ordering = ('code_cate', 'nom_cate')
@@ -25,7 +25,7 @@ class TypeSousCategorie(models.Model):
     code_cate = models.ForeignKey(TypeCategorie)
 
     def __unicode__(self):
-        return self.code_sous_cate + " " + self.nom_sous_cate
+        return self.nom_sous_cate
 
     class Meta:
         ordering = ('code_cate', 'code_sous_cate', 'nom_sous_cate')
@@ -37,7 +37,7 @@ class TypeFormat(models.Model):
     nom_form = models.CharField(max_length = 150, null = True, blank = True)
 
     def __unicode__(self):
-        return self.code_format + " " + self.nom_format
+        return self.nom_form
 
     class Meta:
         ordering = ('code_form', 'nom_form')
@@ -49,7 +49,7 @@ class TypeProprietaire(models.Model):
     nom_prop = models.CharField(max_length = 150, null = True, blank = True)
 
     def __unicode__(self):
-        return self.code_prop + " " + self.nom_prop
+        return self.nom_prop
 
     class Meta:
         ordering = ('code_prop', 'nom_prop')
@@ -61,7 +61,7 @@ class TypeLangue(models.Model):
     nom_lang = models.CharField(max_length = 150, null = True, blank = True)
 
     def __unicode__(self):
-        return self.code_lang + " " + self.nom_lang
+        return self.nom_lang
 
     class Meta:
         ordering = ('code_lang', 'nom_lang')
@@ -73,7 +73,7 @@ class TypeMonnaie(models.Model):
     nom_mone = models.CharField(max_length = 150, null = True, blank = True)
 
     def __unicode__(self):
-        return self.code_mone + " " + self.nom_mone
+        return self.code_mone
 
     class Meta:
         ordering = ('code_mone', 'nom_mone')
@@ -103,7 +103,7 @@ class Fournisseur(models.Model):
     phone_fourn = models.CharField(max_length = 50, blank = True)
 
     def __unicode__(self):
-        return self.nom_fourn + " " + self.addr_fourn + " " + self.phone_fourn
+        return self.nom_fourn + " - " + self.city_fourn
 
 
 # Model(table): Proprietaire
@@ -117,7 +117,7 @@ class Proprietaire(models.Model):
     type_prop = models.ForeignKey(TypeProprietaire)
 
     def __unicode__(self):
-       return self.nom_prop + " " + self.prenom_prop + " " + self.phone_prop
+       return self.nom_prop + " " + self.prenom_prop
 
 
 # Model(table): Livre

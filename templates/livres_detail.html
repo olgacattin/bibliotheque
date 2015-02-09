@@ -1,24 +1,75 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load url from future %}
-{% block title %}{% trans "Livres detail"%}{% endblock %}
+{% block title %}{% trans "Livres detail"%}
+{% endblock %}
+
+{% block extra_head %}
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Faire de l'AJAX avec Django</title>
+
+	<script type="text/javascript" src="/media/js/jquery.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+    <script type="text/javascript">
+    $(document).ajaxSend(function(event, xhr, settings) {
+
+     $('#id_category').click(function(event){
+	    $.post("{% url "reload_flocksheet_subcategory" %}", {category_id:$('#id_category').val()}, 
+        function(data){
+		    var options = '<option value="">{% trans "Sélectionner une catégorie" %}</option>';
+		
+            if(data.length) {
+	            $("#id_sub_category").show();
+    
+	            for (var i = 0; i < data.length; i++){
+		            options += '<option value="'+data[i]["pk"]+'">' +data[i]["fields"]["name"] +'</option>'
+		        }
+
+		        $('#id_sub_category').html(options)
+		        $("#id_sub_category option:first").attr('selected', 'selected');
+
+		     } else {
+		
+             $("#id_sub_category").hide();    
+		     }
+         }, "json");
+	 });	
+     </script>
+</head>
+{% endblock %}
 
 {% block content %}
     <div id="content">
         {% if livre %}
             <table class="tabular"> 
-                <thead>Formulaire d'édition</thead>
+                <thead>
+					<h5>Formulaire d'édition: {{ livre.titre_livre }} </h5>
+				</thead>
                 <tbody>
                     <tr>
                         <td>Titre</td><td>{{ livre.titre_livre }}</td>
+                        <td></td>
+                        <td>Nom</td><td>{{ livre.nom_livre }}</td>
                     </tr>
                     <tr>
-                        <td>Type</td><td>{{ livre.type_livre }}</td>
+                        <td>Format</td><td>{{ livre.form_livre.nom_form }}</td>
+                        <td><img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_format"/></td>
                         <td>Code</td><td>{{ livre.code_livre }}</td>
                     </tr>
                     <tr>
-                        <td>Catégorie</td><td>{{ livre.cate_livre }}</td>
+                        <form id="id_category" action="/obtener_subcategory/" method="post">{% csrf_token %}
+                            <td>Catégorie</td><td>{{ livre.cate_livre.nom_cate }}</td>
+						    <td><img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_cate"/></td>
+                            <td>Sous----catégorie</td>
+                            <!-- <td>Sous-catégorie</td><td>{{ livre.subcate_livre.nom_sous_cate }}</td> -->
+						    <td><img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_cate"/></td>
+                        </form>
+                    </tr>
+                    <tr>
                         <td>ISBN-N°</td><td>{{ livre.isbn_livre }}</td>
+                        <td>EAN13-N°</td><td>{{ livre.ean13_livre }}</td>
                     </tr>
                     <tr>                
                         <td>Année</td><td>{{ livre.annee_livre }}</td>
@@ -26,14 +77,14 @@
                         {% if livre.disp_livre %}
                             <td><img src="{{ STATIC_URL }}images/checkmark.png" width="20" alt="disponible"/></td>
                         {% else %}
-                            <td><img src="{{ STATIC_URL }}images/error.png" width="20" alt="non disponible"/></td>
+                            <td><img src="{{ STATIC_URL }}images/forbidden.png" width="20" alt="non disponible"/></td>
                         {% endif %}
                     </tr>
                     <tr>     
                         <td>Auteurs:</td>
                         {% for auteur in auteurs_livre %}
                             <ol>
-                                <li>{{ auteur.nom_auteur }}</li><li>{{ auteur.prenom_auteur }}</li>  
+                                <li>{{ auteur.nom_auteur }}</li><li>{{ auteur.prenom_auteur }}</li>
                             </ol>
                         {% endfor %}
                     </tr>
@@ -42,17 +93,20 @@
                         <td>Classe</td><td>{{ livre.classe_livre }}</td>
                     </tr>
                     <tr>
-                        <td>Propriétaire</td><td>{{ livre.prop_livre }}</td>
+                        <td>Propriétaire</td><td>{{ livre.proprietaire }}</td>
                         <td>Fournisseur</td><td>{{livre.fournisseur.nom_fourn}}</td>
                     </tr>
                     <tr>
                         <td>Date d'acquisition</td><td>{{ livre.date_acqui }}</td>
-                        <td>Prix</td><td>{{ livre.prix_livre }}</td>
+                        <td>Prix</td><td>{{ livre.monn_livre.code_mone }}  {{ livre.prix_livre }}</td>
                     </tr>
                 </tbody>
                 <tfoot>
                 </tfoot>
             </table>
+
+            <a href="{% url 'livres_list' %}"><img src="{{ STATIC_URL }}images/back.png" width="20" alt="annuler"/></a>
+            <input type="image" src="{{ STATIC_URL }}images/floppy.png" width="20" alt="enregistrer" value="submit" />
 
         {% else %}
             <p>Livre no available.</p>

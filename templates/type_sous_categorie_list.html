@@ -33,7 +33,7 @@
                         <td>{{ sous_cate.code_sous_cate }}</td>
                         <td>{{ sous_cate.nom_sous_cate }}</td>
 
-                        <td><a href="{% url 'type_sous_categorie_update' sous_cate.id %}"><img src="{{ STATIC_URL }}images/pencil.png" width="20" alt="update"/></a></td>
+                        <td><a href="{% url 'type_sous_categorie_update' sous_cate.id %}"><img src="{{ STATIC_URL }}images/edit.png" width="20" alt="update"/></a></td>
                         <td><form method="post" action="{% url 'type_categorie_delete' sous_cate.id %}" 
 									onsubmit="return confirm('{{ _("Voulez-vous effacer cette sous_catégorie?")|escapejs }}');" 
 									style="display: inline">

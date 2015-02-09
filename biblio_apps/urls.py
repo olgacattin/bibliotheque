@@ -1,25 +1,37 @@
 from django.conf.urls import patterns, url
-
 from biblio_apps import views
-
-from biblio_apps.views import UtilisateurList, UtilisateurCreate, UtilisateurUpdate
 
 from biblio_apps.views import AuteurList, AuteurCreate, AuteurUpdate   
 from biblio_apps.views import ProprietaireList, ProprietaireCreate, ProprietaireUpdate
-from biblio_apps.views import FournisseurList, FournisseurCreate, FournisseurUpdate 
+from biblio_apps.views import FournisseurList, FournisseurCreate, FournisseurUpdate
 
+from biblio_apps.views import LivreList, LivreCreate, LivreUpdate
 from biblio_apps.views import TypeCategorieList, TypeCategorieCreate, TypeCategorieUpdate
 from biblio_apps.views import TypeSousCategorieList, TypeSousCategorieCreate, TypeSousCategorieUpdate
+
 from biblio_apps.views import TypeFormatList, TypeFormatCreate, TypeFormatUpdate
 from biblio_apps.views import TypeProprietaireList, TypeProprietaireCreate, TypeProprietaireUpdate
 from biblio_apps.views import TypeLangueList, TypeLangueCreate, TypeLangueUpdate
-from biblio_apps.views import TypeMonnaieList, TypeMonnaieCreate, TypeMonnaieUpdate
 
+from biblio_apps.views import TypeMonnaieList, TypeMonnaieCreate, TypeMonnaieUpdate
+from biblio_apps.views import UtilisateurList, UtilisateurCreate, UtilisateurUpdate
 
 urlpatterns = patterns('', 
+    
     url(r'^$', views.index, name='index'),
-    url(r'^livres_list/$', views.livres_list, name='livres_list'),
-    url(r'^livres_detail/(?P<livre_id>\d+)/$', views.livres_detail, name='livres_detail'),
+
+    #Table auxiliares des livres
+    #url(r'^livre_edition/sous_categorie/$', 'views.livres_sous_categorie_liste'),
+
+    #Table livres
+    url(r'^livre_list/$', LivreList.as_view(), name='livre_list'),
+    url(r'^livre_add/$', LivreCreate.as_view(), name='livre_add'),
+    url(r'^livre_update/(?P<pk>\d+)/$', LivreUpdate.as_view(), name='livre_update'),
+    #url(r'^livres_detail/(?P<livre_id>\d+)/$', views.livres_detail, name='livres_detail'),
+    #url(r'^livre_form/(?P<livre_id>\d+)/$', views.livres_form, name='livres_form'),
+    url(r'^reload_subcategoy/', 'obtener_subcategory', name='reload_flocksheet_subcategory'),
+
+
     url(r'^prets_list/$', views.prets_list, name='prets_list'),
     
     #Table utilisateur
@@ -87,8 +99,6 @@ urlpatterns = patterns('',
     url(r'^type_monnaie_add/$', TypeMonnaieCreate.as_view(), name='type_monnaie_add'),
     url(r'^type_monnaie_update/(?P<pk>\d+)/$', TypeMonnaieUpdate.as_view(), name='type_monnaie_update'),
     url(r'^type_monnaie_delete/(?P<type_monn_id>\d+)/$', views.type_monnaie_delete, name='type_monnaie_delete'),
-
-
 
 )
 

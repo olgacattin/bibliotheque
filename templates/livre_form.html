@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load url from future %}
+
+{% block extrahead %}
+    <script src="http://media.ejemplo.com/javascript/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $("#categ_select_id").change(function () {
+            $.get(, { cat_value: $(this).value() }
+        },
+ 
+        function(data) {
+            // fill sous catégorie with appropriate values
+            $("#subCategorie_select_id").empty().append(...);
+        });
+  
+        });
+
+        
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div id="content">
+       {% if messages %}
+            <div id="message_line" class="messages">
+                {% for message in messages %}
+                    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p><br>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <form action="" method="post">
+            {% csrf_token %}
+
+            <table>
+                <thead>
+					<h5>Formulaire d'édition de Livres</h5>
+				</thead>
+                <tr>
+                    <td>{{ form.titre_livre.label_tag }}</td><td>{{ form.titre_livre }}</td><td> </td>
+                    <td>{{ form.nom_livre.label_tag }}</td><td>{{ form.nom_livre }}</td>
+                </tr>
+
+                <tr>
+                    <td>{{ form.form_livre.label_tag }}</td><td>{{ form.form_livre }}
+                    <img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_format"/></td><td> </td>
+                    <td>{{ form.code_livre.label_tag }}</td><td>{{ form.code_livre }}</td>
+                </tr>
+
+                <tr>
+                    <td>{{ form.cate_livre.label_tag }}</td><td>{{ form.cate_livre }}
+					<img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_cate"/></td><td> </td>
+                    <td>{{ form.subcate_livre.label_tag }}</td><td>{{ form.subcate_livre }}
+					<img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_subcat"/></td>
+                </tr>
+
+                <tr>
+                    <td>{{ form.isbn_livre.label_tag }}</td><td>{{ form.isbn_livre }}</td><td> </td>
+                    <td>{{ form.ean13_livre.label_tag }}</td><td>{{ form.ean13_livre }}</td>
+                </tr>
+
+                <tr>                
+                    <td>{{ form.annee_livre.label_tag }}</td><td>{{ form.annee_livre }}</td><td> </td>
+                    <td>{{ form.lang_livre.label_tag }}</td><td>{{ form.lang_livre }}</td>   
+                </tr>
+                    
+                <tr>
+                    <td>{{ form.edit_livre.label_tag }}</td><td>{{ form.edit_livre }}</td><td> </td>
+                    <td>{{ form.class_livre.label_tag }}</td><td>{{ form.class_livre }}</td>
+                </tr>
+
+                <tr>
+                    <td>{{ form.proprietaire.label_tag }}</td><td>{{ form.proprietaire }}
+                    <img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_prop"/></td><td> </td>
+                    <td>{{ form.fournisseur.label_tag }}</td><td>{{form.fournisseur }}
+					<img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_fourn"/></td><td> </td>
+                </tr>
+
+                <tr>
+                    <td>{{ form.date_acqui.label_tag }}</td><td>{{ form.date_acqui }}</td><td> </td>  
+                    <td>{{ form.prix_livre.label_tag }}{{ form.monn_livre }}</td>
+                    <td>{{ form.prix_livre }}</td>
+                </tr>
+
+                <tr>
+                    <td>{{ form.auteurs.label_tag }}</td>
+                        {% for auteur in form.auteurs %}
+                             <td>{{ auteur }}</td>
+                        {% endfor %}
+ 
+                    <td> </td>
+                    <td>{{ form.disp_livre.label_tag }}</td>
+                        {% if form.disp_livre %}
+                            <td><img src="{{ STATIC_URL }}images/checkmark.png" width="20" alt="disponible"/></td>
+                        {% else %}
+                            <td><img src="{{ STATIC_URL }}images/forbidden.png" width="20" alt="non disponible"/></td>
+                        {% endif %}
+                </tr>
+            </table>
+
+            <a href="{% url 'livre_list' %}"><img src="{{ STATIC_URL }}images/back.png" width="20" alt="annuler"/></a>
+            <input type="image" src="{{ STATIC_URL }}images/floppy.png" width="20" alt="enregistrer" value="submit" />
+        </form>
+    </div>
+{% endblock %}

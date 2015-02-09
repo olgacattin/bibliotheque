@@ -31,7 +31,7 @@
                         <td>{{ categorie.code_cate }}</td>
                         <td>{{ categorie.nom_cate }}</td>
 
-                        <td><a href="{% url 'type_categorie_update' categorie.id %}"><img src="{{ STATIC_URL }}images/pencil.png" width="20" alt="update"/></a></td>
+                        <td><a href="{% url 'type_categorie_update' categorie.id %}"><img src="{{ STATIC_URL }}images/edit.png" width="20" alt="update"/></a></td>
                         <td><form method="post" action="{% url 'type_categorie_delete' categorie.id %}" 
 									onsubmit="return confirm('{{ _("Voulez-vous effacer cette catégorie?")|escapejs }}');" 
 									style="display: inline">

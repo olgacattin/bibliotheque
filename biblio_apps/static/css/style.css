@@ -1,422 +1,433 @@
 /* Begin style page */
 
-h1
+h1	/* titre de niveau 1 */
 {
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: 300;
-    font-style: normal;
-	font-size: 34px;
-    text-align: center;
-	color: #7ba686; 
+	font-family: 'Open Sans', Arial, sans-serif; /* police de caractères */
+	font-weight: 300;			/* mise en gras ou extra-gras */
+    font-style: normal;			/* mise en italique */
+	font-size: 34px;			/* taille des caractères */
+    text-align: center;			/* determine l'alignement horizontal du texte à l'intérieur d'un élément */
+	color: #7ba686; 			/* color de caractères */
 }
 
-h2
+h2	/* titre de niveau 2 */
 {
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
-    font-style: normal;
-	font-size: 34px;
-	height: 50px;
-	line-height: 42px; 		/* interligne */
-    text-align: center;
-	color: #125b30; 
-
+	font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: normal;		/* mise en gras ou extra-gras */
+    font-style: normal;			/* mise en italique */
+	font-size: 34px;			/* taille des caractères */
+	height: 50px;				/* définit la hauteur de l'élément */
+	line-height: 42px; 			/* interligne */
+    text-align: center;			/* determine l'alignement horizontal du texte à l'intérieur d'un élément */
+	color: #125b30; 			/* color de caractères */ 
 }
 
-h3
+h3	/* titre de niveau 3 */
 {
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: 400;
-    font-style: italic;
-	font-size: 16px;
-	height: 37px;
-	line-height: 22px;
-	color: #125b30; 
+	font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: 400;			/* mise en gras ou extra-gras */
+    font-style: italic;			/* mise en italique */
+	font-size: 16px;			/* taille des caractères */
+	height: 37px;				/* définit la hauteur de l'élément */
+	line-height: 22px; 			/* interligne */
+	color: #125b30; 			/* color de caractères */ 
 }
 
-h4
+h4	/* titre de niveau 4 */
 {
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
-    font-style: normal;
-	font-size: 20px;
-	text-transform: uppercase;
-	text-align: left;
-	line-height: 27px;
-	color: #173831; 
+	font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: normal;		/* mise en gras ou extra-gras */
+    font-style: normal;			/* mise en italique */
+	font-size: 20px;			/* taille des caractères */
+	text-transform: uppercase;	/* contrôle la capitalisation (majuscules/minuscules) du texte d'un élément */
+	text-align: left;			/* determine l'alignement horizontal du texte à l'intérieur d'un élément */
+	line-height: 27px; 			/* interligne */
+	color: #173831; 			/* color de caractères */ 
 }
 
-h5
+h5	/* titre de niveau 5 */
 {
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: bold;
-    font-style: italic;
-	font-size: 18px;
-	text-transform: uppercase;
-	text-align: center;
-	line-height: 20px;
-	color: #125b30; 
+	font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: bold;			/* mise en gras ou extra-gras */
+    font-style: italic;			/* mise en italique */
+	font-size: 18px;			/* taille des caractères */
+	text-transform: uppercase;	/* contrôle la capitalisation (majuscules/minuscules) du texte d'un élément */
+	text-align: center;			/* determine l'alignement horizontal du texte à l'intérieur d'un élément */
+	line-height: 20px; 			/* interligne */
+	color: #125b30; 			/* color de caractères */ 
 }
 
-body
+body	/* partie principale de la page */
 {
-	background-color: #F6F9F7;
-	width: 100%;
-	height: 100%;
-	max-width: 960px;
-	margin: auto;
-	float: middle;
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	background-color: #F6F9F7;	/* couleur de l'arrière-plan */
+	width: 100%;				/* définit la largeur de l'élément */
+	height: 100%;				/* définit la hauteur de l'élément */
+	max-width: 960px;			/* largeur maximum de l'élément */
+	margin: auto;				/* marges extérieures de l'élément */
+	float: middle;				/* positionnement flottant (relatif) d'un élément par rapport à un autre */
 }
 
-hr
+hr	/* ligne séparation horizontale */
 {
-	height: 1px;
-	color: #aeccb6;
+	height: 1px;				/* définit la hauteur de l'élément */
+	line-height: 3px; 			/* interligne */
+	color: #aeccb6; 			/* color de caractères */
 }
 
-a:link
+a:link	/* lien hypertexte */
 {
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
-    font-style: normal;
-	font-size: 20px;
-	text-align: left;
-	height: 37px;
-	line-height: 27px;
-	color: #125b30;
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: normal;		/* mise en gras ou extra-gras */
+    font-style: normal;			/* mise en italique */
+	font-size: 20px;			/* taille des caractères */
+	text-align: left;			/* determine l'alignement horizontal du texte à l'intérieur d'un élément */
+	height: 37px;				/* définit la hauteur de l'élément */
+	line-height: 27px; 			/* interligne */
+	color: #125b30; 			/* color de caractères */
 }
 
 a:hover
 {
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: bold;
-    font-style: italic;
-	font-size: 20px;
-	text-align: left;
-	height: 37px;
-	line-height: 27px;
-	color: #72ac31;
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: bold;			/* mise en gras ou extra-gras */
+    font-style: italic;			/* mise en italique */
+	font-size: 20px;			/* taille des caractères */
+	text-align: left;			/* determine l'alignement horizontal du texte à l'intérieur d'un élément */
+	height: 37px;				/* définit la hauteur de l'élément */
+	line-height: 27px; 			/* interligne */
+	color: #72ac31; 			/* color de caractères */
 }
 
 a:active
 {
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: bold;
-    font-style: bold italic;
-	font-size: 23px;
-	text-align: left;
-	color: #173831;
+	font-weight: bold;				/* mise en gras ou extra-gras */
+    font-style: bold italic;		/* mise en italique */
+	font-size: 23px;				/* taille des caractères */
+	text-align: left;				/* determine l'alignement horizontal du texte à l'intérieur d'un élément */
+	color: #173831; 				/* color de caractères */
 }
 
 a:focus
 {
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: bold;
-    font-style: italic;
-	font-size: 20px;
-	text-align: left;
-	color: #173831;
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: bold;			/* mise en gras ou extra-gras */
+    font-style: italic;			/* mise en italique */
+	font-size: 20px;			/* taille des caractères */
+	text-align: left;			/* determine l'alignement horizontal du texte à l'intérieur d'un élément */
+	color: #173831; 			/* color de caractères */
 }
 
 a:visited
 {
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
-    font-style: normal;
-	font-size: 20px;
-	text-align: left;
-	color: #7ba686;
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: normal;		/* mise en gras ou extra-gras */
+    font-style: normal;			/* mise en italique */
+	font-size: 20px;			/* taille des caractères */
+	text-align: left;			/* determine l'alignement horizontal du texte à l'intérieur d'un élément */
+	color: #7ba686; 			/* color de caractères */
 }
 
-hr
-{	
-	line-height: 3px;
-}
-
-p
+p	/* paragraphe */
 {
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
-    font-style: normal;
-	font-size: 15px;
-	height: 37px;
-	line-height: 27px;
-	margin-bottom: 50px;
-	color: #125b30;
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: normal;			/* mise en gras ou extra-gras */
+    font-style: normal;				/* mise en italique */
+	font-size: 15px;				/* taille des caractères */
+	height: 37px;					/* définit la hauteur de l'élément */
+	line-height: 27px; 				/* interligne */
+	margin-bottom: 50px;			/* marge extérieure basse de l'élément */
+	color: #125b30; 				/* color de caractères */
 }
 
-nav
+nav	/* liens principaux de navigation */
 {
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
-    font-style: normal;
-	font-size: 20px;
-	text-transform: uppercase;
-	color: #125b30;
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: normal;			/* mise en gras ou extra-gras */
+    font-style: normal;				/* mise en italique */
+	font-size: 20px;				/* taille des caractères */
+	text-transform: uppercase;		/* contrôle la capitalisation (majuscules/minuscules) du texte d'un élément */
+	color: #125b30; 				/* color de caractères */
 }
 
 nav:link
 {
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
-    font-style: normal;
-	font-size: 20px;
-	text-transform: uppercase;
-	color: #7ba686;
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: normal;			/* mise en gras ou extra-gras */
+    font-style: normal;				/* mise en italique */
+	font-size: 20px;				/* taille des caractères */
+	text-transform: uppercase;		/* contrôle la capitalisation (majuscules/minuscules) du texte d'un élément */
+	color: #7ba686; 				/* color de caractères */
 }
 
 nav:hover
 {
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
-    font-style: normal;
-	font-size: 17px;
-	text-transform: uppercase;
-	color: #125b30;
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: normal;			/* mise en gras ou extra-gras */
+    font-style: normal;				/* mise en italique */
+	font-size: 17px;				/* taille des caractères */
+	text-transform: uppercase;		/* contrôle la capitalisation (majuscules/minuscules) du texte d'un élément */
+	color: #125b30; 				/* color de caractères */
 }
 
-
 .nav ul {
-    display : inline-block;
+    display : inline-block;			/* façon d'afficher un élément */
 }
 
 .nav ul li {
-    float: left;
+    float: left;					/* positionnement flottant (relatif) d'un élément par rapport à un autre */
 }
 
 .nav ul li a {
-    padding : 5px 10px 5px 10px;
-    display: inline-block;
-    color : #125b30;
+    padding : 5px 10px 5px 10px;	/* marges intérieures de l'élément */
+    display: inline-block;			/* façon d'afficher un élément */
+    color : #125b30; 				/* color de caractères */
 }
 
-li
+li	/* élément de la liste à puces */
 {
-   	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
-    font-style: normal;
-	font-size: 18px;
-	line-height: 27px;
-	color: #125b30;
+	font-weight: normal;			/* mise en gras ou extra-gras */
+    font-style: normal;				/* mise en italique */
+	font-size: 18px;				/* taille des caractères */
+	line-height: 27px; 				/* interligne */
+	color: #125b30; 				/* color de caractères */
 }
 
-table 
+table	/* tableau */
 {
-    border: 1px solid;
-    width: 100%;
-    color: #125b30;
+    border: 1px solid;				/* définit la bordure de la table */
+    width: 100%;					/* définit la largeur de l'élément */
+    text-align: left;				/* determine l'alignement horizontal du texte à l'intérieur d'un élément */
+    padding : 5px;					/* marges intérieures de l'élément */
+    color: #125b30; 				/* color de caractères */
 }
 
-thead
+thead	/* section de l'en-tête du tableau */
 {
-    font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
-    font-style: bold italic;
-    text-align: center;
-    height: 25px;
-    color: #125b30;
+	font-weight: normal;			/* mise en gras ou extra-gras */
+    font-style: bold italic;		/* mise en italique */
+    text-align: center;				/* determine l'alignement horizontal du texte à l'intérieur d'un élément */
+    height: 25px;					/* définit la hauteur de l'élément */
+    color: #125b30; 				/* color de caractères */
 }
 
-th
+th	/* cellule d'en-tête */
 {
-    font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: bold;
-    font-style: italic;
-    font-size: 16px;
-    height: 20px;
-    color: #125b30;
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: bold;			/* mise en gras ou extra-gras */
+    font-style: italic;			/* mise en italique */
+    font-size: 16px;			/* taille des caractères */
+    height: 20px;				/* définit la hauteur de l'élément */
+    color: #125b30; 			/* color de caractères */
 }
 
-td
+td	/* cellule */
 {
-    font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
-    font-style: normal;
-	font-size: 15px;
-    text-align: left;
-    line-height: 16px;
-	color: #125b30;
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: normal;		/* mise en gras ou extra-gras */
+    font-style: normal;			/* mise en italique */
+	font-size: 15px;			/* taille des caractères */
+    text-align: left;			/* determine l'alignement horizontal du texte à l'intérieur d'un élément */
+    line-height: 16px; 			/* interligne */
+	color: #125b30; 			/* color de caractères */
 }
 
 .header
 {
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: 300;
-    font-style: normal;
-	font-size: 30px;
-	color: #7ba686; 
+	font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: 300;			/* mise en gras ou extra-gras */
+    font-style: normal;			/* mise en italique */
+	font-size: 30px;			/* taille des caractères */
+	color: #7ba686; 			/* color de caractères */ 
 }
 
 .main_title
 {
-    font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: 300;
-    font-style: normal;
-	font-size: 30px;
-    text-align: center;
-    height: 100px;
-	color: #7ba686; 
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: 300;			/* mise en gras ou extra-gras */
+    font-style: normal;			/* mise en italique */
+	font-size: 30px;			/* taille des caractères */
+    text-align: center;			/* determine l'alignement horizontal du texte à l'intérieur d'un élément */
+    height: 100px;				/* définit la hauteur de l'élément */
+	color: #7ba686; 			/* color de caractères */ 
 }
 
 .footer
 {
-    font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: 50;
-    font-style: italic;
-	font-size: 13px;
-    text-align: right;
-   	line-height: 40px;
-	color: #7ba686; 
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: 50;			/* mise en gras ou extra-gras */
+    font-style: italic;			/* mise en italique */
+	font-size: 13px;			/* taille des caractères */
+    text-align: right;			/* determine l'alignement horizontal du texte à l'intérieur d'un élément */
+   	line-height: 40px; 			/* interligne */
+	color: #7ba686; 			/* color de caractères */ 
 }
 
 #logo
 {
-    height: 100px;
-    position: absolute;
+    height: 100px;				/* définit la hauteur de l'élément */
+    position: absolute;			/* positionnement */
 }
 
 #col_nav
 {
-    height: 130px;
-	color: #125b30;
+    height: 130px;				/* définit la hauteur de l'élément */
+	color: #125b30; 			/* color de caractères */
 }
 
 #menus
 {
-	height: 30px;
-    color: #125b30;
+	height: 30px;				/* définit la hauteur de l'élément */
+    color: #125b30; 			/* color de caractères */
 }
 
 #menus ul
 {
-	margin: 0px;
-	padding: 0px;
-    color: #125b30;
+	margin: 0px;				/* marges extérieures de l'élément */
+	padding: 0px;				/* marges intérieures de l'élément */
+    color: #125b30; 			/* color de caractères */
 }
 
 #menus ul li
 {
 	list-style: none;
-	display: inline-block;
-	float: left;
-	position: relative;
-	line-height: 30px;
-	height: 30px;
-	width: 120px;
-	text-align: center;
-    color: #125b30;
+	display: inline-block;		/* façon d'afficher un élément */
+	float: left;				/* positionnement flottant (relatif) d'un élément par rapport à un autre */
+	position: relative;			/* définit la position du menu à rapport de la page */
+	line-height: 30px; 			/* interligne */
+	height: 30px;				/* définit la hauteur de l'élément */
+	width: 120px;				/* définit la largeur de l'élément */
+	text-align: center;			/* determine l'alignement horizontal du texte à l'intérieur d'un élément */
+    color: #125b30; 			/* color de caractères */
 }
 
 #menus ul li ul
 {
-	display: none;
-	color: #125b30;
+	display: none;				/* façon d'afficher un élément */
+	color: #125b30; 			/* color de caractères */ 
 }
 
 #menus ul li a
 {
     font-size: 20px;
 	text-decoration: none;
-	padding: 0px 5px;
-	line-height: 30px;
-    color: #125b30;
+	padding: 0px 5px;			/* marges intérieures de l'élément */
+	line-height: 30px; 			/* interligne */
+    color: #125b30; 			/* color de caractères */
+}
+
+#menu a:focus
+{
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: bold;			/* mise en gras ou extra-gras */
+    font-style: italic;			/* mise en italique */
+	font-size: 20px;			/* taille des caractères */
+    color: #7ba686; 			/* color de caractères */
+}
+
+#menu a:active
+{
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: bold;			/* mise en gras ou extra-gras */
+    font-style: italic;			/* mise en italique */
+	font-size: 20px;			/* taille des caractères */
+    color: #7ba686; 			/* color de caractères */
 }
 
 #menus a:hover
 {
-    font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: bold;
-    font-style: italic;
-	font-size: 20px;
-    color: #125b30;
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: bold;			/* mise en gras ou extra-gras */
+    font-style: italic;			/* mise en italique */
+	font-size: 20px;			/* taille des caractères */
+    color: #125b30; 			/* color de caractères */
 }
 
 #menus ul li:hover ul
 {
-	position: absolute;
-	left: 0px;
-	top: 30px;
-	display: block;
-    color: #125b30;
+	position: absolute;			/* définit la position du menu à rapport de la page */
+	left: 0px;					/* position par rapport à la gauche */
+	top: 30px;					/* position par rapport au haut */
+	display: block;				/* façon d'afficher un élément */
+    color: #125b30; 			/* color de caractères */
 }
 
 #menus ul li ul li
 {
-	width: 130px;
-	text-align: left;
-	padding-left: 10px;
-	height: 30px;
-	overflow: hidden;
-    color: #125b30;
+	width: 130px;				/* définit la largeur de l'élément */
+	text-align: left;			/* determine l'alignement horizontal du texte à l'intérieur d'un élément */
+	padding-left: 10px;			/* marge intérieure à gauche */
+	height: 30px;				/* définit la hauteur de l'élément */
+	overflow: hidden;			/* comportement en cas de dépassement */
+    color: #125b30; 			/* color de caractères */
 }
 
 #sous_menus
 {
-    font-family: 'Open Sans', Arial, sans-serif;
-    font-style: italic;
-	font-size: 15px;
-	height: 20px;
-    color: #125b30;
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+    font-style: italic;			/* mise en italique */
+	font-size: 15px;			/* taille des caractères */
+	height: 20px;				/* définit la hauteur de l'élément */
+    color: #125b30; 			/* color de caractères */
 
 }
 
 #sous_menus ul li a
 {
-    font-size: 15px;
-	text-decoration: none;
-	padding: 0px 5px;
-	line-height: 20px;
-    color: #125b30;
+    font-size: 15px;			/* taille des caractères */
+	text-decoration: none;		/* soulignement, ligne au-dessus, barré ou clignotant */
+	padding: 0px 5px;			/* marges intérieures de l'élément */
+	line-height: 20px; 			/* interligne */
+    color: #125b30; 			/* color de caractères */
 }
 
 #table_liste table
 {
-    border: 1px solid;
-    width: 100%;
-    color: #125b30;
+    border: 1px solid;			/* super-propriété de bordure */
+    width: 100%;				/* définit la largeur de l'élément */
+    color: #125b30; 			/* color de caractères */
 }
 
 #table_liste thead
 {
-    font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
-    font-style: bold italic;
-    text-align: center;
-    height: 25px;
-    color: #125b30;
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: normal;			/* mise en gras ou extra-gras */
+    font-style: bold italic;		/* mise en italique */
+    text-align: left;				/* determine l'alignement horizontal du texte à l'intérieur d'un élément */
+    height: 25px;					/* définit la hauteur de l'élément */
+    color: #125b30; 				/* color de caractères */
 }
 
 #table_liste th
 {
-    font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: bold;
-    font-style: italic;
-    font-size: 16px;
-    border-bottom: 1px solid;
-    height: 20px;
-    color: #125b30;
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: bold;			/* mise en gras ou extra-gras */
+    font-style: italic;			/* mise en italique */
+    font-size: 16px;			/* taille des caractères */
+    border-bottom: 1px solid;	/* bordure intérieure en bas */
+    height: 20px;				/* définit la hauteur de l'élément */
+    color: #125b30; 			/* color de caractères */
 }
 
 #table_liste td
 {
-    font-family: 'Open Sans', Arial, sans-serif;
-	font-weight: normal;
-    font-style: normal;
-	font-size: 15px;
-    text-align: left;
-    line-height: 16px;
-	color: #125b30;
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+	font-weight: normal;			/* mise en gras ou extra-gras */
+    font-style: normal;				/* mise en italique */
+	font-size: 15px;				/* taille des caractères */
+    text-align: left;				/* determine l'alignement horizontal du texte à l'intérieur d'un élément */
+    line-height: 16px; 				/* interligne */
+	color: #125b30; 				/* color de caractères */
 }
 
 
 #message_line
 {
-    font-family: 'Open Sans', Arial, sans-serif;
-    font-style: italic;
-	font-size: 12px;
-    text-align: left;
-	color: #7ba686;
+    font-family: 'Open Sans', Arial, sans-serif;	/* police de caractères */
+    font-style: italic;			/* mise en italique */
+	font-size: 12px;			/* taille des caractères */
+    text-align: left;			/* determine l'alignement horizontal du texte à l'intérieur d'un élément */
+	color: #7ba686; 			/* color de caractères */
 }
-
 
 /* End style page */

@@ -31,7 +31,7 @@
                         <td>{{ format.code_form }}</td>
                         <td>{{ format.nom_form }}</td>
 
-                        <td><a href="{% url 'type_format_update' format.id %}"><img src="{{ STATIC_URL }}images/pencil.png" width="20" alt="update"/></a></td>
+                        <td><a href="{% url 'type_format_update' format.id %}"><img src="{{ STATIC_URL }}images/edit.png" width="20" alt="update"/></a></td>
                         <td><form method="post" action="{% url 'type_format_delete' format.id %}" 
 									onsubmit="return confirm('{{ _("Voulez-vous effacer ce format?")|escapejs }}');" 
 									style="display: inline">

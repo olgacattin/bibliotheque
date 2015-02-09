@@ -35,7 +35,7 @@
                         <td>{{ fournisseur.city_fourn }}</td>
                         <td>{{ fournisseur.phone_fourn }}</td>
 
-                        <td><a href="{% url 'fournisseur_update' fournisseur.id %}"><img src="{{ STATIC_URL }}images/pencil.png" width="20" alt="update"/></a></td>
+                        <td><a href="{% url 'fournisseur_update' fournisseur.id %}"><img src="{{ STATIC_URL }}images/edit.png" width="20" alt="update"/></a></td>
                         <td><form method="post" action="{% url 'fournisseur_delete' fournisseur.id %}" 
 									onsubmit="return confirm('{{ _("Voulez-vous effacer ce fournisseur?")|escapejs }}');" 
 									style="display: inline">

@@ -20,7 +20,7 @@
                     <th>Nom</th>
                     <th></th>
                     <th></th>
-                    <th><a href="{% url 'auteur_add' %}"><img src="{{ STATIC_URL }}images/newpage.png" width="32" alt="add"/></a></th>
+                    <th><a href="{% url 'auteur_add' %}"><img src="{{ STATIC_URL }}images/newpage.png" width="25" alt="add"/></a></th>
                 </tr>
             </thead>
             <tbody>
@@ -30,7 +30,7 @@
                         <td>{{ auteur.nom_auteur }}</td>
                         <td>{{ auteur.prenom_auteur }}</td>
 
-                        <td><a href="{% url 'auteur_update' auteur.id %}"><img src="{{ STATIC_URL }}images/pencil.png" width="20" alt="update"/></a></td>
+                        <td><a href="{% url 'auteur_update' auteur.id %}"><img src="{{ STATIC_URL }}images/edit.png" width="20" alt="update"/></a></td>
                         <td><form method="post" action="{% url 'auteur_delete' auteur.id %}" 
 									onsubmit="return confirm('{{ _("Voulez-vous effacer cet auteur?")|escapejs }}');" 
 									style="display: inline">
