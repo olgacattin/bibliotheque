@@ -71,7 +71,6 @@ class LivreUpdate(UpdateView):
     template_name = "livre_form.html"
     form_class = LivreForm
     success_url = reverse_lazy('livre_list')
-
     categories = TypeCategorie.objects.all().order_by('nom_cate')
     
     print(categories)

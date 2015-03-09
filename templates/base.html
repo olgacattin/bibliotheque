@@ -18,7 +18,7 @@
                     $("select#id_sous_categorie").attr('disabled', true);
                 }
                 else {
-                    var url = "/category/sub_category/" + $(this).val() + "/all_json_models";
+                    var url = "/show_subcategory/" + $(this).val();
                     var cate_values = $(this).val();
                     $.getJSON(url, function(sub_categories) {
                         var options = '<option value="">Select a sub_category</option>';
@@ -39,7 +39,7 @@
                 $.ajax({
                     type: 'POST',
                     url: '/show_sous_categories/',
-                    data: {'idCategorie', idCategorie}
+                    data: {'id_categorie', idCategorie}
                     success: function(options_html) {
                         $('#id_sous_categorie').html(options_html);
                     }

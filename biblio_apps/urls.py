@@ -28,7 +28,7 @@ urlpatterns = patterns('',
     url(r'^livre_add/$', LivreCreate.as_view(), name='livre_add'),
     url(r'^livre_update/(?P<pk>\d+)/$', LivreUpdate.as_view(), name='livre_update'),
     #url(r'^show_subcategoy/$', views.show_sous_categories, name='show_all_subcategory'),
-    url(r'^category/sub_category/(?P<category_id>\d*)/$', views.show_sous_categories, name='subcategory'),
+    url(r'^show_subcategory/(?P<category_id>\d*)/$', views.show_sous_categories, name='show_subcategory'),
 
     url(r'^prets_list/$', views.prets_list, name='prets_list'),
     
