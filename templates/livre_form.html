@@ -31,13 +31,13 @@
                 </tr>
 
                 <tr>
-                   <form action='' method='post' enctype='multipart/form-data'>
+                   <form action='' method='post'>
 						<td>{{ form.cate_livre.label_tag }}</td>
 						<td><select name="categorie" id="id_categorie">
 							<option value="">Select category   </option>
-							{% for cate in categories %}
-								<option value=" {{ cate.id }}">{{ cate.nom_cate }}</option>
-  							{% endfor %}
+							    {% for cate in categories %}
+								    <option value=" {{ cate.id }}">{{ cate.nom_cate }}</option>
+  							    {% endfor %}
 							</select><img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_cate"/></td>
 
 		                <td> </td>
@@ -46,10 +46,10 @@
 						<td><select name="sous_categorie" id="id_sous_categorie" disabled="true">
 							<option>Select sub_category   </option> 
                                 {% for sous_cate in sous_categories %}
-									<option value="{{ sous_cate.id }}">{{ sous.cate.nom_sous_cate }}	<!--<img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_subcat"/> -->
+								    <option value="{{ sous_cate.id }}">{{ sous_cate.nom_sous_cate }}</option>
                                 {% endfor %}
+                            <img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_subcat"/> 
 						</td> 
-                        <input type='submit' value='submit' />
 					</form> 
 				</tr>
 

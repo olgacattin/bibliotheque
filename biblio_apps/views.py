@@ -58,8 +58,7 @@ class LivreCreate(CreateView):
     template_name = "livre_form.html"
     form_class = LivreForm
     success_url = reverse_lazy('livre_list')
-    print("LivreCreate")
-    #import pdb; pdb.set_trace()
+    categories = TypeCategorie.objects.all().order_by('nom_cate')
 
     def form_valid(self, form):
         print("LivreCreate - form_valid")
@@ -72,6 +71,10 @@ class LivreUpdate(UpdateView):
     template_name = "livre_form.html"
     form_class = LivreForm
     success_url = reverse_lazy('livre_list')
+
+    categories = TypeCategorie.objects.all().order_by('nom_cate')
+    
+    print(categories)
     print("LivreUpdate")
 
     def get_object(self, queryset=None):
@@ -647,6 +650,5 @@ def show_sous_categories(request):
     sub_categories = TypeSousCategorie.objects.all().filter(categorie=category_obj).order_by('nom_sous_cate')
 
     return render_to_response('', {'sub_categories': sub_categories})
-
 
 

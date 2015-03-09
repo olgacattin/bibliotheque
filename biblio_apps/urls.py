@@ -27,11 +27,8 @@ urlpatterns = patterns('',
     url(r'^livre_list/$', LivreList.as_view(), name='livre_list'),
     url(r'^livre_add/$', LivreCreate.as_view(), name='livre_add'),
     url(r'^livre_update/(?P<pk>\d+)/$', LivreUpdate.as_view(), name='livre_update'),
-    #url(r'^livres_detail/(?P<livre_id>\d+)/$', views.livres_detail, name='livres_detail'),
-    #url(r'^livre_form/(?P<livre_id>\d+)/$', views.livres_form, name='livres_form'),
-    url(r'^show_subcategoy/$', views.show_sous_categories, name='show_all_subcategory'),
-    url(r'^category/sub_category/$', 'templatetags.category_subcategory_select'),
-    url(r'^category/sub_category/(?P<category_id>[-\w]+)/all_json_models/$', 'views.show_sous_categories'),
+    #url(r'^show_subcategoy/$', views.show_sous_categories, name='show_all_subcategory'),
+    url(r'^category/sub_category/(?P<category_id>\d*)/$', views.show_sous_categories, name='subcategory'),
 
     url(r'^prets_list/$', views.prets_list, name='prets_list'),
     
