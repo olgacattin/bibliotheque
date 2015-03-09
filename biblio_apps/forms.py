@@ -90,10 +90,9 @@ class TypeCategorieForm(ModelForm):
     class Meta:
 
         model = TypeCategorie
-        fields = ['code_cate', 'nom_cate']
+        fields = ['nom_cate']
 
         labels = {
-            'code_cate' : ('Code'),
             'nom_cate' : ('Catégorie')
         }
 
@@ -103,11 +102,10 @@ class TypeSousCategorieForm(ModelForm):
     class Meta:
 
         model = TypeSousCategorie
-        fields = ['code_cate', 'code_sous_cate', 'nom_sous_cate']
+        fields = ['categorie', 'nom_sous_cate']
 
         labels = {
-            'code_cate' : ('Catégorie'),
-            'code_sous_cate' : ('Code'),
+            'categorie' : ('Catégorie'),
             'nom_sous_cate' : ('Sous-Catégorie')
         }
 

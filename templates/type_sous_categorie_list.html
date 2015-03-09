@@ -19,7 +19,6 @@
                 <h5>Liste des sous-catégories</h5>
                 <tr>
                     <th>Catégorie</th>
-                    <th>Code </th>
                     <th>Sous-Catégorie</th>
                     <th></th>
                     <th></th>
@@ -29,8 +28,7 @@
             <tbody>
                 {% for sous_cate in object_list %}
                     <tr>
-						<td>{{ sous_cate.code_cate }}</td>
-                        <td>{{ sous_cate.code_sous_cate }}</td>
+						<td>{{ sous_cate.categorie }}</td>
                         <td>{{ sous_cate.nom_sous_cate }}</td>
 
                         <td><a href="{% url 'type_sous_categorie_update' sous_cate.id %}"><img src="{{ STATIC_URL }}images/edit.png" width="20" alt="update"/></a></td>

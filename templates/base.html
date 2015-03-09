@@ -9,12 +9,53 @@
 	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600' >
 	<link rel="stylesheet" type='text/css' href="{{ STATIC_URL }}css/style.css" />
 
+	<script src="{{ STATIC_URL }}admin/js/jquery.min.js">
+    $(document).ready(
+        function() {
+            $("select#id_category").change(function() {
+                if ($(this).val() == '') {
+                    $("select#id_sous_categorie").html("<option>Select a sub_category</option>");
+                    $("select#id_sous_categorie").attr('disabled', true);
+                }
+                else {
+                    var url = "/category/sub_category/" + $(this).val() + "/all_json_models";
+                    var cate_values = $(this).val();
+                    $.getJSON(url, function(sub_categories) {
+                        var options = '<option value="">Select a sub_category</option>';
+                        for (var i = 0; i < sub_categories.length; i++) {
+                            options += '<option value="' + sub_categories[i].pk + '">' + sub_categories[i].fields['nom_sous_cate'] + '</option>';
+                        }
+                        $("select#id_sous_categorie").html(options);
+                        $("select#id_sous_categorie option:first").attr('selected', 'selected');
+                        $("select#id_sous_categorie").attr('disabled', false);
+                    });
+                }
+            });
+
+
+            $("select#id_sous_categorie").change(function(vent) {
+                var idCategorie = $(this).find(':selected').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/show_sous_categories/',
+                    data: {'idCategorie', idCategorie}
+                    success: function(options_html) {
+                        $('#id_sous_categorie').html(options_html);
+                    }
+                 });
+             
+            });
+        }
+    );
+
+	</script>
 	<title>Biblio: {% block title %}{{ title }}{% endblock %}</title>
-		{% if form %}   
-		    {{ form.media }}
-		    {{ form.js_init }}
-		{% endif %}
-		{% block extra_head %}{% endblock %}
+	{% if form %}   
+	    {{ form.media }}
+	    {{ form.js_init }}
+	{% endif %}
+	{% block extra_head %}{% endblock %}
 </head>
 
 <body class="{% block bodyclass %}{% endblock %}">

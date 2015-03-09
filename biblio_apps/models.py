@@ -8,27 +8,25 @@ from django.core.urlresolvers import reverse
 
 # Model(table): TypeCatégorie
 class TypeCategorie(models.Model):
-    code_cate = models.CharField(max_length = 5, null = False, blank = False)
     nom_cate = models.CharField(max_length = 150, null = True, blank = True)
 
     def __unicode__(self):
         return self.nom_cate
 
-    class Meta:
-        ordering = ('code_cate', 'nom_cate')
-
+    def get_values(self):
+        values = self.all()
+        return values
 
 # Model(table): TypeSousCatégorie
 class TypeSousCategorie(models.Model):
-    code_sous_cate = models.CharField(max_length = 5, null = False, blank = False)
     nom_sous_cate = models.CharField(max_length = 150, null = True, blank = True)
-    code_cate = models.ForeignKey(TypeCategorie)
+    categorie = models.ForeignKey(TypeCategorie)
 
     def __unicode__(self):
         return self.nom_sous_cate
 
     class Meta:
-        ordering = ('code_cate', 'code_sous_cate', 'nom_sous_cate')
+        ordering = ('categorie', 'nom_sous_cate')
 
 
 # Model(table): TypeFormat

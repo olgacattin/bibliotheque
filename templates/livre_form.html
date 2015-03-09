@@ -2,24 +2,6 @@
 {% load i18n %}
 {% load url from future %}
 
-{% block extrahead %}
-    <script src="http://media.ejemplo.com/javascript/jquery.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        $("#categ_select_id").change(function () {
-            $.get(, { cat_value: $(this).value() }
-        },
- 
-        function(data) {
-            // fill sous catégorie with appropriate values
-            $("#subCategorie_select_id").empty().append(...);
-        });
-  
-        });
-
-        
-    </script>
-{% endblock %}
-
 {% block content %}
     <div id="content">
        {% if messages %}
@@ -29,8 +11,8 @@
                 {% endfor %}
             </div>
         {% endif %}
-        
-        <form action="" method="post">
+
+        <form>
             {% csrf_token %}
 
             <table>
@@ -49,11 +31,27 @@
                 </tr>
 
                 <tr>
-                    <td>{{ form.cate_livre.label_tag }}</td><td>{{ form.cate_livre }}
-					<img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_cate"/></td><td> </td>
-                    <td>{{ form.subcate_livre.label_tag }}</td><td>{{ form.subcate_livre }}
-					<img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_subcat"/></td>
-                </tr>
+                   <form action='' method='post' enctype='multipart/form-data'>
+						<td>{{ form.cate_livre.label_tag }}</td>
+						<td><select name="categorie" id="id_categorie">
+							<option value="">Select category   </option>
+							{% for cate in categories %}
+								<option value=" {{ cate.id }}">{{ cate.nom_cate }}</option>
+  							{% endfor %}
+							</select><img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_cate"/></td>
+
+		                <td> </td>
+
+						<td>{{ form.subcate_livre.label_tag }}</td>
+						<td><select name="sous_categorie" id="id_sous_categorie" disabled="true">
+							<option>Select sub_category   </option> 
+                                {% for sous_cate in sous_categories %}
+									<option value="{{ sous_cate.id }}">{{ sous.cate.nom_sous_cate }}	<!--<img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_subcat"/> -->
+                                {% endfor %}
+						</td> 
+                        <input type='submit' value='submit' />
+					</form> 
+				</tr>
 
                 <tr>
                     <td>{{ form.isbn_livre.label_tag }}</td><td>{{ form.isbn_livre }}</td><td> </td>

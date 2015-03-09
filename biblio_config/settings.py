@@ -101,6 +101,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.gis',
     'django.contrib.staticfiles',
+    'jquery',
 	'biblio_apps',
 )
 

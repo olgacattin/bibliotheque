@@ -374,7 +374,9 @@ def type_categorie_delete(request, type_cate_id):
 class TypeSousCategorieList(ListView):
     model = TypeSousCategorie
     template_name = "type_sous_categorie_list.html"
-
+   
+    #categorie = form.CharField(widget=form.Select(), required=False, label='Categorie')
+   
     def get_context_data(self, **kwargs):
         context = super(TypeSousCategorieList, self).get_context_data(**kwargs)
         return context
@@ -636,17 +638,15 @@ def type_monnaie_delete(request, type_monn_id):
     return HttpResponseRedirect(reverse_lazy('type_monnaie_list'))
 
 
-def obtener_subcategory(request):
-    data = None
+def show_sous_categories(request):
 
-    if request.method == 'POST':
-        category_id = request.POST.get('category_id')
-        category = get_object_or_404(Category, pk = category_id)
-        subcategory = SubCategory.objects.all().filter(parent=category_id)
-        
-        data = serializers.serialize("json", subcategory, fields=('id','nom_sous_cate'))   
+    import pdb; pdb.set_trace()
 
-    return HttpResponse(data, mimetype="application/javascript")
+    category_id = int(request.POST['id_categorie'])
+    category_obj = TypeCategorie.objects.get(id = category_id)
+    sub_categories = TypeSousCategorie.objects.all().filter(categorie=category_obj).order_by('nom_sous_cate')
+
+    return render_to_response('', {'sub_categories': sub_categories})
 
 
 
