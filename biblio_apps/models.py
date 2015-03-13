@@ -92,7 +92,7 @@ class Auteur(models.Model):
         ordering = ('nom_auteur', 'prenom_auteur')
 
 
-# Model(table): Fournisseur
+# Model(table): Fournisseur change pour Editeur
 class Fournisseur(models.Model):
     nom_fourn = models.CharField(max_length = 150, blank = False)
     addr_fourn = models.CharField(max_length = 150, blank = True)

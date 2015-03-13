@@ -182,7 +182,7 @@ class LivreForm(ModelForm):
             'prix_livre' : ('Prix'), 
             'date_acqui' : ('Date acquision'),
             'disp_livre' : ('Disponible'),
-            'fournisseur': ('Fournisseur'), 
+            'fournisseur': ('Editeur'), 
             'proprietaire': ('Propriétaire'), 
             'auteurs' : ('Auteurs')
            

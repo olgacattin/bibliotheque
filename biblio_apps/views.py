@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
+import json
+
 from django.http import Http404
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
 
 from django.db import models
 from django.db.models import Q
@@ -34,15 +37,6 @@ from datetime import datetime
 def index(request):
     return render(request, 'index.html', None)
 
-
-#Gestion des listes pour l'édition des livres 
-def livres_sous_categorie_liste(request):
-    return render_to_response(
-        "livre_form.html",
-        {'sous_categories_list' : TypeSousCategorie.objects.all()},
-        RequestContext(request, {}),
-    )
-
 #Gestion Livre table.
 class LivreList(ListView):
     model = Livre
@@ -58,10 +52,8 @@ class LivreCreate(CreateView):
     template_name = "livre_form.html"
     form_class = LivreForm
     success_url = reverse_lazy('livre_list')
-    categories = TypeCategorie.objects.all().order_by('nom_cate')
 
     def form_valid(self, form):
-        print("LivreCreate - form_valid")
         self.object = form.save()
         return HttpResponseRedirect(self.get_success_url())
     
@@ -71,17 +63,12 @@ class LivreUpdate(UpdateView):
     template_name = "livre_form.html"
     form_class = LivreForm
     success_url = reverse_lazy('livre_list')
-    categories = TypeCategorie.objects.all().order_by('nom_cate')
     
-    print(categories)
-    print("LivreUpdate")
-
     def get_object(self, queryset=None):
         pk = self.kwargs.get('pk', None)
         return get_object_or_404(Livre, pk=pk)
 
     def form_valid(self, form):
-        print("LivreUpdate - form_valid")
         self.object = form.save()    
         return HttpResponseRedirect(self.get_success_url())
 
@@ -173,19 +160,16 @@ class AuteurCreate(CreateView):
     template_name = "auteur_form.html"
     form_class = AuteurForm
     success_url = reverse_lazy('auteur_list')
-    
 
     def form_valid(self, form):
         self.object = form.save()
         return HttpResponseRedirect(self.get_success_url())
-    
 
 class AuteurUpdate(UpdateView):
     model = Auteur
     template_name = "auteur_form.html"
     form_class = AuteurForm
     success_url = reverse_lazy('auteur_list')
-    
 
     def get_object(self, queryset=None):
         pk = self.kwargs.get('pk', None)
@@ -639,15 +623,20 @@ def type_monnaie_delete(request, type_monn_id):
 
     return HttpResponseRedirect(reverse_lazy('type_monnaie_list'))
 
+@csrf_exempt
+def show_sous_categories_filter(request):
 
-def show_sous_categories(request):
+    if request.method == 'GET':
+        print ("It's GET")
+    else:
+        print("It's POST")
 
     import pdb; pdb.set_trace()
 
-    category_id = int(request.POST['id_categorie'])
+    category_id = int(request.POST['id_cate_livre'])
     category_obj = TypeCategorie.objects.get(id = category_id)
-    sub_categories = TypeSousCategorie.objects.all().filter(categorie=category_obj).order_by('nom_sous_cate')
+    data = TypeSousCategorie.objects.all().filter(categorie=category_obj).order_by('nom_sous_cate')
 
-    return render_to_response('', {'sub_categories': sub_categories})
+    HttpResponse(json.dumps(data), mimetype="application/json")
 
 

@@ -4,99 +4,89 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+     {% block head %}
+        
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600' >
+		<link rel="stylesheet" type='text/css' href="{{ STATIC_URL }}css/style.css" />
+		
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.4.min.js"></script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+		        $('input#id_cate_livre').on('change', function () {
 
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600' >
-	<link rel="stylesheet" type='text/css' href="{{ STATIC_URL }}css/style.css" />
+                    $.getJSON('show_sous_categories_filter/?categ=' + $('input#id_cate_livre').val()}, function(data){
+                    // Boucler sur data et ajouter les options à $('input#id_subcate_livre')
+                		var options = '<option value="">{% trans "Sélectionner une sous_catégorie" %}</option>';
+                
+				        if(data.length) {
+				            $("#id_subcate_livre").show();
+				            
+				           for (var i = 0; i < data.length; i++){
+				               options += '<option value="'+data[i]["pk"]+'">' +data[i]["fields"]["name"] +'</option>'
+				           }
 
-	<script src="{{ STATIC_URL }}admin/js/jquery.min.js">
-    $(document).ready(
-        function() {
-            $("select#id_category").change(function() {
-                if ($(this).val() == '') {
-                    $("select#id_sous_categorie").html("<option>Select a sub_category</option>");
-                    $("select#id_sous_categorie").attr('disabled', true);
-                }
-                else {
-                    var url = "/show_subcategory/" + $(this).val();
-                    var cate_values = $(this).val();
-                    $.getJSON(url, function(sub_categories) {
-                        var options = '<option value="">Select a sub_category</option>';
-                        for (var i = 0; i < sub_categories.length; i++) {
-                            options += '<option value="' + sub_categories[i].pk + '">' + sub_categories[i].fields['nom_sous_cate'] + '</option>';
-                        }
-                        $("select#id_sous_categorie").html(options);
-                        $("select#id_sous_categorie option:first").attr('selected', 'selected');
-                        $("select#id_sous_categorie").attr('disabled', false);
-                    });
-                }
-            });
+				           $('#id_subcate_livre').html(options)
+				           $("#id_subcate_livre option:first").attr('selected', 'selected');
+				       
+				       } else {
+				           $("#id_subcate_livre").hide();    
+				       }
+				   }, "json");
+       
+		        });
+		    }
+		); 
 
+		</script>
 
-            $("select#id_sous_categorie").change(function(vent) {
-                var idCategorie = $(this).find(':selected').val();
-
-                $.ajax({
-                    type: 'POST',
-                    url: '/show_sous_categories/',
-                    data: {'id_categorie', idCategorie}
-                    success: function(options_html) {
-                        $('#id_sous_categorie').html(options_html);
-                    }
-                 });
-             
-            });
-        }
-    );
-
-	</script>
-	<title>Biblio: {% block title %}{{ title }}{% endblock %}</title>
-	{% if form %}   
-	    {{ form.media }}
-	    {{ form.js_init }}
-	{% endif %}
-	{% block extra_head %}{% endblock %}
+		<title>Biblio: {% block title %}{{ title }}{% endblock title%}</title>
+		{% if form %}   
+			{{ form.media }}
+			{{ form.js_init }}
+		{% endif %}
+    {% endblock head %}
+	
+    {% block extra_head %}{% endblock %}
 </head>
 
-<body class="{% block bodyclass %}{% endblock %}">
-	<div class="header">
+<body class="{% block bodyclass %}{% endblock bodyclass %}">
+	<div class="{% block header%}{% endblock header %}">
 		<div id="logo"><img src="{{ STATIC_URL }}images/logo_biblio.png" width="80" alt="logo"/></div>
 		<div class="main_title">Bibliothèque BCIS</div>
 		<div class="clear"></div>
 	</div>
-
-    <div class="content">
-		<div id="col_nav"
-		    {% block top_content %}
-
-             <div class="block">
-		         <div class="block_content">
  
-				 <div id="menus">
-				     <ul>
-					     <li><a class="{% block nav-livres %}{% endblock %}" href="{% url 'livre_list' %}">Livres</a></li>
-						 <li><a class="{% block nav-personnes %}{% endblock %}" href="{% url 'utilisateur_list' %}">Utilisateurs</a></li>
-							
-						 <li>
-          					<a href="">Prêts</a>  			
-							 	<ul id="sous_menus">
-                                	 <li><a class="{% block nav-prets %}{% endblock %}" href="{% url 'prets_list' %}">Prêt</a></li>
-							    	<li><a class="{% block nav-rappels %}{% endblock %}" href="{% url 'rappels_list' %}">Rappels</a></li>
-								</ul>
-						 </li>
-					</ul>
-				</div>
-  
-		    {% endblock %}
+	<div class="content">
+		<div id="col_nav">
+
+			{% block top_content %}
+			     <div class="block">
+					 <div class="block_content">
+			         
+						 <div id="menus" class="{% block menu %}{% endblock menu %}">
+							 <ul>
+								 <li><a class="{% block nav-livres %}{% endblock %}" href="{% url 'livre_list' %}">Livres</a></li>
+								 <li><a class="{% block nav-personnes %}{% endblock %}" href="{% url 'utilisateur_list' %}">Utilisateurs</a></li>
+						
+								 <li>
+				  					<a href="">Prêts</a>  			
+									 	<ul id="sous_menus">
+					                    	 <li><a class="{% block nav-prets %}{% endblock %}" href="{% url 'prets_list' %}">Prêt</a></li>
+											<li><a class="{% block nav-rappels %}{% endblock %}" href="{% url 'rappels_list' %}">Rappels</a></li>
+										</ul>
+								 </li>
+							</ul>
+						</div>
+			{% endblock top_content %}
 		</div>
+		{% block content %}{% endblock content %}
 	</div>
 
-	{% block content %}
-	{% endblock %}
-
-	<div class="footer">
-		copyright © 2014 bibliotheque bcis.
-	</div>
-
+    {% block footer %}
+		<div class="footer">
+			copyright © 2014 bibliotheque bcis.
+		</div>
+    {% endblock footer %}
 </body>
 </html>
