@@ -4,6 +4,7 @@ from biblio_apps import views
 from biblio_apps.views import AuteurList, AuteurCreate, AuteurUpdate   
 from biblio_apps.views import ProprietaireList, ProprietaireCreate, ProprietaireUpdate
 from biblio_apps.views import FournisseurList, FournisseurCreate, FournisseurUpdate
+from biblio_apps.views import EditeurList, EditeurCreate, EditeurUpdate
 
 from biblio_apps.views import LivreList, LivreCreate, LivreUpdate
 from biblio_apps.views import TypeCategorieList, TypeCategorieCreate, TypeCategorieUpdate
@@ -27,7 +28,8 @@ urlpatterns = patterns('',
     url(r'^livre_list/$', LivreList.as_view(), name='livre_list'),
     url(r'^livre_add/$', LivreCreate.as_view(), name='livre_add'),
     url(r'^livre_update/(?P<pk>\d+)/$', LivreUpdate.as_view(), name='livre_update'),
-    url(r'^show_subcategory/$', views.show_sous_categories_filter, name='show_subcategory'),
+    url(r'^show_subcategory/(?P<pk>[-\w]+)/$', views.show_sous_categories_filter, name='show_subcategory'),
+    url(r'^show_all_subcategories/(?P<cate>[-\w]+)/v/$', views.show_all_subcategories, name='show_all_subcategories'),
 
     url(r'^prets_list/$', views.prets_list, name='prets_list'),
     
@@ -58,6 +60,11 @@ urlpatterns = patterns('',
     url(r'^fournisseurs_update/(?P<pk>\d+)/$', FournisseurUpdate.as_view(), name='fournisseur_update'),
     url(r'^fournisseurs_delete/(?P<fourn_id>\d+)/$', views.fournisseur_delete, name='fournisseur_delete'),
     
+    #Table editeurs
+    url(r'^editeurs_list/$', EditeurList.as_view(), name='editeur_list'),
+    url(r'^editeurs_add/$', EditeurCreate.as_view(), name='editeur_add'),
+    url(r'^editeurs_update/(?P<pk>\d+)/$', EditeurUpdate.as_view(), name='editeur_update'),
+    url(r'^editeurs_delete/(?P<edit_id>\d+)/$', views.editeur_delete, name='editeur_delete'),
   
     #Table types - categorie
     url(r'^type_categorie_list/$', TypeCategorieList.as_view(), name='type_categorie_list'),
@@ -77,13 +84,11 @@ urlpatterns = patterns('',
     url(r'^type_format_update/(?P<pk>\d+)/$', TypeFormatUpdate.as_view(), name='type_format_update'),
     url(r'^type_format_delete/(?P<type_format_id>\d+)/$', views.type_format_delete, name='type_format_delete'),
 
-
 	#Table types - Proprietaire
     url(r'^type_proprietaire_list/$', TypeProprietaireList.as_view(), name='type_proprietaire_list'),
     url(r'^type_proprietaire_add/$', TypeProprietaireCreate.as_view(), name='type_proprietaire_add'),
     url(r'^type_proprietaire_update/(?P<pk>\d+)/$', TypeProprietaireUpdate.as_view(), name='type_proprietaire_update'),
     url(r'^type_proprietaire_delete/(?P<type_prop_id>\d+)/$', views.type_proprietaire_delete, name='type_proprietaire_delete'),
-
 
     #Table types - Langue
     url(r'^type_langue_list/$', TypeLangueList.as_view(), name='type_langue_list'),

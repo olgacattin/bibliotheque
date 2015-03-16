@@ -33,7 +33,7 @@
  
 				 <div id="menus">
 				     <ul>
-					     <li><a class="{% block nav-livres %}{% endblock %}" href="{% url 'livres_list' %}">Livres</a></li>
+					     <li><a class="{% block nav-livres %}{% endblock %}" href="{% url 'livre_list' %}">Livres</a></li>
 						 <li><a class="{% block nav-personnes %}{% endblock %}" href="{% url 'utilisateur_list' %}">Utilisateurs</a></li>
 							
 						 <li>
@@ -50,6 +50,7 @@
 		   						 <li><a class="{% block nav-auteurs %}{% endblock %}" href="{% url 'auteur_list' %}">Auteurs</a></li>
 								 <li><a class="{% block nav-proprietaires %}{% endblock %}" href="{% url 'proprietaire_list' %}">Propriétaires</a></li>
 								 <li><a class="{% block nav-fournisseurs %}{% endblock %}" href="{% url 'fournisseur_list' %}">Fournisseurs</a></li>
+                                 <li><a class="{% block nav-editeurs %}{% endblock %}" href="{% url 'editeur_list' %}">Editeurs</a></li>
 							 </ul>
 						 </li>
 

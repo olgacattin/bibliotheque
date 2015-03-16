@@ -5,6 +5,7 @@ from models import Utilisateur
 from models import Auteur
 from models import Proprietaire
 from models import Fournisseur
+from models import Editeur
 from models import Livre
 
 from models import TypeCategorie
@@ -85,6 +86,20 @@ class FournisseurForm(ModelForm):
         }
 
 
+class EditeurForm(ModelForm):
+    class Meta:
+
+        model = Editeur
+        fields = ['nom_edit', 'addr_edit', 'npa_edit', 'city_edit', 'phone_edit' ]
+        
+        labels = {
+            'nom_edit' : ('Nom'),
+            'addr_edit' : ('Addresse'), 
+            'npa_edit' : ('Code postal'), 
+            'city_edit' : ('Localité'), 
+            'phone_edit' : ('Téléphone'), 
+        }
+
 
 class TypeCategorieForm(ModelForm):
     class Meta:
@@ -100,7 +115,6 @@ class TypeCategorieForm(ModelForm):
 
 class TypeSousCategorieForm(ModelForm):
     class Meta:
-
         model = TypeSousCategorie
         fields = ['categorie', 'nom_sous_cate']
 
@@ -108,7 +122,6 @@ class TypeSousCategorieForm(ModelForm):
             'categorie' : ('Catégorie'),
             'nom_sous_cate' : ('Sous-Catégorie')
         }
-
 
 
 class TypeFormatForm(ModelForm):
@@ -157,13 +170,15 @@ class TypeMonnaieForm(ModelForm):
 
 
 class LivreForm(ModelForm):
-    class Meta:
+    #categories = ModelChoiceField(queryset=models.TypeCategorie.objects.all(), empty_label="(Nothing)")
+    #souscategories = ModelChoiceField(queryset=models.TypeSousCategorie.objects.none(), empty_label=None)
 
+    class Meta:
         model = Livre
         fields = ['titre_livre', 'nom_livre', 'form_livre', 'cate_livre', 'subcate_livre', 
-                  'code_livre', 'edit_livre', 'annee_livre', 'class_livre', 'lang_livre', 
-                  'isbn_livre', 'ean13_livre', 'monn_livre', 'prix_livre', 'date_acqui',
-                  'disp_livre', 'fournisseur', 'proprietaire', 'auteurs']
+                  'code_livre', 'edit_livre', 'editeur', 'annee_livre', 'class_livre', 
+                  'lang_livre', 'isbn_livre', 'ean13_livre', 'monn_livre', 'prix_livre', 
+                  'date_acqui', 'disp_livre', 'fournisseur', 'proprietaire', 'auteurs']
 
         labels = {
             'titre_livre' : ( 'Titre'), 
@@ -173,6 +188,7 @@ class LivreForm(ModelForm):
             'subcate_livre' : ('Sous-catégorie'),
             'code_livre' : ('Code'), 
             'edit_livre' : ('Edition'), 
+            'editeur': ('Editeur'),
             'annee_livre' : ('Année'), 
             'class_livre' : ('Classe'), 
             'lang_livre' : ('Langue'), 
@@ -182,7 +198,7 @@ class LivreForm(ModelForm):
             'prix_livre' : ('Prix'), 
             'date_acqui' : ('Date acquision'),
             'disp_livre' : ('Disponible'),
-            'fournisseur': ('Editeur'), 
+            'fournisseur': ('Fournisseur'), 
             'proprietaire': ('Propriétaire'), 
             'auteurs' : ('Auteurs')
            

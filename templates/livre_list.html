@@ -12,7 +12,7 @@
                      <th>Titre</th>
                      <th>Code</th>
                      <th>Catégorie</th>
-                     <th>Edition</th>
+                     <th>Editeur</th>
                      <th>Disp.</th>
                      <th></th>
                      <th></th>
@@ -27,7 +27,7 @@
                         <td>{{ livre.titre_livre }}</td>
                         <td>{{ livre.code_livre }}</td>
                         <td>{{ livre.cate_livre.nom_cate }}</td>
-                        <td>{{ livre.edit_livre }}</td>
+                        <td>{{ livre.editeur }}</td>
 
                         {% if livre.disp_livre %}
                             <td><img src="{{ STATIC_URL }}images/checkmark.png" width="20" alt="disponible"/></td>

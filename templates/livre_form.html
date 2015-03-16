@@ -3,7 +3,6 @@
 {% load url from future %}
 
 {% block extra_head %}
-
 {% endblock %}
 
 {% block content %}
@@ -35,17 +34,18 @@
                 </tr>
 
                 <tr>
-					<td>{{ form.cate_livre.label_tag }}</td>
-					<td id="id_cate_livre" name="cate_livre" >{{ form.cate_livre }}
-					<img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_cate"/></td>
+                    <td>{{ form.cate_livre.label_tag }}</td>
+					<td id="id_cate_livre" name="cate_livre">{{ form.cate_livre }}
+                    <img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_cate"/></td>
 
-	                <td> </td>
+                    <td></td>
 
-					<td>{{ form.subcate_livre.label_tag }}</td>
-					<td><select id="id_subcate_livre" name="subcate_livre" >
-                        <img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_subcat"/>
-                    </select></td> 
-				</tr>
+                    <td>{{ form.subcate_livre.label_tag }}</td>
+					<td><select id="id_subcate_livre" name="subcate_livre"  disabled="true">
+						    <option>Select a sub category</option>
+					    </select><img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_subcat"/>
+                    </td>
+                </tr>
 
                 <tr>
                     <td>{{ form.isbn_livre.label_tag }}</td><td>{{ form.isbn_livre }}</td><td> </td>
@@ -59,14 +59,15 @@
                     
                 <tr>
                     <td>{{ form.edit_livre.label_tag }}</td><td>{{ form.edit_livre }}</td><td> </td>
-                    <td>{{ form.fournisseur.label_tag }}</td><td>{{form.fournisseur }}
-					<img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_fourn"/></td><td> </td>
+                    <td>{{ form.editeur.label_tag }}</td><td>{{form.editeur }}
+					<img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_edit"/></td>
                 </tr>
 
                 <tr>
                     <td>{{ form.proprietaire.label_tag }}</td><td>{{ form.proprietaire }}
                     <img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_prop"/></td><td> </td>
-                    <td>{{ form.class_livre.label_tag }}</td><td>{{ form.class_livre }}</td>
+                    <td>{{ form.fournisseur.label_tag }}</td><td>{{form.fournisseur }}
+					<img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_fourn"/></td>
                 </tr>
 
                 <tr>
@@ -74,20 +75,22 @@
                     <td>{{ form.prix_livre.label_tag }}{{ form.monn_livre }}</td>
                     <td>{{ form.prix_livre }}</td>
                 </tr>
-
+               
                 <tr>
-                    <td>{{ form.auteurs.label_tag }}</td>
-                        {% for auteur in form.auteurs %}
-                             <td>{{ auteur }}</td>
-                        {% endfor %}
- 
-                    <td> </td>
+                    <td>{{ form.class_livre.label_tag }}</td><td>{{ form.class_livre }}</td><td> </td>
                     <td>{{ form.disp_livre.label_tag }}</td>
                         {% if form.disp_livre %}
                             <td><img src="{{ STATIC_URL }}images/checkmark.png" width="20" alt="disponible"/></td>
                         {% else %}
                             <td><img src="{{ STATIC_URL }}images/forbidden.png" width="20" alt="non disponible"/></td>
                         {% endif %}
+                </tr>
+
+                <tr>
+                    <td>{{ form.auteurs.label_tag }}</td>
+                        {% for auteur in form.auteurs %}
+                             <td>{{ auteur }}</td>
+                        {% endfor %}
                 </tr>
             </table>
 

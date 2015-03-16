@@ -11,7 +11,7 @@ class TypeCategorie(models.Model):
     nom_cate = models.CharField(max_length = 150, null = True, blank = True)
 
     def __unicode__(self):
-        return self.nom_cate
+        return u'%s' % self.nom_cate
 
     def get_values(self):
         values = self.all()
@@ -23,7 +23,7 @@ class TypeSousCategorie(models.Model):
     categorie = models.ForeignKey(TypeCategorie)
 
     def __unicode__(self):
-        return self.nom_sous_cate
+        return u'%s' %  self.nom_sous_cate
 
     class Meta:
         ordering = ('categorie', 'nom_sous_cate')
@@ -92,7 +92,7 @@ class Auteur(models.Model):
         ordering = ('nom_auteur', 'prenom_auteur')
 
 
-# Model(table): Fournisseur change pour Editeur
+# Model(table): Fournisseur
 class Fournisseur(models.Model):
     nom_fourn = models.CharField(max_length = 150, blank = False)
     addr_fourn = models.CharField(max_length = 150, blank = True)
@@ -102,6 +102,18 @@ class Fournisseur(models.Model):
 
     def __unicode__(self):
         return self.nom_fourn + " - " + self.city_fourn
+
+
+# Model(table): Editeur
+class Editeur(models.Model):
+    nom_edit = models.CharField(max_length = 150, blank = False)
+    addr_edit = models.CharField(max_length = 150, blank = True)
+    npa_edit = models.CharField(max_length = 4)
+    city_edit = models.CharField(max_length = 50)
+    phone_edit = models.CharField(max_length = 50, blank = True)
+
+    def __unicode__(self):
+        return self.nom_edit + " - " + self.city_edit
 
 
 # Model(table): Proprietaire
@@ -138,6 +150,7 @@ class Livre(models.Model):
     disp_livre = models.BooleanField(default = True)
     date_acqui = models.DateField(default = datetime.now(), null = True, blank = True)
     fournisseur = models.ForeignKey(Fournisseur)
+    editeur = models.ForeignKey(Editeur)
     proprietaire = models.ForeignKey(Proprietaire)
     auteurs = models.ManyToManyField(Auteur)
 

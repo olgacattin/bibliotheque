@@ -11,33 +11,26 @@
 		<link rel="stylesheet" type='text/css' href="{{ STATIC_URL }}css/style.css" />
 		
 		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.4.min.js"></script>
-        <script type="text/javascript">
-		$(document).ready(function() {
-		        $('input#id_cate_livre').on('change', function () {
+		<script>
+			$(document).ready(function() {
+                 $("select#id_cate_livre").on('change', function() {
+                    
+                     var url = "/views.show_all_subcategories/?cate_id=" + $('select#id_cate_livre').val();
+                     var cate = $(this).val();
 
-                    $.getJSON('show_sous_categories_filter/?categ=' + $('input#id_cate_livre').val()}, function(data){
-                    // Boucler sur data et ajouter les options à $('input#id_subcate_livre')
-                		var options = '<option value="">{% trans "Sélectionner une sous_catégorie" %}</option>';
-                
-				        if(data.length) {
-				            $("#id_subcate_livre").show();
-				            
-				           for (var i = 0; i < data.length; i++){
-				               options += '<option value="'+data[i]["pk"]+'">' +data[i]["fields"]["name"] +'</option>'
-				           }
+                     $.getJSON(url, function(subcategories) {
+                         var options = '<option value="Z">Select a subcategory</option>';
 
-				           $('#id_subcate_livre').html(options)
-				           $("#id_subcate_livre option:first").attr('selected', 'selected');
-				       
-				       } else {
-				           $("#id_subcate_livre").hide();    
-				       }
-				   }, "json");
-       
-		        });
-		    }
-		); 
+                         for (var i = 0; i < subcategories.length; i++) {
+                            options += '<option value="' + subcategories[i].pk + '">' + subcategories[i].fields['nom_sous_cate'] + '</option>';
+                         }
+                         $("select#id_subcate_livre").html(options);
+                         $("select#id_subcate_livre option:first").attr('selected', 'selected');
+                         $("select#id_subcate_livre").attr('disabled', false);
+                     });
+                 });
 
+             });
 		</script>
 
 		<title>Biblio: {% block title %}{{ title }}{% endblock title%}</title>

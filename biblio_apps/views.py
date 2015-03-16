@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
-import json
 
 from django.http import Http404
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views.decorators.http import require_POST
-from django.views.decorators.csrf import csrf_exempt
 
 from django.db import models
 from django.db.models import Q
 
 from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy
+import json
 
 from django.shortcuts import render, get_object_or_404
 
@@ -20,6 +19,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from biblio_apps.models import Auteur
 from biblio_apps.models import Fournisseur
+from biblio_apps.models import Editeur
 from biblio_apps.models import Livre
 from biblio_apps.models import Pret
 from biblio_apps.models import Proprietaire
@@ -28,7 +28,7 @@ from biblio_apps.models import TypeProprietaire, TypeLangue, TypeMonnaie
 from biblio_apps.models import Utilisateur
 
 from forms import UtilisateurForm, AuteurForm, ProprietaireForm
-from forms import FournisseurForm, LivreForm
+from forms import FournisseurForm, EditeurForm, LivreForm
 from forms import TypeCategorieForm, TypeSousCategorieForm, TypeFormatForm
 from forms import TypeProprietaireForm, TypeLangueForm, TypeMonnaieForm
 from datetime import datetime
@@ -282,9 +282,9 @@ class FournisseurUpdate(UpdateView):
 
     def form_valid(self, form):
         self.object = form.save()    
-
         return HttpResponseRedirect(self.get_success_url())
     
+
 @require_POST
 def fournisseur_delete(request, fourn_id):
     fournisseur = get_object_or_404(Fournisseur, pk=fourn_id)
@@ -300,6 +300,54 @@ def fournisseur_delete(request, fourn_id):
 
     return HttpResponseRedirect(reverse_lazy('fournisseur_list'))
 
+
+#Gestion Editeur table.
+class EditeurList(ListView):
+    model = Editeur
+    template_name = "editeur_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(EditeurList, self).get_context_data(**kwargs)
+        return context
+
+class EditeurCreate(CreateView):
+    model = Editeur
+    template_name = "editeur_form.html"
+    form_class = EditeurForm
+    success_url = reverse_lazy('editeur_list')
+
+    def form_valid(self, form):
+        self.object = form.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+class EditeurUpdate(UpdateView):
+    model = Editeur
+    template_name = "editeur_form.html"
+    form_class = EditeurForm
+    success_url = reverse_lazy('editeur_list')
+
+    def get_object(self, queryset=None):
+        pk = self.kwargs.get('pk', None)
+        return get_object_or_404(Editeur, pk=pk)
+
+    def form_valid(self, form):
+        self.object = form.save()
+        return HttpResponseRedirect(self.get_success_url())
+    
+@require_POST
+def editeur_delete(request, edit_id):
+    editeur = get_object_or_404(Editeur, pk=edit_id)
+    success_url = reverse_lazy('editeur_list')
+
+    lien_livre = Livre.objects.gilter(editeur__id = edit_id)
+
+    if (lien_livre):
+        messages.warning(request, 'Editeur est lié avec livre!')
+    else:
+        editeur.delete()
+        message.success(request, 'Editeur est effacé!')
+
+    return HttpResponseRedirect(reverse_lazy('editeur_list'))
 
 
 #Gestion Catégorie type table.
@@ -623,20 +671,22 @@ def type_monnaie_delete(request, type_monn_id):
 
     return HttpResponseRedirect(reverse_lazy('type_monnaie_list'))
 
-@csrf_exempt
-def show_sous_categories_filter(request):
 
-    if request.method == 'GET':
-        print ("It's GET")
-    else:
-        print("It's POST")
+def show_sous_categories_filter(request, categorie_id):
 
     import pdb; pdb.set_trace()
-
-    category_id = int(request.POST['id_cate_livre'])
+    
     category_obj = TypeCategorie.objects.get(id = category_id)
     data = TypeSousCategorie.objects.all().filter(categorie=category_obj).order_by('nom_sous_cate')
 
     HttpResponse(json.dumps(data), mimetype="application/json")
+
+def show_all_subcategories(request, cate_id):
+    current_cate = TypeCategorie.objects.get(pk=cate_id)
+    subcategories = TypeSousCategorie.objects.all().filter(categorie=current_cate)
+
+    json_subcate = serializers.serialize("json", subcategories)
+
+    return HttpResponse(json_subcate, mimetype="application/javascript")
 
 
