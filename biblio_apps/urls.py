@@ -29,7 +29,7 @@ urlpatterns = patterns('',
     url(r'^livre_add/$', LivreCreate.as_view(), name='livre_add'),
     url(r'^livre_update/(?P<pk>\d+)/$', LivreUpdate.as_view(), name='livre_update'),
     url(r'^show_subcategory/(?P<pk>[-\w]+)/$', views.show_sous_categories_filter, name='show_subcategory'),
-    url(r'^show_all_subcategories/(?P<cate>[-\w]+)/v/$', views.show_all_subcategories, name='show_all_subcategories'),
+    url(r'^show_all_subcategories/(?P<cate_id>[-\w]+)/v/$', views.show_all_subcategories, name='show_all_subcategories'),
 
     url(r'^prets_list/$', views.prets_list, name='prets_list'),
     
