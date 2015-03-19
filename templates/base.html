@@ -17,7 +17,7 @@
 			$(document).ready(function() {
                  $("select#id_cate_livre").on('change', function() {
                     
-                     var url = "/views.show_all_subcategories/?cate_id=" + $('select#id_cate_livre').val();
+                     var url = "/views.show_liste_subcategories/?cate_id=" + $('select#id_cate_livre').val();
                      var cate = $(this).val();
 
                      $.getJSON(url, function(subcategories) {

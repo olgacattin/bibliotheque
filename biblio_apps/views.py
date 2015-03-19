@@ -672,17 +672,22 @@ def type_monnaie_delete(request, type_monn_id):
     return HttpResponseRedirect(reverse_lazy('type_monnaie_list'))
 
 
-def show_sous_categories_filter(request, categorie_id):
+'''def show_sous_categories_filter(request, categorie_id):
 
     import pdb; pdb.set_trace()
     
     category_obj = TypeCategorie.objects.get(id = category_id)
     data = TypeSousCategorie.objects.all().filter(categorie=category_obj).order_by('nom_sous_cate')
 
-    HttpResponse(json.dumps(data), mimetype="application/json")
+    HttpResponse(json.dumps(data), mimetype="application/json") '''
 
-def show_all_subcategories(request, cate_id):
-    current_cate = TypeCategorie.objects.get(pk=cate_id)
+def show_liste_subcategories(request):
+
+    categorie_id = request.GET.get('cate_id') 
+
+    print('Categorie : ')
+    print(categorie_id)
+    current_cate = TypeCategorie.objects.get(pk=categorie_id)
     subcategories = TypeSousCategorie.objects.all().filter(categorie=current_cate)
 
     json_subcate = serializers.serialize("json", subcategories)
