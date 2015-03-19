@@ -135,6 +135,7 @@ class TypeFormatForm(ModelForm):
             'nom_form' : ('Format')
         }
 
+
 class TypeProprietaireForm(ModelForm):
     class Meta:
 
