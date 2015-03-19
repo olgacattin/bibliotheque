@@ -125,6 +125,7 @@ class TypeSousCategorieForm(ModelForm):
 
 
 class TypeFormatForm(ModelForm):
+
     class Meta:
 
         model = TypeFormat
@@ -133,6 +134,12 @@ class TypeFormatForm(ModelForm):
         labels = {
             'code_form' : ('Code'),
             'nom_form' : ('Format')
+        }
+
+        error_messages = {
+            'nom_form': {
+                'unique': ("Ce format existe déjà."),
+            },
         }
 
 
