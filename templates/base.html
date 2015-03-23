@@ -16,15 +16,15 @@
 		<script>
 			$(document).ready(function() {
                  $("select#id_cate_livre").on('change', function() {
-                    
-                     var url = "/views.show_liste_subcategories/?cate_id=" + $('select#id_cate_livre').val();
+                   
+                     var url = "{% url 'liste_subcategories' %}" +"?cate_id=" + $('select#id_cate_livre').val();
                      var cate = $(this).val();
-
-                     $.getJSON(url, function(subcategories) {
+                    
+                     $.getJSON(url, function(liste_subcate) {
                          var options = '<option value="Z">Select a subcategory</option>';
 
-                         for (var i = 0; i < subcategories.length; i++) {
-                            options += '<option value="' + subcategories[i].pk + '">' + subcategories[i].fields['nom_sous_cate'] + '</option>';
+                         for (var i = 0; i < liste_subcate.length; i++) {
+                            options += '<option value="' + liste_subcate[i].pk + '">' + liste_subcate[i].fields['nom_sous_cate'] + '</option>';
                          }
                          $("select#id_subcate_livre").html(options);
                          $("select#id_subcate_livre option:first").attr('selected', 'selected');

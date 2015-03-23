@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse
 
 # Model(table): TypeCatégorie
 class TypeCategorie(models.Model):
-    nom_cate = models.CharField(max_length = 150, null = True, blank = True)
+    nom_cate = models.CharField(max_length = 150, null = True, blank = True, unique = True)
 
     def __unicode__(self):
         return u'%s' % self.nom_cate
@@ -19,7 +19,7 @@ class TypeCategorie(models.Model):
 
 # Model(table): TypeSousCatégorie
 class TypeSousCategorie(models.Model):
-    nom_sous_cate = models.CharField(max_length = 150, null = True, blank = True)
+    nom_sous_cate = models.CharField(max_length = 150, null = True, blank = True, unique = True)
     categorie = models.ForeignKey(TypeCategorie)
 
     def __unicode__(self):
@@ -32,7 +32,7 @@ class TypeSousCategorie(models.Model):
 # Model(table): TypeFormat
 class TypeFormat(models.Model):
     code_form = models.CharField(max_length = 5, null = False, blank = False)
-    nom_form = models.CharField(max_length = 150, null = True, blank = True)
+    nom_form = models.CharField(max_length = 150, null = True, blank = True, unique = True)
 
     def __unicode__(self):
         return self.nom_form
@@ -44,7 +44,7 @@ class TypeFormat(models.Model):
 # Model(table): TypePropriétaire
 class TypeProprietaire(models.Model):
     code_prop = models.CharField(max_length = 5, null = False, blank = False)
-    nom_prop = models.CharField(max_length = 150, null = True, blank = True)
+    nom_prop = models.CharField(max_length = 150, null = True, blank = True, unique = True)
 
     def __unicode__(self):
         return self.nom_prop
@@ -56,7 +56,7 @@ class TypeProprietaire(models.Model):
 # Model(table): TypeLangue
 class TypeLangue(models.Model):
     code_lang = models.CharField(max_length = 5, null = False, blank = False)
-    nom_lang = models.CharField(max_length = 150, null = True, blank = True)
+    nom_lang = models.CharField(max_length = 150, null = True, blank = True, unique = True)
 
     def __unicode__(self):
         return self.nom_lang
@@ -68,7 +68,7 @@ class TypeLangue(models.Model):
 # Model(table): TypeMonnaie
 class TypeMonnaie(models.Model):
     code_mone = models.CharField(max_length = 5, null = False, blank = False)
-    nom_mone = models.CharField(max_length = 150, null = True, blank = True)
+    nom_mone = models.CharField(max_length = 150, null = True, blank = True, unique = True)
 
     def __unicode__(self):
         return self.code_mone
@@ -94,7 +94,7 @@ class Auteur(models.Model):
 
 # Model(table): Fournisseur
 class Fournisseur(models.Model):
-    nom_fourn = models.CharField(max_length = 150, blank = False)
+    nom_fourn = models.CharField(max_length = 150, blank = False, unique = True)
     addr_fourn = models.CharField(max_length = 150, blank = True)
     npa_fourn = models.CharField(max_length = 4)
     city_fourn = models.CharField(max_length = 50)
@@ -106,7 +106,7 @@ class Fournisseur(models.Model):
 
 # Model(table): Editeur
 class Editeur(models.Model):
-    nom_edit = models.CharField(max_length = 150, blank = False)
+    nom_edit = models.CharField(max_length = 150, blank = False, unique = True)
     addr_edit = models.CharField(max_length = 150, blank = True)
     npa_edit = models.CharField(max_length = 4)
     city_edit = models.CharField(max_length = 50)
@@ -118,7 +118,7 @@ class Editeur(models.Model):
 
 # Model(table): Proprietaire
 class Proprietaire(models.Model):
-    nom_prop = models.CharField(max_length = 150, blank = False)
+    nom_prop = models.CharField(max_length = 150, blank = False, unique = True)
     prenom_prop = models.CharField(max_length = 150, blank = False)
     addr_prop = models.CharField(max_length = 150, blank = True)
     npa_prop = models.CharField(max_length = 4)

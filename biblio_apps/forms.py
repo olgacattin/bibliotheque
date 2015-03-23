@@ -32,6 +32,7 @@ class UtilisateurForm(ModelForm):
             'email' : ('Email')
         }
 
+
 class AuteurForm(ModelForm):
     class Meta:
 
@@ -70,6 +71,12 @@ class ProprietaireForm(ModelForm):
             'type_prop' : ('Type prop')
         }
 
+        error_messages = {
+            'nom_prop': {
+                'unique': ("Ce propriètaire existe déjà."),
+            },
+        }
+
 
 class FournisseurForm(ModelForm):
     class Meta:
@@ -83,6 +90,12 @@ class FournisseurForm(ModelForm):
             'npa_fourn' : ('Code postal'), 
             'city_fourn' : ('Localité'), 
             'phone_fourn' : ('Téléphone'), 
+        }
+
+        error_messages = {
+            'nom_four': {
+                'unique': ("Ce fournisseur existe déjà."),
+            },
         }
 
 
@@ -100,6 +113,12 @@ class EditeurForm(ModelForm):
             'phone_edit' : ('Téléphone'), 
         }
 
+        error_messages = {
+            'nom_edit': {
+                'unique': ("Cet éditeur existe déjà."),
+            },
+        }
+
 
 class TypeCategorieForm(ModelForm):
     class Meta:
@@ -110,7 +129,12 @@ class TypeCategorieForm(ModelForm):
         labels = {
             'nom_cate' : ('Catégorie')
         }
-
+ 
+        error_messages = {
+            'nom_cate': {
+                'unique': ("Cette catégorie existe déjà."),
+            },
+        }
       
 
 class TypeSousCategorieForm(ModelForm):
@@ -151,7 +175,13 @@ class TypeProprietaireForm(ModelForm):
 
         labels = {
             'code_prop' : ('Code'),
-            'nom_prop' : ('Propriétaire')
+            'nom_prop' : ('Type de propriétaire')
+        }
+
+        error_messages = {
+            'nom_prop': {
+                'unique': ("Ce type de propriétaire existe déjà."),
+            },
         }
 
 class TypeLangueForm(ModelForm):
@@ -165,6 +195,12 @@ class TypeLangueForm(ModelForm):
             'nom_lang' : ('Langue')
         }
 
+        error_messages = {
+            'nom_lang': {
+                'unique': ("Cette langue existe déjà."),
+            },
+        }
+
 class TypeMonnaieForm(ModelForm):
     class Meta:
 
@@ -176,6 +212,11 @@ class TypeMonnaieForm(ModelForm):
             'nom_mone' : ('Monnaie')
         }
 
+        error_messages = {
+            'nom_mone': {
+                'unique': ("Cette monnaie existe déjà."),
+            },
+        }
 
 class LivreForm(ModelForm):
     #categories = ModelChoiceField(queryset=models.TypeCategorie.objects.all(), empty_label="(Nothing)")

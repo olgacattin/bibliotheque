@@ -1,15 +1,16 @@
 # -*- coding: utf-8 -*-
 
+import json
+	
 from django.http import Http404
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views.decorators.http import require_POST
-
+                           
 from django.db import models
 from django.db.models import Q
 
 from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy
-import json
 
 from django.shortcuts import render, get_object_or_404
 
@@ -32,6 +33,8 @@ from forms import FournisseurForm, EditeurForm, LivreForm
 from forms import TypeCategorieForm, TypeSousCategorieForm, TypeFormatForm
 from forms import TypeProprietaireForm, TypeLangueForm, TypeMonnaieForm
 from datetime import datetime
+
+
 #import pdb; pdb.set_trace()
 
 def index(request):
@@ -476,11 +479,10 @@ class TypeFormatCreate(CreateView):
     form_class = TypeFormatForm
     success_url = reverse_lazy('type_format_list')
     
-
     def form_valid(self, form):
         self.object = form.save()
         return HttpResponseRedirect(self.get_success_url())
-    
+ 
 
 class TypeFormatUpdate(UpdateView):
     model = TypeFormat
@@ -634,7 +636,7 @@ class TypeMonnaieCreate(CreateView):
     model = TypeMonnaie
     template_name = "type_monnaie_form.html"
     form_class = TypeMonnaieForm
-    success_url = reverse_lazy('type_monnaie_list')
+    success_url = reverse_lazy('type_monnaie_list')	
     
     def form_valid(self, form):
         self.object = form.save()
@@ -672,26 +674,15 @@ def type_monnaie_delete(request, type_monn_id):
     return HttpResponseRedirect(reverse_lazy('type_monnaie_list'))
 
 
-'''def show_sous_categories_filter(request, categorie_id):
-
-    import pdb; pdb.set_trace()
-    
-    category_obj = TypeCategorie.objects.get(id = category_id)
-    data = TypeSousCategorie.objects.all().filter(categorie=category_obj).order_by('nom_sous_cate')
-
-    HttpResponse(json.dumps(data), mimetype="application/json") '''
-
 def show_liste_subcategories(request):
 
     categorie_id = request.GET.get('cate_id') 
 
-    print('Categorie : ')
-    print(categorie_id)
     current_cate = TypeCategorie.objects.get(pk=categorie_id)
     subcategories = TypeSousCategorie.objects.all().filter(categorie=current_cate)
 
-    json_subcate = serializers.serialize("json", subcategories)
+    liste_subcate = json.dumps(list(subcategories.values('pk', 'nom_sous_cate')))
 
-    return HttpResponse(json_subcate, mimetype="application/javascript")
+    return HttpResponse(liste_subcate)
 
 
