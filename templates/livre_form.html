@@ -3,6 +3,31 @@
 {% load url from future %}
 
 {% block extra_head %}
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+		$(document).ready(function() {
+             $("select#id_cate_livre").on('change', function() {
+               
+                 var url = "{% url 'liste_subcategories' %}" +"?cate_id=" + $('select#id_cate_livre').val();
+                 var cate = $(this).val();
+                
+                 $.getJSON(url, function(liste_subcate) {
+                     var options = '<option value="Z">Select a subcategory</option>';
+
+                     for (var i = 0; i < liste_subcate.length; i++) {
+                        options += '<option value="' + liste_subcate[i].pk + '">' + liste_subcate[i].nom_sous_cate + '</option>';
+                     }
+                     $("select#id_subcate_livre").html(options);
+                     $("select#id_subcate_livre option:first").attr('selected', 'selected');
+                     $("select#id_subcate_livre").attr('disabled', false);
+                 });
+             });
+
+         });
+
+	</script>
+
 {% endblock %}
 
 {% block content %}
@@ -43,7 +68,7 @@
                     <td></td>
 
                     <td>{{ form.subcate_livre.label_tag }}</td>
-					<td><select id="id_subcate_livre" name="subcate_livre"  disabled="true">
+					<td><select id="id_subcate_livre" name="subcate_livre" disabled="true">
 						    <option>Select a sub category</option>
 					    </select><img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_subcat"/>
                     </td>
