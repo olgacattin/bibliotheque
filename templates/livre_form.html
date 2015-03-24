@@ -4,7 +4,7 @@
 
 {% block extra_head %}
 
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script charset="utf-8" type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script>
 		$(document).ready(function() {
              $("select#id_cate_livre").on('change', function() {
@@ -16,7 +16,7 @@
                      var options = '<option value="Z">Select a subcategory</option>';
 
                      for (var i = 0; i < liste_subcate.length; i++) {
-                        options += '<option value="' + liste_subcate[i].pk + '">' + liste_subcate[i].nom_sous_cate + '</option>';
+                        options += '<option value=' + liste_subcate[i].pk + '>' + liste_subcate[i].nom_sous_cate + '</option>';
                      }
                      $("select#id_subcate_livre").html(options);
                      $("select#id_subcate_livre option:first").attr('selected', 'selected');
@@ -40,7 +40,7 @@
             </div>
         {% endif %}
 
-        <form>
+        <form action="" method="post">
             {% csrf_token %}
 
             <table>

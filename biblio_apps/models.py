@@ -155,7 +155,7 @@ class Livre(models.Model):
     auteurs = models.ManyToManyField(Auteur)
 
     def __unicode__(self):
-        return self.nom_livre + " " + self.isbn_livre + " " + self.annee_livre
+        return str(self.id) + " " + self.nom_livre + " " + self.isbn_livre + " " + self.annee_livre
   
 
 # Model(table): Utilisateur

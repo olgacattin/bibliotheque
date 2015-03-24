@@ -219,9 +219,6 @@ class TypeMonnaieForm(ModelForm):
         }
 
 class LivreForm(ModelForm):
-    #categories = ModelChoiceField(queryset=models.TypeCategorie.objects.all(), empty_label="(Nothing)")
-    #souscategories = ModelChoiceField(queryset=models.TypeSousCategorie.objects.none(), empty_label=None)
-
     class Meta:
         model = Livre
         fields = ['titre_livre', 'nom_livre', 'form_livre', 'cate_livre', 'subcate_livre', 
@@ -250,7 +247,6 @@ class LivreForm(ModelForm):
             'fournisseur': ('Fournisseur'), 
             'proprietaire': ('Propriétaire'), 
             'auteurs' : ('Auteurs')
-           
         }
 
        
