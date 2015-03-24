@@ -4,7 +4,11 @@
 
 {% block extra_head %}
 
+<<<<<<< HEAD
     <script charset="utf-8" type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+=======
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+>>>>>>> 776a22fe811c304798ae725a4a2b4b9e4022ec8a
 	<script>
 		$(document).ready(function() {
              $("select#id_cate_livre").on('change', function() {
@@ -16,7 +20,11 @@
                      var options = '<option value="Z">Select a subcategory</option>';
 
                      for (var i = 0; i < liste_subcate.length; i++) {
+<<<<<<< HEAD
                         options += '<option value=' + liste_subcate[i].pk + '>' + liste_subcate[i].nom_sous_cate + '</option>';
+=======
+                        options += '<option value="' + liste_subcate[i].pk + '">' + liste_subcate[i].nom_sous_cate + '</option>';
+>>>>>>> 776a22fe811c304798ae725a4a2b4b9e4022ec8a
                      }
                      $("select#id_subcate_livre").html(options);
                      $("select#id_subcate_livre option:first").attr('selected', 'selected');
