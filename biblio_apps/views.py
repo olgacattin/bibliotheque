@@ -51,6 +51,8 @@ class LivreList(ListView):
 
 
 class LivreCreate(CreateView):
+    import pdb; pdb.set_trace()
+    
     model = Livre
     template_name = "livre_form.html"
     form_class = LivreForm
@@ -58,6 +60,7 @@ class LivreCreate(CreateView):
 
     def form_valid(self, form):
         self.object = form.save()
+  
         return HttpResponseRedirect(self.get_success_url())
     
 
