@@ -69,9 +69,15 @@
                     <td></td>
 
                     <td>{{ form.subcate_livre.label_tag }}</td>
-					<td><select id="id_subcate_livre" name="subcate_livre" disabled="true">
-						    <option>Select a sub category</option>
-					    </select><img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_subcat"/>
+					<td>{% if form.subcat_livre %}
+		                    <select id="id_subcate_livre" name="subcate_livre" disabled="true">
+								<option>Select a sub category</option>
+							</select>
+                         {% else %}
+                             {{ form.subcate_livre }}
+                         {% endif %}
+                        <a class="{% block nav-sub-categorie %}{% endblock %}" href="{% url 'type_sous_categorie_add' %}"> 
+                        <img src="{{ STATIC_URL }}images/add.png" width="20" alt="new_subcat"/></a>
                     </td>
                 </tr>
 
@@ -117,15 +123,6 @@
                
                 <tr>
                     <td>{{ form.class_livre.label_tag }}</td><td>{{ form.class_livre }}</td><td> </td>
-                    <td>{{ form.disp_livre.label_tag }}</td>
-                        {% if form.disp_livre %}
-                            <td><img src="{{ STATIC_URL }}images/checkmark.png" width="20" alt="disponible"/></td>
-                        {% else %}
-                            <td><img src="{{ STATIC_URL }}images/error.png" width="20" alt="non disponible"/></td>
-                        {% endif %}
-                </tr>
-
-                <tr>
                     <td>{{ form.auteurs.label_tag }}</td>
                         {% for auteur in form.auteurs %}
                              <td>{{ auteur }}
@@ -136,7 +133,7 @@
             </table>
 
             <a href="{% url 'livre_list' %}"><img src="{{ STATIC_URL }}images/back.png" width="20" alt="annuler"/></a>
-            <input type="image" src="{{ STATIC_URL }}images/floppy.png" width="20" alt="enregistrer" value="Submit" />
+            <input type="image" src="{{ STATIC_URL }}images/floppy.png" width="20" alt="enregistrer" value="Create" />
         </form>
     </div>
 {% endblock %}

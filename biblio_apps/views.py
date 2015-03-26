@@ -34,7 +34,6 @@ from forms import TypeCategorieForm, TypeSousCategorieForm, TypeFormatForm
 from forms import TypeProprietaireForm, TypeLangueForm, TypeMonnaieForm
 from datetime import datetime
 
-
 #import pdb; pdb.set_trace()
 
 def index(request):
@@ -51,7 +50,6 @@ class LivreList(ListView):
 
 
 class LivreCreate(CreateView):
-    import pdb; pdb.set_trace()
     
     model = Livre
     template_name = "livre_form.html"
@@ -268,7 +266,6 @@ class FournisseurCreate(CreateView):
     template_name = "fournisseur_form.html"
     form_class = FournisseurForm
     success_url = reverse_lazy('fournisseur_list')
-    
 
     def form_valid(self, form):
         self.object = form.save()
@@ -414,8 +411,6 @@ def type_categorie_delete(request, type_cate_id):
 class TypeSousCategorieList(ListView):
     model = TypeSousCategorie
     template_name = "type_sous_categorie_list.html"
-   
-    #categorie = form.CharField(widget=form.Select(), required=False, label='Categorie')
    
     def get_context_data(self, **kwargs):
         context = super(TypeSousCategorieList, self).get_context_data(**kwargs)
@@ -622,7 +617,6 @@ def type_langue_delete(request, type_lang_id):
         messages.success(request, 'Type langue est effacé!')
 
     return HttpResponseRedirect(reverse_lazy('type_langue_list'))
-
 
 
 #Gestion Monnaie type table.

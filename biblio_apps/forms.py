@@ -1,5 +1,6 @@
 #-*- coding: utf-8 -*-
 from django.forms import ModelForm
+from django import forms
 
 from models import Utilisateur
 from models import Auteur
@@ -224,7 +225,7 @@ class LivreForm(ModelForm):
         fields = ['titre_livre', 'nom_livre', 'form_livre', 'cate_livre', 'subcate_livre', 
                   'code_livre', 'edit_livre', 'editeur', 'annee_livre', 'class_livre', 
                   'lang_livre', 'isbn_livre', 'ean13_livre', 'monn_livre', 'prix_livre', 
-                  'date_acqui', 'disp_livre', 'fournisseur', 'proprietaire', 'auteurs']
+                  'date_acqui', 'fournisseur', 'proprietaire', 'auteurs']
 
         labels = {
             'titre_livre' : ( 'Titre'), 
@@ -247,6 +248,10 @@ class LivreForm(ModelForm):
             'fournisseur': ('Fournisseur'), 
             'proprietaire': ('Propriétaire'), 
             'auteurs' : ('Auteurs')
+        }
+
+        widgets = {
+            'disp_livre': forms.HiddenInput(),
         }
 
        
